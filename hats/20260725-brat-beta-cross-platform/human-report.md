@@ -2,7 +2,7 @@
 
 ## Scope
 
-- Target: Archive Olive `0.1.1` navigation-contrast retest and continued BRAT acceptance.
+- Target: Archive Olive `0.1.2` interaction-state retest and continued BRAT acceptance.
 - Candidate branch: `main`.
 - Acceptance artifact: the `theme.css` and `manifest.json` files installed by BRAT under the active Obsidian vault.
 - Environment: macOS host, native Obsidian, repository `test-vault`.
@@ -21,7 +21,7 @@
 
 | Item                              | Result                                                                                                          |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Published candidate               | Tag `0.1.1` → `d011427e3310a170a230b4743c7cc3c476b3443f`                                                        |
+| Prepared candidate                | `0.1.2`; release commit and tag pending publication                                                             |
 | Obsidian version                  | Desktop `1.12.7`                                                                                                |
 | BRAT version                      | `2.2.0` from the preceding lifecycle smoke test; the current vault no longer contains the BRAT plugin directory |
 | Operating system                  | macOS                                                                                                           |
@@ -43,12 +43,12 @@
   - Status: Partial
   - Human result: Pending
   - Notes: User screenshots prove the BRAT-installed `0.1.0` theme was active; explicit reload-survival confirmation remains open.
-  - Next: Update to the published `0.1.1` artifact, reload once, and confirm Archive Olive remains active.
+  - Next: Update to the published `0.1.2` artifact, reload once, and confirm Archive Olive remains active.
 - [ ] P0-03 — Core visual and interaction acceptance
-  - Status: Failed on `0.1.0`; remediation prepared
-  - Human result: Failed — navigation and tab-list icons disappeared in active/dark chrome states, while inactive root and side-dock tabs were difficult to read.
-  - Notes: The `0.1.1` candidate introduces semantic chrome foregrounds. Agent checks pass in the real three-pane workspace in light and dark appearances.
-  - Next: Human retests the published `0.1.1` artifact through BRAT.
+  - Status: Passed for the local candidate; published-artifact retest pending
+  - Human result: Owner authorized the patch release after iterative test-vault review.
+  - Notes: The `0.1.2` candidate preserves icon contrast after pane blur, restores an olive/cyan active side-dock cue, and keeps interactive Markdown table headers readable.
+  - Next: Human retests the published `0.1.2` artifact through BRAT.
 - [ ] P0-04 — BRAT update delivery
   - Status: Pending evidence decision
   - Human result: Pending
@@ -98,7 +98,9 @@
 
 - User direction in this Codex thread: proceed with acceptance using the final artifact downloaded by BRAT.
 - User direction in this Codex thread: publish the opt-in pre-release now and complete BRAT acceptance later.
+- User direction in this Codex thread: commit and publish the accepted interaction-state repair as a patch release.
 - User feedback screenshots from BRAT-installed `0.1.0`: `codex-clipboard-50139ae0…png`, `codex-clipboard-d0c6d588…png`, `codex-clipboard-a574d601…png`, `codex-clipboard-3138ed75…png`, and `codex-clipboard-e582ffbc…png`.
+- Follow-up test-vault screenshots: `codex-clipboard-e03abf40…png`, `codex-clipboard-39800b5a…png`, `codex-clipboard-b03aa76b…png`, and `codex-clipboard-cd59389a…png`.
 - [Cross-platform HAT guide](guide.md).
 - [BRAT beta release specification](../../docs/specs/brat-beta-release.md).
 - [Validation evidence](../../VALIDATION.md).
@@ -107,6 +109,7 @@
 - [Archive Olive 0.1.0 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0).
 - [Archive Olive 0.1.1 Beta release record](../../docs/releases/0.1.1-beta.md).
 - [Archive Olive 0.1.1 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.1).
+- [Archive Olive 0.1.2 Beta release record](../../docs/releases/0.1.2-beta.md).
 
 ### Produced artifacts
 
@@ -120,6 +123,7 @@
 - Human judgment determines visual and experiential acceptance.
 - Pre-release publication is owner-authorized but does not convert pending human cases into passes.
 - Treat the feedback as a P0 visual failure and ship a new patch version instead of mutating `0.1.0`.
+- Treat pane blur, selected identity, and table-editor contrast as a state-matrix repair and ship `0.1.2` instead of mutating `0.1.1`.
 
 ### Verification evidence
 
@@ -135,10 +139,11 @@
 - The `0.1.1` candidate passes real-application checks in light and dark appearances plus sixteen automated contrast pairs.
 - GitHub Actions run `30151853100` passed on release commit `d011427e3310a170a230b4743c7cc3c476b3443f`.
 - Annotated tag `0.1.1` resolves to the release commit; the published pre-release is not a draft and all four downloaded assets match their tagged SHA-256 values.
+- The `0.1.2` local candidate passes real-application pane-blur, menu-open, selected side-dock, and interactive table-header checks plus twenty automated contrast pairs.
 
 ### Open questions / risks
 
 - The current vault no longer contains the BRAT plugin directory, so BRAT `2.2.0` is inherited from the preceding lifecycle smoke-test evidence rather than re-read from the active vault.
-- Human confirmation of the published `0.1.1` artifact remains pending.
+- Human confirmation of the published `0.1.2` artifact remains pending.
 - Real Windows, Linux, iOS, and Android acceptance remains external to this macOS session.
 - GitHub Raw caching may delay BRAT update delivery.

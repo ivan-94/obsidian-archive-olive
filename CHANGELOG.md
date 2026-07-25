@@ -8,6 +8,15 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 No unreleased changes.
 
+## [0.1.2] - 2026-07-25
+
+### Fixed
+
+- Kept active side-dock controls visually selected after pane or window focus changes by restoring their olive surface and cyan state rule.
+- Preserved readable title-bar navigation and tab-list controls across hover, active, menu-open, and blurred states.
+- Kept Markdown table headers readable while Obsidian activates column handles or its inline table editor.
+- Added regression policy and light/dark contrast checks for focused chrome and interactive table headers.
+
 ## [0.1.1] - 2026-07-25
 
 ### Fixed
@@ -67,7 +76,9 @@ No unreleased changes.
 - `0.1.0` records the initial locally validated theme.
 - `0.1.0` is an opt-in GitHub pre-release; pilot acceptance remains required before broader announcement or official-directory submission.
 - `0.1.1` is a focused accessibility patch; it does not change the palette, layout, or compatibility floor.
+- `0.1.2` completes the interaction-state repair without changing the palette, layout, compatibility floor, or BRAT channel.
 
-[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.2...HEAD
+[0.1.2]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0

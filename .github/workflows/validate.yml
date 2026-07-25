@@ -55,6 +55,8 @@ jobs:
           docs/releases/0.1.0-beta-notes.md
           docs/releases/0.1.1-beta.md
           docs/releases/0.1.1-beta-notes.md
+          docs/releases/0.1.2-beta.md
+          docs/releases/0.1.2-beta-notes.md
           hats/20260725-brat-beta-cross-platform/guide.md
           hats/20260725-brat-beta-cross-platform/human-report.md
           scripts/validate.mjs

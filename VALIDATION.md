@@ -2,7 +2,7 @@
 
 Date: 2026-07-25
 
-Build: `0.1.1`
+Build: `0.1.2`
 
 Runtime: Obsidian Desktop `1.12.7`, macOS
 
@@ -16,21 +16,21 @@ The final implementation has no remote assets, `@import`, routine `!important`, 
 
 ## P0 requirement matrix
 
-| ID     | Status | Evidence                                                                                                                                                      |
-| ------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.1`; final developer error buffer is empty.                                                         |
-| AO-002 | Pass   | Light and dark computed surface, text, active-tab, and active-file colors changed coherently; see workspace screenshots.                                      |
-| AO-003 | Pass   | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a continuous square grid.                                                  |
-| AO-004 | Pass   | Active file uses an olive fill plus a carbon inset rule; active root tab uses cyan plus a heavy bottom rule; inactive root and side-dock tabs remain legible. |
-| AO-005 | Pass   | Fixture content was reviewed in Live Preview and Reading View with headings, lists, tasks, quotes, callouts, code, tables, tags, properties, and links.       |
-| AO-006 | Pass   | Pure Source Mode exposes readable Markdown/YAML syntax, visible selection, and an oxblood caret.                                                              |
-| AO-007 | Pass   | Command palette, quick switcher, settings dialog, native file menu, notices, inputs, tooltips, and dropdown rules were exercised or inspected.                |
-| AO-008 | Pass   | Default, hover, active, selected, focus-visible, and disabled treatments use borders, offsets, or geometry as well as color.                                  |
-| AO-009 | Pass   | Body line height computes to `1.65`; readable-line width maps to `80ch`; tables and media are not globally constrained.                                       |
-| AO-010 | Pass   | All sixteen normative normal-text and application-chrome pairs exceed WCAG AA; ratios range from `4.57:1` to `15.36:1`; prompt focus remains visible.         |
-| AO-011 | Pass   | Static scan finds no remote CSS asset or import.                                                                                                              |
-| AO-012 | Pass   | Static scan finds no `!important`, `:has()`, or global Graph/Canvas texture.                                                                                  |
-| AO-013 | Pass   | Theme uses Obsidian's interface/text/monospace variables and maintains layout under the local user accent/font preference pipeline.                           |
+| ID     | Status | Evidence                                                                                                                                                            |
+| ------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.2`; final developer error buffer is empty.                                                               |
+| AO-002 | Pass   | Light and dark computed surface, text, active-tab, and active-file colors changed coherently; see workspace screenshots.                                            |
+| AO-003 | Pass   | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a continuous square grid.                                                        |
+| AO-004 | Pass   | Active file uses an olive fill plus a carbon inset rule; active root tab uses cyan plus a heavy bottom rule; inactive root and side-dock tabs remain legible.       |
+| AO-005 | Pass   | Fixture content was reviewed in Live Preview and Reading View with headings, lists, tasks, quotes, callouts, code, tables, tags, properties, and links.             |
+| AO-006 | Pass   | Pure Source Mode exposes readable Markdown/YAML syntax, visible selection, and an oxblood caret.                                                                    |
+| AO-007 | Pass   | Command palette, quick switcher, settings dialog, native file menu, notices, inputs, tooltips, and dropdown rules were exercised or inspected.                      |
+| AO-008 | Pass   | Default, hover, active, selected, focus-visible, and disabled treatments use borders, offsets, or geometry as well as color.                                        |
+| AO-009 | Pass   | Body line height computes to `1.65`; readable-line width maps to `80ch`; tables and media are not globally constrained.                                             |
+| AO-010 | Pass   | All twenty normative normal-text, application-chrome, and table-header pairs exceed WCAG AA; ratios range from `4.57:1` to `15.36:1`; prompt focus remains visible. |
+| AO-011 | Pass   | Static scan finds no remote CSS asset or import.                                                                                                                    |
+| AO-012 | Pass   | Static scan finds no `!important`, `:has()`, or global Graph/Canvas texture.                                                                                        |
+| AO-013 | Pass   | Theme uses Obsidian's interface/text/monospace variables and maintains layout under the local user accent/font preference pipeline.                                 |
 
 ## P1 local status
 
@@ -68,14 +68,15 @@ jq empty manifest.json "test-vault/Archive Olive.canvas"
 git diff --check
 ```
 
-`scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, and sixteen WCAG contrast pairs. Release mode also verifies the MIT license and README link.
+`scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, and twenty WCAG contrast pairs. Release mode also verifies the MIT license and README link.
 
-## 0.1.1 navigation contrast regression
+## 0.1.2 interaction-state regression
 
 - User-provided `0.1.0` screenshots showed graphite foregrounds disappearing on the carbon root tab strip, signal-cyan side dock, and field-olive vault profile.
-- The repair introduces surface-specific semantic chrome foregrounds instead of reusing muted body text.
-- Root inactive tabs, side-dock inactive icons, tab-list controls, and the vault-switcher icon were rechecked in the real three-pane Obsidian workspace in light and dark appearances.
-- New automated ratios cover light/dark inactive chrome, side-dock tab icons, and vault-switcher controls.
+- Follow-up screenshots showed the repaired icons regressing after pane blur, active side-dock states losing selection identity, and table-header cells becoming unreadable in Obsidian's interactive editor state.
+- The repair binds foreground and selected-state treatments to their actual chrome surfaces instead of window focus, and forces table-editor layers to inherit the carbon header surface.
+- Pane-blurred side-dock controls, menu-open tab-list controls, active side-dock selection, and interactive Markdown table headers were rechecked in the real three-pane Obsidian workspace.
+- New automated ratios cover light/dark title-bar controls and table headers in addition to the `0.1.1` chrome pairs.
 
 ## Visual evidence
 

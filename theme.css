@@ -1,5 +1,5 @@
 /*!
- * Archive Olive 0.1.1
+ * Archive Olive 0.1.2
  * A practical brutalist theme for Obsidian.
  * Design source: DESIGN.md
  * BRAT channel: main/theme.css
@@ -306,6 +306,7 @@ body {
   --tab-outline-color: var(--ao-ink);
   --ao-chrome-foreground: var(--ao-paper);
   --ao-chrome-muted: var(--ao-khaki);
+  --ao-chrome-control-foreground: var(--ao-paper);
   --ao-chrome-hover-background: var(--ao-folder);
   --ao-chrome-hover-foreground: var(--ao-ink);
   --ao-accent-foreground: var(--ao-ink);
@@ -491,6 +492,7 @@ body {
   --tab-outline-color: var(--ao-dark-muted);
   --ao-chrome-foreground: var(--ao-dark-paper);
   --ao-chrome-muted: var(--ao-dark-muted);
+  --ao-chrome-control-foreground: var(--ao-dark-paper);
   --ao-chrome-hover-background: var(--ao-dark-recessed);
   --ao-chrome-hover-foreground: var(--ao-dark-paper);
   --ao-accent-foreground: var(--ao-ink);
@@ -783,9 +785,17 @@ body:not(.is-mobile)
   > .workspace-tabs
   > .workspace-tab-header-container {
   --icon-color: var(--ao-chrome-muted);
-  --icon-color-hover: var(--ao-chrome-hover-foreground);
-  --icon-color-active: var(--ao-chrome-foreground);
+  --icon-color-hover: var(--ao-chrome-control-foreground);
+  --icon-color-active: var(--ao-chrome-control-foreground);
   color: var(--ao-chrome-muted);
+}
+
+.workspace-split.mod-left-split
+  > .workspace-tabs
+  > .workspace-tab-header-container {
+  --tab-text-color-active: var(--ao-chrome-control-foreground);
+  --tab-text-color-focused-active: var(--ao-chrome-control-foreground);
+  --tab-text-color-focused-active-current: var(--ao-chrome-control-foreground);
 }
 
 .workspace .mod-root .workspace-tab-header:not(.is-active),
@@ -795,7 +805,127 @@ body:not(.is-mobile)
 .workspace-split.mod-left-split .workspace-tab-header-new-tab,
 .workspace-split.mod-left-split .workspace-tab-header-tab-list {
   --icon-color: var(--ao-chrome-muted);
+  --icon-color-hover: var(--ao-chrome-control-foreground);
+  --icon-color-active: var(--ao-chrome-control-foreground);
   color: var(--ao-chrome-muted);
+}
+
+.workspace
+  .mod-root
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list):is(
+    :hover,
+    :active,
+    .is-active
+  ),
+.workspace-split.mod-left-split
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list):is(
+    :hover,
+    :active,
+    .is-active
+  ) {
+  --icon-color: var(--ao-chrome-control-foreground);
+  color: var(--ao-chrome-control-foreground);
+}
+
+.app-container
+  .workspace
+  .workspace-split.mod-left-split
+  .workspace-tabs
+  .workspace-tab-header-container
+  .workspace-tab-header.is-active {
+  --icon-color: var(--ao-selection-foreground);
+  --icon-color-hover: var(--ao-selection-foreground);
+  --icon-color-active: var(--ao-selection-foreground);
+  background: var(--interactive-accent);
+  box-shadow: inset 0 -4px 0 var(--ao-cyan);
+  color: var(--ao-selection-foreground);
+}
+
+.theme-dark
+  .app-container
+  .workspace
+  .workspace-split.mod-left-split
+  .workspace-tabs
+  .workspace-tab-header-container
+  .workspace-tab-header.is-active {
+  box-shadow: inset 0 -4px 0 var(--ao-dark-cyan);
+}
+
+.app-container
+  .workspace
+  .workspace-split.mod-left-split
+  .workspace-tabs
+  .workspace-tab-header-container
+  .workspace-tab-header.is-active
+  :is(
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-inner-title,
+    svg
+  ) {
+  color: var(--ao-selection-foreground);
+}
+
+.app-container
+  .workspace
+  .workspace-split.mod-left-split
+  .workspace-tabs
+  .workspace-tab-header-container
+  .workspace-tab-header:is(:hover, :active, .is-active, .has-active-menu)
+  :is(
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-inner-title,
+    svg
+  ) {
+  color: var(--ao-chrome-control-foreground);
+}
+
+.app-container
+  .workspace
+  .workspace-split.mod-root
+  > .workspace-tabs
+  > .workspace-tab-header-container
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list),
+.app-container
+  .workspace
+  .workspace-split.mod-root
+  > .workspace-tabs
+  > .workspace-tab-header-container
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list)
+  svg {
+  --icon-color: var(--ao-chrome-control-foreground);
+  --icon-color-hover: var(--ao-chrome-control-foreground);
+  --icon-color-active: var(--ao-chrome-control-foreground);
+  color: var(--ao-chrome-control-foreground);
+}
+
+.app-container
+  .workspace
+  .workspace-split.mod-root
+  > .workspace-tabs
+  > .workspace-tab-header-container
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list):is(
+    :hover,
+    :active,
+    :focus,
+    :focus-within,
+    .is-active,
+    .has-active-menu
+  ),
+.app-container
+  .workspace
+  .workspace-split.mod-root
+  > .workspace-tabs
+  > .workspace-tab-header-container
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list):is(
+    :hover,
+    :active,
+    :focus,
+    :focus-within,
+    .is-active,
+    .has-active-menu
+  )
+  svg {
+  color: var(--ao-chrome-control-foreground);
 }
 
 .workspace
@@ -828,6 +958,8 @@ body:not(.is-mobile)
 
 .workspace .mod-root .workspace-tab-header:not(.is-active):hover {
   --icon-color: var(--ao-chrome-hover-foreground);
+  --icon-color-hover: var(--ao-chrome-hover-foreground);
+  --icon-color-active: var(--ao-chrome-hover-foreground);
   background: var(--ao-chrome-hover-background);
   box-shadow: inset 0 -2px 0 var(--background-modifier-border);
   color: var(--ao-chrome-hover-foreground);
@@ -1135,13 +1267,23 @@ body:not(.is-mobile)
   font-variant-numeric: tabular-nums;
 }
 
-.markdown-rendered th {
+body .markdown-rendered table thead th:nth-child(n) {
   background: var(--table-header-background);
   color: var(--table-header-color);
   font-family: var(--ao-font-mono);
   font-size: 0.82em;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+body
+  .markdown-rendered
+  table
+  thead
+  th:nth-child(n)
+  :is(.table-cell-wrapper, .cm-editor, .cm-scroller, .cm-content, .cm-line) {
+  background-color: transparent;
+  color: inherit;
 }
 
 .markdown-rendered tr:nth-child(even) td {

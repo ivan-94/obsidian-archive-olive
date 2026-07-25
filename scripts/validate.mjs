@@ -104,6 +104,36 @@ assert.match(
   /--ao-chrome-muted/,
   'theme.css must define a semantic inactive-chrome color',
 );
+assert.match(
+  css,
+  /--ao-chrome-control-foreground/,
+  'theme.css must keep titlebar controls visible while hovered or pressed',
+);
+assert.match(
+  css,
+  /\.app-container[\s\S]*\.workspace-split\.mod-left-split[\s\S]*\.workspace-tabs[\s\S]*\.workspace-tab-header-inner-icon/,
+  'theme.css must keep side-dock icon colors independent of pane focus',
+);
+assert.match(
+  css,
+  /\.app-container[\s\S]*\.workspace-split\.mod-root[\s\S]*\.workspace-tab-header-tab-list/,
+  'theme.css must keep tab-list controls visible in every focus state',
+);
+assert.match(
+  css,
+  /\.workspace-split\.mod-left-split[\s\S]*\.workspace-tab-header\.is-active[\s\S]*background:\s*var\(--interactive-accent\)/,
+  'theme.css must give active side-dock tabs a focus-independent background',
+);
+assert.match(
+  css,
+  /body\s+\.markdown-rendered\s+table\s+thead\s+th:nth-child\(n\)[\s\S]*background:\s*var\(--table-header-background\)/,
+  'theme.css must preserve the table-header background in interactive states',
+);
+assert.match(
+  css,
+  /\.table-cell-wrapper[\s\S]*\.cm-editor[\s\S]*background-color:\s*transparent/,
+  'theme.css must keep live table-header editors on the header surface',
+);
 assert.match(changelog, /## \[Unreleased\]/);
 assert.match(workflow, /node scripts\/validate\.mjs/);
 assert.match(workflow, /lightningcss-cli@1\.33\.0/);
@@ -170,16 +200,20 @@ const normalTextPairs = [
   ['light active file', '#f1e7cc', '#59611c'],
   ['light active tab', '#11110d', '#00a6b2'],
   ['light inactive chrome', '#d9cba8', '#11110d'],
+  ['light titlebar control hover', '#f1e7cc', '#11110d'],
   ['light sidebar tab icon', '#11110d', '#00a6b2'],
   ['light vault switcher', '#f1e7cc', '#59611c'],
+  ['light table header', '#f1e7cc', '#11110d'],
   ['light critical block', '#f1e7cc', '#8d1b1b'],
   ['dark body', '#eee4c8', '#1d2014'],
   ['dark muted', '#b4aa8f', '#1d2014'],
   ['dark active file', '#11110d', '#9aaa3a'],
   ['dark active tab', '#11110d', '#31c2c9'],
   ['dark inactive chrome', '#b4aa8f', '#0e0f0a'],
+  ['dark titlebar control hover', '#eee4c8', '#0e0f0a'],
   ['dark sidebar tab icon', '#11110d', '#31c2c9'],
   ['dark vault switcher', '#11110d', '#9aaa3a'],
+  ['dark table header', '#11110d', '#eee4c8'],
   ['dark critical block', '#15160f', '#d4574f'],
 ];
 

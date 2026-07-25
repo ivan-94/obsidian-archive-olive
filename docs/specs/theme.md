@@ -506,7 +506,7 @@ Public `1.0.0` additionally requires P1, release packaging, platform testing, cu
 - The official Obsidian community theme index contained 647 entries and no `Archive Olive` name or repository match when checked on 2026-07-25; recheck immediately before submission.
 - The runtime theme was loaded from the repository into an isolated local vault on Obsidian Desktop `1.12.7` for macOS.
 - Light, dark, narrow-window, source-mode, Graph, Canvas, Bases, settings, prompt, pop-out-window, and mobile-emulation evidence is recorded in `VALIDATION.md`.
-- The `0.1.1` navigation-contrast repair was checked in the real three-pane Obsidian workspace in both light and dark appearances.
+- The `0.1.2` interaction-state repair was checked in the real three-pane Obsidian workspace for pane blur, menu-open controls, active side-dock identity, and interactive Markdown table headers.
 - Obsidian's developer error and console buffers reported no theme-caused errors after the final local test cycle.
 
 ### Open questions / risks

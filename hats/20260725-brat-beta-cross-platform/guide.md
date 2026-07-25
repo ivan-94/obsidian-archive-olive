@@ -12,8 +12,8 @@
 | Repository root    | `obsidian-brutalism-theme`                                                                                                                                      |
 | Environment mode   | `blank`                                                                                                                                                         |
 | Mode reason        | A theme does not depend on historical application data. New vaults with public, non-sensitive fixtures give the safest and most reproducible platform evidence. |
-| Preparation status | `0.1.1` published; human BRAT retest pending                                                                                                                    |
-| Target             | Archive Olive `0.1.1` navigation-contrast acceptance                                                                                                            |
+| Preparation status | `0.1.2` prepared; publication and human BRAT retest pending                                                                                                     |
+| Target             | Archive Olive `0.1.2` interaction-state acceptance                                                                                                              |
 
 <!-- HAT:END metadata -->
 
@@ -125,7 +125,7 @@ Never record passwords, access tokens, private email addresses, or personal vaul
 
 - BRAT completes without an error.
 - Archive Olive appears in the theme selector and remains active after reload.
-- The installed manifest reports version `0.1.1` and the assigned compatibility floor.
+- The installed manifest reports version `0.1.2` and the assigned compatibility floor.
 
 **Evidence**
 
@@ -370,6 +370,7 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 - [GitHub Actions run for baseline `d73be74`](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30146751956).
 - [Archive Olive 0.1.0 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0).
 - [Archive Olive 0.1.1 Beta release record](../../docs/releases/0.1.1-beta.md).
+- [Archive Olive 0.1.2 Beta release record](../../docs/releases/0.1.2-beta.md).
 
 ### Produced artifacts
 
@@ -394,6 +395,7 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 - User feedback on the BRAT-installed `0.1.0` artifact identified unreadable navigation, tab-list, inactive-tab, and vault-switcher states.
 - The `0.1.1` release passes real-application light/dark checks and sixteen automated contrast pairs; human BRAT retest remains pending.
 - GitHub Actions run `30151853100` passed on `d011427e3310a170a230b4743c7cc3c476b3443f`; tag `0.1.1` resolves to that commit and its four downloaded assets match their tagged hashes.
+- The `0.1.2` candidate passes real-application pane-blur, menu-open, selected side-dock, and interactive table-header checks plus twenty automated contrast pairs.
 
 ### Open questions / risks
 
