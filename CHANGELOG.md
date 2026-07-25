@@ -19,6 +19,8 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 - A canonical BRAT Beta release specification under `docs/specs/`.
 - A public-safe `512 × 288` beta release image derived from the validated fixture vault.
 - A clean-vault BRAT 2.2.0 lifecycle smoke test covering installation, delivery of a changed stylesheet and manifest, light/dark activation, unregistration, disabling, and removal.
+- A reproducible cross-platform HAT guide with an idempotent blank-vault preparation script.
+- A gated `0.1.0` beta pre-release draft and publication checklist.
 
 ### Changed
 

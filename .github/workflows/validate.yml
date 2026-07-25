@@ -39,6 +39,9 @@ jobs:
       - name: Parse distributable CSS
         run: npx --yes lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
 
+      - name: Check HAT preparation script
+        run: bash -n hats/20260725-brat-beta-cross-platform/prepare.sh
+
       - name: Check release-facing formatting
         run: >-
           npx --yes prettier@3.9.6 --check
@@ -48,6 +51,9 @@ jobs:
           CHANGELOG.md
           docs/specs/README.md
           docs/specs/brat-beta-release.md
+          docs/releases/0.1.0-beta.md
+          docs/releases/0.1.0-beta-notes.md
+          hats/20260725-brat-beta-cross-platform/guide.md
           scripts/validate.mjs
           .github/workflows/validate.yml
           .github/ISSUE_TEMPLATE/bug.yml

@@ -386,6 +386,10 @@ Status as of 2026-07-25:
 - `.github/ISSUE_TEMPLATE/bug.yml`
 - `.github/ISSUE_TEMPLATE/platform-validation.yml`
 - `assets/screenshots/archive-olive-512x288.png`
+- `hats/20260725-brat-beta-cross-platform/guide.md`
+- `hats/20260725-brat-beta-cross-platform/prepare.sh`
+- `docs/releases/0.1.0-beta.md`
+- `docs/releases/0.1.0-beta-notes.md`
 
 ### Key decisions
 

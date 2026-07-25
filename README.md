@@ -85,6 +85,12 @@ node scripts/validate.mjs --release
 
 The isolated `test-vault` covers Markdown primitives, multilingual text, dense navigation, source mode, callouts, Graph, Canvas, and Bases. See [VALIDATION.md](VALIDATION.md) for the requirement matrix and evidence.
 
+## Cross-platform acceptance
+
+Use the [BRAT Beta cross-platform HAT guide](hats/20260725-brat-beta-cross-platform/guide.md) for the private pilot and owner-led Windows, Linux, iOS, and Android acceptance. The guide includes preparation, evidence, privacy, update, removal, and platform-specific checklists.
+
+The [`0.1.0` beta release draft](docs/releases/0.1.0-beta.md) is intentionally blocked until the private pilot passes. Do not create or publish the tag early.
+
 ## Reporting beta issues
 
 - [Report a visual or functional bug](https://github.com/ivan-94/obsidian-archive-olive/issues/new?template=bug.yml)
@@ -119,6 +125,8 @@ Archive Olive is available under the [MIT License](LICENSE).
 - [DESIGN.md](DESIGN.md)
 - [Theme specification](docs/specs/theme.md)
 - [BRAT Beta release specification](docs/specs/brat-beta-release.md)
+- [BRAT Beta cross-platform HAT](hats/20260725-brat-beta-cross-platform/guide.md)
+- [`0.1.0` beta release draft](docs/releases/0.1.0-beta.md)
 - [CHANGELOG.md](CHANGELOG.md)
 - [BRAT Beta release image](assets/screenshots/archive-olive-512x288.png)
 - [Archive Olive reference concept](design/concepts/01f-archive-olive.png)
