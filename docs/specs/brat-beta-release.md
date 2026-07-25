@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.2` prepared — publication and owner BRAT retest pending                        |
+| Status                | `0.1.2` published — owner BRAT retest pending                                       |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -335,7 +335,7 @@ The official candidate is ready only when all P2 requirements pass. Successful m
 | ------------------------ | ----------------------------------------------------------------------------------------- | ----- |
 | Public license           | Applied: MIT license selected and added at repository root.                               | Ivan  |
 | Beta compatibility floor | Applied: `minAppVersion` is the currently tested `1.12.7`; lower only after new evidence. | Ivan  |
-| Beta pre-release         | `0.1.2` prepared as an immutable interaction-state checkpoint.                            | Ivan  |
+| Beta pre-release         | `0.1.2` published as an immutable interaction-state checkpoint.                           | Ivan  |
 
 BRAT-004 now passes locally with the owner-selected MIT license. Revisit the compatibility decision only if the project intends to support versions older than `1.12.7`.
 
@@ -431,6 +431,8 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - GitHub Actions run [30151853100](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30151853100) passed on release commit `d011427e3310a170a230b4743c7cc3c476b3443f`.
 - Annotated tag `0.1.1` resolves to that commit, and the [0.1.1 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.1) exposes four assets whose downloaded SHA-256 values match the tagged files.
 - The `0.1.2` candidate preserves chrome foregrounds after pane blur, restores a non-color active side-dock cue, and keeps interactive Markdown table headers readable in the real Obsidian runtime.
+- GitHub Actions run [30155669146](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30155669146) passed on release commit `a6352c5bb1fb14dbd97c0c741212f45d50c7e266`.
+- Annotated tag `0.1.2` resolves to that commit, and the [0.1.2 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.2) exposes four assets whose downloaded SHA-256 values match the tagged files.
 
 ### Open questions and risks
 

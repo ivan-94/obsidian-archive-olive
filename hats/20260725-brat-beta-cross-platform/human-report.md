@@ -21,7 +21,7 @@
 
 | Item                              | Result                                                                                                          |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Prepared candidate                | `0.1.2`; release commit and tag pending publication                                                             |
+| Published candidate               | Tag `0.1.2` → `a6352c5bb1fb14dbd97c0c741212f45d50c7e266`                                                        |
 | Obsidian version                  | Desktop `1.12.7`                                                                                                |
 | BRAT version                      | `2.2.0` from the preceding lifecycle smoke test; the current vault no longer contains the BRAT plugin directory |
 | Operating system                  | macOS                                                                                                           |
@@ -110,6 +110,7 @@
 - [Archive Olive 0.1.1 Beta release record](../../docs/releases/0.1.1-beta.md).
 - [Archive Olive 0.1.1 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.1).
 - [Archive Olive 0.1.2 Beta release record](../../docs/releases/0.1.2-beta.md).
+- [Archive Olive 0.1.2 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.2).
 
 ### Produced artifacts
 
@@ -140,6 +141,8 @@
 - GitHub Actions run `30151853100` passed on release commit `d011427e3310a170a230b4743c7cc3c476b3443f`.
 - Annotated tag `0.1.1` resolves to the release commit; the published pre-release is not a draft and all four downloaded assets match their tagged SHA-256 values.
 - The `0.1.2` local candidate passes real-application pane-blur, menu-open, selected side-dock, and interactive table-header checks plus twenty automated contrast pairs.
+- GitHub Actions run `30155669146` passed on release commit `a6352c5bb1fb14dbd97c0c741212f45d50c7e266`.
+- Annotated tag `0.1.2` resolves to the release commit; the published pre-release is not a draft and all four downloaded assets match their tagged SHA-256 values.
 
 ### Open questions / risks
 

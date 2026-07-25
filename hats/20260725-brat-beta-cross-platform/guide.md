@@ -12,7 +12,7 @@
 | Repository root    | `obsidian-brutalism-theme`                                                                                                                                      |
 | Environment mode   | `blank`                                                                                                                                                         |
 | Mode reason        | A theme does not depend on historical application data. New vaults with public, non-sensitive fixtures give the safest and most reproducible platform evidence. |
-| Preparation status | `0.1.2` prepared; publication and human BRAT retest pending                                                                                                     |
+| Preparation status | `0.1.2` published; human BRAT retest pending                                                                                                                    |
 | Target             | Archive Olive `0.1.2` interaction-state acceptance                                                                                                              |
 
 <!-- HAT:END metadata -->
@@ -396,6 +396,7 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 - The `0.1.1` release passes real-application light/dark checks and sixteen automated contrast pairs; human BRAT retest remains pending.
 - GitHub Actions run `30151853100` passed on `d011427e3310a170a230b4743c7cc3c476b3443f`; tag `0.1.1` resolves to that commit and its four downloaded assets match their tagged hashes.
 - The `0.1.2` candidate passes real-application pane-blur, menu-open, selected side-dock, and interactive table-header checks plus twenty automated contrast pairs.
+- GitHub Actions run `30155669146` passed on `a6352c5bb1fb14dbd97c0c741212f45d50c7e266`; tag `0.1.2` resolves to that commit and its four downloaded assets match their tagged hashes.
 
 ### Open questions / risks
 
