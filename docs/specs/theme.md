@@ -499,7 +499,7 @@ Public `1.0.0` additionally requires P1, release packaging, platform testing, cu
 - The selected palette's normative contrast pairs were checked locally using the WCAG relative luminance formula.
 - `npx -y @google/design.md lint DESIGN.md --format json` completed with `0` errors and `0` warnings on 2026-07-25.
 - Official Obsidian documentation was checked for CSS-variable-first styling, manifest requirements, local asset policy, and theme performance guidance.
-- A preliminary web search found no obvious existing Obsidian theme named `Archive Olive`; the community index must still be checked immediately before submission.
+- The official Obsidian community theme index contained 647 entries and no `Archive Olive` name or repository match when checked on 2026-07-25; recheck immediately before submission.
 - The runtime theme was loaded from the repository into an isolated local vault on Obsidian Desktop `1.12.7` for macOS.
 - Light, dark, narrow-window, source-mode, Graph, Canvas, Bases, settings, prompt, pop-out-window, and mobile-emulation evidence is recorded in `VALIDATION.md`.
 - Obsidian's developer error and console buffers reported no theme-caused errors after the final local test cycle.

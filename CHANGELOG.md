@@ -8,7 +8,6 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 ### Release blockers
 
-- Verify delivery of the changed stylesheet and manifest through BRAT after push.
 - Run the private pilot before public beta announcement.
 
 ### Added
@@ -19,7 +18,7 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 - Structured bug and cross-platform acceptance forms.
 - A canonical BRAT Beta release specification under `docs/specs/`.
 - A public-safe `512 × 288` beta release image derived from the validated fixture vault.
-- A clean-vault BRAT 2.2.0 lifecycle smoke test covering installation, update checking, light/dark activation, unregistration, disabling, and removal.
+- A clean-vault BRAT 2.2.0 lifecycle smoke test covering installation, delivery of a changed stylesheet and manifest, light/dark activation, unregistration, disabling, and removal.
 
 ### Changed
 

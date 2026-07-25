@@ -34,40 +34,41 @@ The final implementation has no remote assets, `@import`, routine `!important`, 
 
 ## P1 local status
 
-| ID     | Local status                                                                                                                                    | Remaining public-release gate                                                                  |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| AO-101 | Pass in Obsidian mobile emulation; primary clickable controls compute to at least `44px`; mobile title size is `48px`.                          | Test real iOS and Android devices.                                                             |
-| AO-102 | Pass in light and dark Graph views; nodes, labels, edges, controls, and click-through interaction remain readable.                              | Repeat on Windows/Linux and minimum supported version.                                         |
-| AO-103 | Pass in light and dark Canvas views; three fixture nodes, connections, embedded note, selection rule, and four control groups render correctly. | Repeat on Windows/Linux and minimum supported version.                                         |
-| AO-104 | Pass in light and dark Bases table views; four records, headers, tags, links, resize affordances, and cyan focus system render correctly.       | Broader keyboard and platform matrix.                                                          |
-| AO-105 | Pass locally for properties, backlinks, empty backlinks, dense tags, and collapsed sections.                                                    | Broader platform matrix.                                                                       |
-| AO-106 | Pass locally for three-pane, `1024px` narrow, maximized, frameless, and pop-out window variants.                                                | Test native/custom frames on Windows and Linux.                                                |
-| AO-107 | Partial: README, MIT license, manifest, repository metadata, and current screenshots exist.                                                     | Create a version tag, verify name uniqueness, and run final community-theme submission checks. |
+| ID     | Local status                                                                                                                                    | Remaining public-release gate                                                                                      |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| AO-101 | Pass in Obsidian mobile emulation; primary clickable controls compute to at least `44px`; mobile title size is `48px`.                          | Test real iOS and Android devices.                                                                                 |
+| AO-102 | Pass in light and dark Graph views; nodes, labels, edges, controls, and click-through interaction remain readable.                              | Repeat on Windows/Linux and minimum supported version.                                                             |
+| AO-103 | Pass in light and dark Canvas views; three fixture nodes, connections, embedded note, selection rule, and four control groups render correctly. | Repeat on Windows/Linux and minimum supported version.                                                             |
+| AO-104 | Pass in light and dark Bases table views; four records, headers, tags, links, resize affordances, and cyan focus system render correctly.       | Broader keyboard and platform matrix.                                                                              |
+| AO-105 | Pass locally for properties, backlinks, empty backlinks, dense tags, and collapsed sections.                                                    | Broader platform matrix.                                                                                           |
+| AO-106 | Pass locally for three-pane, `1024px` narrow, maximized, frameless, and pop-out window variants.                                                | Test native/custom frames on Windows and Linux.                                                                    |
+| AO-107 | Partial: README, MIT license, manifest, repository metadata, current screenshots, and a current official-index name check exist.                | Create a version tag, recheck name uniqueness immediately before submission, and run final community-theme checks. |
 
 ## BRAT Beta preparation
 
-| Requirement                | Local status | Remaining gate                                                                                                                                                                                                                                             |
-| -------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Manifest and compatibility | Pass         | `authorUrl` is present and `minAppVersion` now matches the tested `1.12.7` runtime.                                                                                                                                                                        |
-| BRAT documentation         | Pass         | Instructions were corrected against the BRAT `2.2.0` settings UI.                                                                                                                                                                                          |
-| Repository validation      | Pass         | GitHub Actions must run on the pushed commit.                                                                                                                                                                                                              |
-| Issue intake               | Pass locally | Confirm both forms render after push.                                                                                                                                                                                                                      |
-| Release image              | Pass         | `assets/screenshots/archive-olive-512x288.png` is public-safe and has the required dimensions.                                                                                                                                                             |
-| License                    | Pass         | The owner selected MIT and the root `LICENSE` matches README.                                                                                                                                                                                              |
-| BRAT lifecycle smoke test  | Partial pass | BRAT `2.2.0` installed the public theme in a new Obsidian `1.12.7` vault; light/dark activation, update checking, unregistration, disabling, and removal passed. Re-run after push to exercise delivery of a changed `theme.css` and the updated manifest. |
+| Requirement                | Local status | Remaining gate                                                                                                                                                                                                    |
+| -------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Manifest and compatibility | Pass         | `authorUrl` is present and `minAppVersion` now matches the tested `1.12.7` runtime.                                                                                                                               |
+| BRAT documentation         | Pass         | Instructions were corrected against the BRAT `2.2.0` settings UI.                                                                                                                                                 |
+| Repository validation      | Pass         | GitHub Actions passed on the pushed stylesheet commit `2122ee5`.                                                                                                                                                  |
+| Issue intake               | Pass locally | Both forms are public and parse as valid YAML; confirm their interactive rendering from a signed-in GitHub session.                                                                                               |
+| Release image              | Pass         | `assets/screenshots/archive-olive-512x288.png` is public-safe and has the required dimensions.                                                                                                                    |
+| License                    | Pass         | The owner selected MIT and the root `LICENSE` matches README.                                                                                                                                                     |
+| BRAT lifecycle smoke test  | Pass         | BRAT `2.2.0` installed the public theme in a new Obsidian `1.12.7` vault, then delivered the changed `theme.css` and updated manifest. Light/dark activation, unregistration, disabling, and removal also passed. |
 
 ## Automated checks
 
 ```sh
 node scripts/validate.mjs
-npx -y @google/design.md lint DESIGN.md --format json
-npx -y lightningcss-cli theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.6.2 --check theme.css manifest.json README.md
+node scripts/validate.mjs --release
+npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
+npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md docs/specs/README.md docs/specs/brat-beta-release.md scripts/validate.mjs .github/workflows/validate.yml .github/ISSUE_TEMPLATE/bug.yml .github/ISSUE_TEMPLATE/platform-validation.yml .prettierrc.json
 jq empty manifest.json "test-vault/Archive Olive.canvas"
 git diff --check
 ```
 
-`scripts/validate.mjs` verifies manifest shape, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, and ten WCAG contrast pairs.
+`scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, and ten WCAG contrast pairs. Release mode also verifies the MIT license and README link.
 
 ## Visual evidence
 

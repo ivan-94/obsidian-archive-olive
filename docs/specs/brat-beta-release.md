@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | In implementation — push verification and private pilot remain                      |
+| Status                | In implementation — private pilot and signed-in Issue Form check remain             |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -343,18 +343,18 @@ BRAT-004 now passes locally with the owner-selected MIT license. Revisit the com
 
 Status as of 2026-07-25:
 
-| Requirement | Local state                                                                                                         | Remaining work                                                         |
-| ----------- | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| BRAT-001    | Existing root files confirmed locally                                                                               | Push and recheck raw public URLs                                       |
-| BRAT-002    | Implemented                                                                                                         | Confirm CI on the pushed commit                                        |
-| BRAT-003    | Implemented with `1.12.7` runtime evidence                                                                          | Revisit only if lowering the floor                                     |
-| BRAT-004    | Implemented with the owner-selected MIT license                                                                     | Confirm README and license render after push                           |
-| BRAT-005    | Implemented and checked against BRAT `2.2.0`                                                                        | Keep wording current if BRAT changes                                   |
-| BRAT-006    | Implemented; isolated invalid-CSS probe fails as intended                                                           | Push and confirm GitHub Actions                                        |
-| BRAT-007    | Partial: install, light/dark activation, update check, unregistration, disabling, and removal pass in a fresh vault | After push, verify delivery of a changed CSS file and updated manifest |
-| BRAT-008    | Implemented                                                                                                         | Final owner visual review                                              |
-| BRAT-009    | Implemented locally                                                                                                 | Push and confirm both forms render                                     |
-| BRAT-010    | Implemented                                                                                                         | Keep limitations current through pilot                                 |
+| Requirement | Local state                                                                                                          | Remaining work                                                |
+| ----------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| BRAT-001    | Public root files confirmed on pushed `main`                                                                         | None                                                          |
+| BRAT-002    | Implemented; required metadata is live                                                                               | None                                                          |
+| BRAT-003    | Implemented with `1.12.7` runtime evidence                                                                           | Revisit only if lowering the floor                            |
+| BRAT-004    | Implemented with the owner-selected MIT license                                                                      | None                                                          |
+| BRAT-005    | Implemented and checked against BRAT `2.2.0`                                                                         | Keep wording current if BRAT changes                          |
+| BRAT-006    | Implemented; isolated invalid-CSS probe fails and GitHub Actions passes                                              | None                                                          |
+| BRAT-007    | Passed: install, changed stylesheet/manifest delivery, light/dark activation, unregistration, disabling, and removal | Repeat during the private pilot                               |
+| BRAT-008    | Implemented                                                                                                          | Final owner visual review                                     |
+| BRAT-009    | Forms are public and valid                                                                                           | Confirm interactive rendering from a signed-in GitHub session |
+| BRAT-010    | Implemented                                                                                                          | Keep limitations current through pilot                        |
 
 ## Source Manifest
 
@@ -372,6 +372,7 @@ Status as of 2026-07-25:
 - [Obsidian developer documentation: Submit your theme](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Themes/App%20themes/Submit%20your%20theme.md).
 - [Obsidian developer documentation: Manifest](https://docs.obsidian.md/Reference/Manifest).
 - [Obsidian theme self-critique checklist](https://docs.obsidian.md/oo/theme).
+- [Obsidian community theme index](https://github.com/obsidianmd/obsidian-releases/blob/master/community-css-themes.json).
 
 ### Produced artifacts
 
@@ -402,15 +403,18 @@ Status as of 2026-07-25:
 - The current theme has local validation evidence on Obsidian Desktop `1.12.7` for macOS.
 - BRAT documentation was checked for theme file names, beta-file precedence, update detection, and caching behavior.
 - Official Obsidian documentation was checked for manifest, release tag, release asset, license, README, and screenshot requirements.
+- The official community theme index contained 647 entries and no `Archive Olive` name or repository match when checked on 2026-07-25.
 - Local repository, CSS, design-document, formatting, and image-dimension checks pass after the initial implementation.
 - Strict release validation passes with the owner-selected MIT license present.
 - BRAT `2.2.0` installed the public repository into a new Obsidian `1.12.7` vault; the installed `theme.css` checksum matched the public file.
+- GitHub Actions passed on pushed commit `2122ee5`.
+- After GitHub Raw caching cleared, BRAT replaced the installed stylesheet checksum `69c57422…` with `dd5323d8…`, matching the pushed `theme.css`; the updated manifest was also present.
 - Light and dark activation, an update check, BRAT unregistration, theme disabling, and recoverable removal passed in the isolated vault.
 
 ### Open questions and risks
 
 - Compatibility below `minAppVersion: 1.12.7` is not currently claimed.
-- A changed `theme.css` and the updated manifest cannot be tested through BRAT until this implementation is pushed.
 - GitHub raw-content caching may delay urgent updates or rollbacks.
+- Interactive Issue Form rendering still needs a signed-in GitHub session; file presence and YAML validity pass.
 - Real Windows, Linux, iOS, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.
