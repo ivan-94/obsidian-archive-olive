@@ -10,39 +10,51 @@ Vault: isolated repository fixture at `test-vault/`
 
 ## Outcome
 
-Archive Olive passes the `SPEC.md` definition of done for a first usable build. All P0 requirements pass locally. P1 core surfaces also pass on the local desktop runtime and Obsidian mobile emulation, but public `1.0.0` remains gated by real-device, cross-platform, minimum-version, licensing, release-tag, and community-directory checks.
+Archive Olive passes the [`docs/specs/theme.md`](docs/specs/theme.md) definition of done for a first usable build. All P0 requirements pass locally. P1 core surfaces also pass on the local desktop runtime and Obsidian mobile emulation, but public `1.0.0` remains gated by real-device, cross-platform, minimum-version, release-tag, and community-directory checks.
 
 The final implementation has no remote assets, `@import`, routine `!important`, or `:has()` selectors. Obsidian reported no captured runtime or console errors after the final verification cycle.
 
 ## P0 requirement matrix
 
-| ID | Status | Evidence |
-| --- | --- | --- |
-| AO-001 | Pass | `manifest.json` and `theme.css` load as Archive Olive `0.1.0`; final developer error buffer is empty. |
-| AO-002 | Pass | Light and dark computed surface, text, active-tab, and active-file colors changed coherently; see workspace screenshots. |
-| AO-003 | Pass | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a continuous square grid. |
-| AO-004 | Pass | Active file uses an olive fill plus a carbon inset rule; active root tab uses cyan plus a heavy bottom rule. |
-| AO-005 | Pass | Fixture content was reviewed in Live Preview and Reading View with headings, lists, tasks, quotes, callouts, code, tables, tags, properties, and links. |
-| AO-006 | Pass | Pure Source Mode exposes readable Markdown/YAML syntax, visible selection, and an oxblood caret. |
-| AO-007 | Pass | Command palette, quick switcher, settings dialog, native file menu, notices, inputs, tooltips, and dropdown rules were exercised or inspected. |
-| AO-008 | Pass | Default, hover, active, selected, focus-visible, and disabled treatments use borders, offsets, or geometry as well as color. |
-| AO-009 | Pass | Body line height computes to `1.65`; readable-line width maps to `80ch`; tables and media are not globally constrained. |
-| AO-010 | Pass | All ten normative normal-text pairs exceed WCAG AA; ratios range from `4.57:1` to `15.36:1`; prompt focus computes to a cyan inset rule and border. |
-| AO-011 | Pass | Static scan finds no remote CSS asset or import. |
-| AO-012 | Pass | Static scan finds no `!important`, `:has()`, or global Graph/Canvas texture. |
-| AO-013 | Pass | Theme uses Obsidian's interface/text/monospace variables and maintains layout under the local user accent/font preference pipeline. |
+| ID     | Status | Evidence                                                                                                                                                |
+| ------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.0`; final developer error buffer is empty.                                                   |
+| AO-002 | Pass   | Light and dark computed surface, text, active-tab, and active-file colors changed coherently; see workspace screenshots.                                |
+| AO-003 | Pass   | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a continuous square grid.                                            |
+| AO-004 | Pass   | Active file uses an olive fill plus a carbon inset rule; active root tab uses cyan plus a heavy bottom rule.                                            |
+| AO-005 | Pass   | Fixture content was reviewed in Live Preview and Reading View with headings, lists, tasks, quotes, callouts, code, tables, tags, properties, and links. |
+| AO-006 | Pass   | Pure Source Mode exposes readable Markdown/YAML syntax, visible selection, and an oxblood caret.                                                        |
+| AO-007 | Pass   | Command palette, quick switcher, settings dialog, native file menu, notices, inputs, tooltips, and dropdown rules were exercised or inspected.          |
+| AO-008 | Pass   | Default, hover, active, selected, focus-visible, and disabled treatments use borders, offsets, or geometry as well as color.                            |
+| AO-009 | Pass   | Body line height computes to `1.65`; readable-line width maps to `80ch`; tables and media are not globally constrained.                                 |
+| AO-010 | Pass   | All ten normative normal-text pairs exceed WCAG AA; ratios range from `4.57:1` to `15.36:1`; prompt focus computes to a cyan inset rule and border.     |
+| AO-011 | Pass   | Static scan finds no remote CSS asset or import.                                                                                                        |
+| AO-012 | Pass   | Static scan finds no `!important`, `:has()`, or global Graph/Canvas texture.                                                                            |
+| AO-013 | Pass   | Theme uses Obsidian's interface/text/monospace variables and maintains layout under the local user accent/font preference pipeline.                     |
 
 ## P1 local status
 
-| ID | Local status | Remaining public-release gate |
-| --- | --- | --- |
-| AO-101 | Pass in Obsidian mobile emulation; primary clickable controls compute to at least `44px`; mobile title size is `48px`. | Test real iOS and Android devices. |
-| AO-102 | Pass in light and dark Graph views; nodes, labels, edges, controls, and click-through interaction remain readable. | Repeat on Windows/Linux and minimum supported version. |
-| AO-103 | Pass in light and dark Canvas views; three fixture nodes, connections, embedded note, selection rule, and four control groups render correctly. | Repeat on Windows/Linux and minimum supported version. |
-| AO-104 | Pass in light and dark Bases table views; four records, headers, tags, links, resize affordances, and cyan focus system render correctly. | Broader keyboard and platform matrix. |
-| AO-105 | Pass locally for properties, backlinks, empty backlinks, dense tags, and collapsed sections. | Broader platform matrix. |
-| AO-106 | Pass locally for three-pane, `1024px` narrow, maximized, frameless, and pop-out window variants. | Test native/custom frames on Windows and Linux. |
-| AO-107 | Partial: README, manifest, and current screenshots exist. | Choose a license, add repository metadata, create a version tag, verify name uniqueness, and run final community-theme submission checks. |
+| ID     | Local status                                                                                                                                    | Remaining public-release gate                                                                  |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| AO-101 | Pass in Obsidian mobile emulation; primary clickable controls compute to at least `44px`; mobile title size is `48px`.                          | Test real iOS and Android devices.                                                             |
+| AO-102 | Pass in light and dark Graph views; nodes, labels, edges, controls, and click-through interaction remain readable.                              | Repeat on Windows/Linux and minimum supported version.                                         |
+| AO-103 | Pass in light and dark Canvas views; three fixture nodes, connections, embedded note, selection rule, and four control groups render correctly. | Repeat on Windows/Linux and minimum supported version.                                         |
+| AO-104 | Pass in light and dark Bases table views; four records, headers, tags, links, resize affordances, and cyan focus system render correctly.       | Broader keyboard and platform matrix.                                                          |
+| AO-105 | Pass locally for properties, backlinks, empty backlinks, dense tags, and collapsed sections.                                                    | Broader platform matrix.                                                                       |
+| AO-106 | Pass locally for three-pane, `1024px` narrow, maximized, frameless, and pop-out window variants.                                                | Test native/custom frames on Windows and Linux.                                                |
+| AO-107 | Partial: README, MIT license, manifest, repository metadata, and current screenshots exist.                                                     | Create a version tag, verify name uniqueness, and run final community-theme submission checks. |
+
+## BRAT Beta preparation
+
+| Requirement                | Local status | Remaining gate                                                                                                                                                                                                                                             |
+| -------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Manifest and compatibility | Pass         | `authorUrl` is present and `minAppVersion` now matches the tested `1.12.7` runtime.                                                                                                                                                                        |
+| BRAT documentation         | Pass         | Instructions were corrected against the BRAT `2.2.0` settings UI.                                                                                                                                                                                          |
+| Repository validation      | Pass         | GitHub Actions must run on the pushed commit.                                                                                                                                                                                                              |
+| Issue intake               | Pass locally | Confirm both forms render after push.                                                                                                                                                                                                                      |
+| Release image              | Pass         | `assets/screenshots/archive-olive-512x288.png` is public-safe and has the required dimensions.                                                                                                                                                             |
+| License                    | Pass         | The owner selected MIT and the root `LICENSE` matches README.                                                                                                                                                                                              |
+| BRAT lifecycle smoke test  | Partial pass | BRAT `2.2.0` installed the public theme in a new Obsidian `1.12.7` vault; light/dark activation, update checking, unregistration, disabling, and removal passed. Re-run after push to exercise delivery of a changed `theme.css` and the updated manifest. |
 
 ## Automated checks
 
@@ -94,7 +106,7 @@ git diff --check
 
 - User direction in this Codex thread: implement the selected fourth palette and validate it in a local vault.
 - [`DESIGN.md`](DESIGN.md)
-- [`SPEC.md`](SPEC.md)
+- [Theme specification](docs/specs/theme.md)
 - [`design/concepts/01f-archive-olive.png`](design/concepts/01f-archive-olive.png)
 - Obsidian application stylesheet extracted locally from Obsidian Desktop `1.12.7`.
 - [Google DESIGN.md format specification](https://github.com/google-labs-code/design.md/blob/main/docs/spec.md)
@@ -113,7 +125,7 @@ git diff --check
 
 ### Known limitations
 
-- The local run does not prove compatibility with the provisional Obsidian `1.8.0` floor.
+- The current beta floor is the tested Obsidian `1.12.7`; compatibility with older versions is not claimed.
 - Real iOS, Android, Windows, and Linux validation is still pending.
-- The user must choose the public license and repository metadata before `1.0.0`.
+- The project is licensed under MIT; official packaging requirements must still be rechecked before `1.0.0`.
 - Optional P2 texture, Style Settings, curated plugin rules, and Publish support are intentionally not part of `0.1.0`.

@@ -1,6 +1,7 @@
 {
   "name": "Archive Olive",
   "version": "0.1.0",
-  "minAppVersion": "1.8.0",
-  "author": "Ivan"
+  "minAppVersion": "1.12.7",
+  "author": "Ivan",
+  "authorUrl": "https://github.com/ivan-94"
 }

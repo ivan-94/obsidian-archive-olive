@@ -1,0 +1,59 @@
+name: Validate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository:
+    name: Repository and theme
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Validate repository policy
+        run: node scripts/validate.mjs
+
+      - name: Lint DESIGN.md
+        run: npx --yes @google/design.md@0.3.0 lint DESIGN.md --format json
+
+      - name: Parse distributable CSS
+        run: npx --yes lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
+
+      - name: Check release-facing formatting
+        run: >-
+          npx --yes prettier@3.9.6 --check
+          theme.css
+          manifest.json
+          README.md
+          CHANGELOG.md
+          docs/specs/README.md
+          docs/specs/brat-beta-release.md
+          scripts/validate.mjs
+          .github/workflows/validate.yml
+          .github/ISSUE_TEMPLATE/bug.yml
+          .github/ISSUE_TEMPLATE/platform-validation.yml
+
+# Source Manifest:
+# - docs/specs/brat-beta-release.md
+# - https://github.com/actions/checkout
+# - https://github.com/actions/setup-node

@@ -1,13 +1,13 @@
 # Archive Olive Theme Specification
 
-| Field | Value |
-| --- | --- |
-| Status | Draft for implementation |
-| Design direction | Approved — Archive Olive |
-| Specification version | 0.1.0 |
-| Last updated | 2026-07-25 |
-| Primary design source | [`DESIGN.md`](DESIGN.md) |
-| Canonical visual reference | [`design/concepts/01f-archive-olive.png`](design/concepts/01f-archive-olive.png) |
+| Field                      | Value                                                                                  |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| Status                     | Draft for implementation                                                               |
+| Design direction           | Approved — Archive Olive                                                               |
+| Specification version      | 0.1.0                                                                                  |
+| Last updated               | 2026-07-25                                                                             |
+| Primary design source      | [`DESIGN.md`](../../DESIGN.md)                                                         |
+| Canonical visual reference | [`design/concepts/01f-archive-olive.png`](../../design/concepts/01f-archive-olive.png) |
 
 ## 1. Purpose
 
@@ -72,7 +72,7 @@ Build a practical brutalist theme for Obsidian that combines field-manual utilit
 - `manifest.json` — theme metadata with semantic version and minimum supported Obsidian version.
 - `README.md` — installation, screenshots, compatibility, limitations, and credits.
 - `DESIGN.md` — normative visual design system.
-- `SPEC.md` — implementation and acceptance specification.
+- `docs/specs/theme.md` — implementation and acceptance specification.
 - Test-vault fixtures or documented fixture notes for visual validation.
 
 ### Required before public submission
@@ -89,17 +89,25 @@ Build a practical brutalist theme for Obsidian that combines field-manual utilit
 ```text
 .
 ├── DESIGN.md
-├── SPEC.md
 ├── README.md
 ├── LICENSE
 ├── manifest.json
 ├── theme.css
+├── docs/
+│   └── specs/
+│       ├── README.md
+│       ├── theme.md
+│       └── brat-beta-release.md
+├── assets/
+│   └── screenshots/
+│       └── archive-olive-512x288.png
 ├── design/
 │   └── concepts/
 │       └── 01f-archive-olive.png
-├── screenshots/
-│   ├── light.png
-│   └── dark.png
+├── validation/
+│   └── screenshots/
+│       ├── light-workspace.png
+│       └── dark-workspace.png
 └── test-vault/
     ├── Markdown primitives.md
     ├── Dense workspace.md
@@ -120,9 +128,9 @@ The initial implementation may keep authored CSS directly in `theme.css`. Introd
 
 ### Compatibility floor
 
-- Provisional `minAppVersion`: `1.8.0`.
-- This value is not final until the implementation is tested against that version or its CSS-variable surface is audited.
-- If a required variable or selector is newer, raise `minAppVersion` with a documented reason rather than adding fragile compatibility hacks.
+- BRAT Beta `minAppVersion`: `1.12.7`, matching the locally validated runtime.
+- Lower the value only after testing that version or auditing its CSS-variable and selector surface.
+- If a required variable or selector is newer than the claimed floor, raise `minAppVersion` with a documented reason rather than adding fragile compatibility hacks.
 
 ### Obsidian behavior that must remain intact
 
@@ -173,30 +181,30 @@ The exact list must be verified against the current Obsidian CSS variable refere
 
 ### Light mode
 
-| Archive Olive role | Obsidian variable intent | Value |
-| --- | --- | --- |
-| Editor parchment | `--background-primary` | `#F1E7CC` |
-| Workspace khaki | `--background-secondary` | `#D9CBA8` |
-| Recessed folder | `--background-secondary-alt` | `#C8B98F` |
-| Carbon ink | `--text-normal`, strong borders | `#11110D` |
-| Graphite | `--text-muted`, `--text-faint` with derived opacity | `#4B493F` |
-| Field olive | `--interactive-accent`, selected navigation | `#59611C` |
-| Oxblood | error/destructive variables | `#8D1B1B` |
-| Signal cyan | `--text-accent`, focus, informational state | `#00A6B2` |
-| Archive stamp | warning variables | `#C69214` |
+| Archive Olive role | Obsidian variable intent                            | Value     |
+| ------------------ | --------------------------------------------------- | --------- |
+| Editor parchment   | `--background-primary`                              | `#F1E7CC` |
+| Workspace khaki    | `--background-secondary`                            | `#D9CBA8` |
+| Recessed folder    | `--background-secondary-alt`                        | `#C8B98F` |
+| Carbon ink         | `--text-normal`, strong borders                     | `#11110D` |
+| Graphite           | `--text-muted`, `--text-faint` with derived opacity | `#4B493F` |
+| Field olive        | `--interactive-accent`, selected navigation         | `#59611C` |
+| Oxblood            | error/destructive variables                         | `#8D1B1B` |
+| Signal cyan        | `--text-accent`, focus, informational state         | `#00A6B2` |
+| Archive stamp      | warning variables                                   | `#C69214` |
 
 ### Dark mode
 
-| Archive Olive role | Obsidian variable intent | Value |
-| --- | --- | --- |
-| Canvas | `--background-secondary` | `#15160F` |
-| Editor | `--background-primary` | `#1D2014` |
-| Recessed panel | `--background-secondary-alt` | `#252919` |
-| Primary text | `--text-normal` | `#EEE4C8` |
-| Secondary text | `--text-muted` | `#B4AA8F` |
-| Active olive | `--interactive-accent` | `#9AAA3A` |
-| Critical red | error/destructive variables | `#D4574F` |
-| Signal cyan | `--text-accent`, focus, informational state | `#31C2C9` |
+| Archive Olive role | Obsidian variable intent                    | Value     |
+| ------------------ | ------------------------------------------- | --------- |
+| Canvas             | `--background-secondary`                    | `#15160F` |
+| Editor             | `--background-primary`                      | `#1D2014` |
+| Recessed panel     | `--background-secondary-alt`                | `#252919` |
+| Primary text       | `--text-normal`                             | `#EEE4C8` |
+| Secondary text     | `--text-muted`                              | `#B4AA8F` |
+| Active olive       | `--interactive-accent`                      | `#9AAA3A` |
+| Critical red       | error/destructive variables                 | `#D4574F` |
+| Signal cyan        | `--text-accent`, focus, informational state | `#31C2C9` |
 
 ### Custom variables
 
@@ -218,42 +226,42 @@ Do not duplicate colors in component selectors; reference mapped variables or `-
 
 ### P0 — first usable desktop build
 
-| ID | Requirement | Acceptance |
-| --- | --- | --- |
-| AO-001 | Valid theme package | Obsidian loads `manifest.json` and `theme.css` without console errors. |
-| AO-002 | Light and dark foundations | Switching Obsidian color scheme updates all primary surfaces and text without stale light/dark regions. |
-| AO-003 | Workspace shell | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a coherent exposed grid. |
-| AO-004 | Active navigation | Active file and active tab use full color blocks plus non-color state cues. |
-| AO-005 | Editor parity | Headings, body, links, lists, tasks, blockquotes, code, tables, tags, embeds, and callouts have equivalent hierarchy in Live Preview and Reading View. |
-| AO-006 | Source Mode | Markdown syntax remains readable and cursor/selection states remain obvious. |
-| AO-007 | Inputs and overlays | Command palette, quick switcher, menus, dialogs, settings, notices, inputs, tooltips, and dropdowns use theme surfaces and visible focus. |
-| AO-008 | Interaction states | Default, hover, pressed, selected, focus, and disabled states are distinguishable without color alone. |
-| AO-009 | Long-form readability | Body text maintains at least `1.55` line height and a target maximum width of `80ch` without constraining tables/media incorrectly. |
-| AO-010 | Accessibility | Normal text pairs meet WCAG AA; keyboard focus is visible; native keyboard navigation is preserved. |
-| AO-011 | No network dependency | Theme works offline and contains no remote font, image, analytics, or CSS request. |
-| AO-012 | Performance baseline | No routine `!important`; no undocumented `:has()`; no global texture on Graph or Canvas. |
-| AO-013 | User preferences | Changing Obsidian interface, text, monospace fonts, and accent does not break layout or contrast. |
+| ID     | Requirement                | Acceptance                                                                                                                                             |
+| ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AO-001 | Valid theme package        | Obsidian loads `manifest.json` and `theme.css` without console errors.                                                                                 |
+| AO-002 | Light and dark foundations | Switching Obsidian color scheme updates all primary surfaces and text without stale light/dark regions.                                                |
+| AO-003 | Workspace shell            | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a coherent exposed grid.                                            |
+| AO-004 | Active navigation          | Active file and active tab use full color blocks plus non-color state cues.                                                                            |
+| AO-005 | Editor parity              | Headings, body, links, lists, tasks, blockquotes, code, tables, tags, embeds, and callouts have equivalent hierarchy in Live Preview and Reading View. |
+| AO-006 | Source Mode                | Markdown syntax remains readable and cursor/selection states remain obvious.                                                                           |
+| AO-007 | Inputs and overlays        | Command palette, quick switcher, menus, dialogs, settings, notices, inputs, tooltips, and dropdowns use theme surfaces and visible focus.              |
+| AO-008 | Interaction states         | Default, hover, pressed, selected, focus, and disabled states are distinguishable without color alone.                                                 |
+| AO-009 | Long-form readability      | Body text maintains at least `1.55` line height and a target maximum width of `80ch` without constraining tables/media incorrectly.                    |
+| AO-010 | Accessibility              | Normal text pairs meet WCAG AA; keyboard focus is visible; native keyboard navigation is preserved.                                                    |
+| AO-011 | No network dependency      | Theme works offline and contains no remote font, image, analytics, or CSS request.                                                                     |
+| AO-012 | Performance baseline       | No routine `!important`; no undocumented `:has()`; no global texture on Graph or Canvas.                                                               |
+| AO-013 | User preferences           | Changing Obsidian interface, text, monospace fonts, and accent does not break layout or contrast.                                                      |
 
 ### P1 — public-release completeness
 
-| ID | Requirement | Acceptance |
-| --- | --- | --- |
-| AO-101 | Mobile layouts | Ribbon/navigation drawers, tabs, editor, menus, and settings work at mobile widths with at least `44px` touch targets for primary controls. |
-| AO-102 | Graph view | Nodes, edges, selected nodes, groups, controls, and labels are readable in both schemes. |
-| AO-103 | Canvas | Cards, groups, connections, selections, and controls use square geometry without performance regressions. |
-| AO-104 | Bases and data views | Headers, rows, selected cells, filters, and resize handles follow the table system and preserve keyboard use. |
-| AO-105 | Properties and backlinks | Editing affordances, collapsed states, empty states, and dense data remain obvious. |
-| AO-106 | Window variants | Native-frame and custom-frame desktop modes, pop-out windows, and multiple panes are visually coherent. |
-| AO-107 | Community packaging | README, license, screenshots, manifest metadata, version tag, and community-theme checks are complete. |
+| ID     | Requirement              | Acceptance                                                                                                                                  |
+| ------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| AO-101 | Mobile layouts           | Ribbon/navigation drawers, tabs, editor, menus, and settings work at mobile widths with at least `44px` touch targets for primary controls. |
+| AO-102 | Graph view               | Nodes, edges, selected nodes, groups, controls, and labels are readable in both schemes.                                                    |
+| AO-103 | Canvas                   | Cards, groups, connections, selections, and controls use square geometry without performance regressions.                                   |
+| AO-104 | Bases and data views     | Headers, rows, selected cells, filters, and resize handles follow the table system and preserve keyboard use.                               |
+| AO-105 | Properties and backlinks | Editing affordances, collapsed states, empty states, and dense data remain obvious.                                                         |
+| AO-106 | Window variants          | Native-frame and custom-frame desktop modes, pop-out windows, and multiple panes are visually coherent.                                     |
+| AO-107 | Community packaging      | README, license, screenshots, manifest metadata, version tag, and community-theme checks are complete.                                      |
 
 ### P2 — optional refinement
 
-| ID | Requirement | Acceptance |
-| --- | --- | --- |
-| AO-201 | Paper texture | Optional subtle local/embedded texture remains below `0.04` opacity and can be removed without hierarchy loss. |
-| AO-202 | Style Settings integration | Optional customization exposes documented tokens but is not required for core styling. |
-| AO-203 | Curated plugin support | Add narrow compatibility rules only for plugins selected from actual user demand. |
-| AO-204 | Obsidian Publish variant | A separately tested Publish stylesheet may reuse the design tokens. |
+| ID     | Requirement                | Acceptance                                                                                                     |
+| ------ | -------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| AO-201 | Paper texture              | Optional subtle local/embedded texture remains below `0.04` opacity and can be removed without hierarchy loss. |
+| AO-202 | Style Settings integration | Optional customization exposes documented tokens but is not required for core styling.                         |
+| AO-203 | Curated plugin support     | Add narrow compatibility rules only for plugins selected from actual user demand.                              |
+| AO-204 | Obsidian Publish variant   | A separately tested Publish stylesheet may reuse the design tokens.                                            |
 
 ## 11. Component specifications
 
@@ -412,13 +420,13 @@ Do not duplicate colors in component selectors; reference mapped variables or `-
 
 ### Manual matrix
 
-| Surface | Light | Dark | Narrow | Keyboard | Mobile |
-| --- | --- | --- | --- | --- | --- |
-| Workspace shell | Required | Required | Required | Required | P1 |
-| Live Preview | Required | Required | Required | Required | P1 |
-| Reading View | Required | Required | Required | Required | P1 |
-| Menus/dialogs/settings | Required | Required | Required | Required | P1 |
-| Graph/Canvas/Bases | P1 | P1 | P1 | P1 | P1 |
+| Surface                | Light    | Dark     | Narrow   | Keyboard | Mobile |
+| ---------------------- | -------- | -------- | -------- | -------- | ------ |
+| Workspace shell        | Required | Required | Required | Required | P1     |
+| Live Preview           | Required | Required | Required | Required | P1     |
+| Reading View           | Required | Required | Required | Required | P1     |
+| Menus/dialogs/settings | Required | Required | Required | Required | P1     |
+| Graph/Canvas/Bases     | P1       | P1       | P1       | P1       | P1     |
 
 ## 16. Definition of done
 
@@ -432,28 +440,29 @@ The first usable build is done when all P0 requirements pass and:
 - The developer console shows no theme-caused errors.
 - Known limitations are recorded in `README.md`.
 
-Public `1.0.0` additionally requires P1, licensing, release packaging, platform testing, current screenshots, and a final theme-name uniqueness check.
+Public `1.0.0` additionally requires P1, release packaging, platform testing, current screenshots, and a final theme-name uniqueness check.
 
 ## 17. Risks and open decisions
 
-| Item | Current decision | Remaining work |
-| --- | --- | --- |
-| Public name | `Archive Olive` working name; preliminary search found no obvious conflict | Verify against the current community theme index before submission |
-| Dark-mode visual | Implemented and reviewed locally in Obsidian `1.12.7` | Repeat cross-platform visual QA |
-| Minimum version | Provisional `1.8.0` | Test or audit variables/selectors |
-| License | Not selected | User chooses before public release |
-| Author metadata | `Ivan` in `manifest.json` | Add repository URL before public release |
-| Font strategy | System/local fallback stacks | Cross-platform visual QA |
-| Texture | Optional P2 enhancement | Prototype and measure before inclusion |
-| Plugin support | Demand-driven | Collect actual target plugins |
+| Item             | Current decision                                                           | Remaining work                                                     |
+| ---------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Public name      | `Archive Olive` working name; preliminary search found no obvious conflict | Verify against the current community theme index before submission |
+| Dark-mode visual | Implemented and reviewed locally in Obsidian `1.12.7`                      | Repeat cross-platform visual QA                                    |
+| Minimum version  | BRAT Beta floor `1.12.7`, backed by the current macOS runtime evidence     | Test or audit older versions before lowering the floor             |
+| License          | MIT selected and present at repository root                                | Recheck official packaging requirements before submission          |
+| Author metadata  | `Ivan` and `https://github.com/ivan-94` in `manifest.json`                 | Recheck before official submission                                 |
+| Font strategy    | System/local fallback stacks                                               | Cross-platform visual QA                                           |
+| Texture          | Optional P2 enhancement                                                    | Prototype and measure before inclusion                             |
+| Plugin support   | Demand-driven                                                              | Collect actual target plugins                                      |
 
 ## Source Manifest
 
 ### Sources
 
 - User direction in this Codex thread: select the fourth palette and create `DESIGN.md`, then a specification.
-- [`DESIGN.md`](DESIGN.md).
-- [`design/concepts/01f-archive-olive.png`](design/concepts/01f-archive-olive.png).
+- User confirmation in this Codex thread: use the MIT license.
+- [`DESIGN.md`](../../DESIGN.md).
+- [`design/concepts/01f-archive-olive.png`](../../design/concepts/01f-archive-olive.png).
 - [Google DESIGN.md format specification](https://github.com/google-labs-code/design.md/blob/main/docs/spec.md).
 - [Vercel Web Interface Guidelines](https://vercel.com/design/guidelines).
 - [Vercel Geist design system](https://vercel.com/geist/stack).
@@ -466,10 +475,11 @@ Public `1.0.0` additionally requires P1, licensing, release packaging, platform 
 ### Produced artifacts
 
 - `DESIGN.md`
-- `SPEC.md`
+- `docs/specs/theme.md`
 - `manifest.json`
 - `theme.css`
 - `README.md`
+- `LICENSE`
 - `scripts/validate.mjs`
 - `test-vault/`
 - `validation/screenshots/`
@@ -496,7 +506,7 @@ Public `1.0.0` additionally requires P1, licensing, release packaging, platform 
 
 ### Open questions / risks
 
-- Repository URL, license, and final public theme name are not yet supplied.
-- The provisional `minAppVersion` requires evidence before release.
+- The final official-directory name check remains open.
+- Compatibility below Obsidian `1.12.7` is not currently claimed.
 - Real iOS, Android, Windows, and Linux testing remains required before public `1.0.0`.
 - Cross-platform fallback typography may shift metrics and must be tested.

@@ -1,0 +1,137 @@
+name: Platform validation
+description: Record BRAT installation and visual acceptance on a desktop or mobile platform.
+title: '[Platform]: '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for structured beta acceptance. Test with non-sensitive fixture content and remove personal information from screenshots.
+
+  - type: input
+    id: platform
+    attributes:
+      label: Platform and version
+      placeholder: 'Android 16; Pixel 10'
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      placeholder: 'Pixel 10; physical device'
+    validations:
+      required: true
+
+  - type: input
+    id: obsidian-version
+    attributes:
+      label: Obsidian version
+      description: Include the installer version on desktop when available.
+      placeholder: 'Current 1.12.7; installer 1.12.7'
+    validations:
+      required: true
+
+  - type: input
+    id: theme-version
+    attributes:
+      label: Archive Olive version or commit
+      placeholder: '0.1.0; commit abc1234'
+    validations:
+      required: true
+
+  - type: input
+    id: brat-version
+    attributes:
+      label: BRAT version
+      placeholder: '1.x.x'
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: BRAT installation
+      options:
+        - Pass
+        - Pass with issues
+        - Fail
+        - Not applicable
+    validations:
+      required: true
+
+  - type: dropdown
+    id: update
+    attributes:
+      label: BRAT update after a known CSS change
+      options:
+        - Pass
+        - Pass after cache delay
+        - Fail
+        - Not tested
+    validations:
+      required: true
+
+  - type: dropdown
+    id: removal
+    attributes:
+      label: Disable and removal
+      options:
+        - Pass
+        - Pass with issues
+        - Fail
+        - Not tested
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: surfaces
+    attributes:
+      label: Surfaces checked
+      description: Check every surface that passed. Explain failures or omitted surfaces below.
+      options:
+        - label: Light appearance
+        - label: Dark appearance
+        - label: File explorer and tabs
+        - label: Editor and Reading View
+        - label: Command palette, settings, menus, and dialogs
+        - label: Graph
+        - label: Canvas
+        - label: Bases
+        - label: Focus, selected, disabled, error, and empty states
+        - label: Narrow layout or native window controls
+
+  - type: textarea
+    id: interaction
+    attributes:
+      label: Keyboard, touch, and layout observations
+      description: Cover the interaction modes relevant to this platform.
+      placeholder: 'Keyboard focus is visible; 44px touch targets are usable; no clipped native controls.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: issues
+    attributes:
+      label: Failures, omissions, or console errors
+      description: Explain every unchecked or failed item. Write "None" if all tested items passed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or recordings
+      description: Drag evidence here after removing vault names, note content, account data, and notifications.
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I used non-sensitive content and removed personal information from the evidence.
+          required: true
+
+# Source Manifest:
+# - docs/specs/brat-beta-release.md
+# - https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms

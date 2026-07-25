@@ -419,7 +419,7 @@ Use `:focus-visible` for keyboard focus. Do not remove native focus until the re
 ### Produced artifacts
 
 - `DESIGN.md`
-- `SPEC.md`
+- `docs/specs/theme.md`
 - `theme.css`
 - `manifest.json`
 - `test-vault/`
@@ -442,4 +442,4 @@ Use `:focus-visible` for keyboard focus. Do not remove native focus until the re
 
 - The final public theme name must be checked for uniqueness before submission.
 - Font stacks may render differently across platforms; visual QA is required on macOS, Windows, iOS, and Android.
-- The provisional Obsidian `1.8.0` compatibility floor still requires verification.
+- The BRAT Beta compatibility floor is the locally validated Obsidian `1.12.7`; lowering it requires additional runtime evidence or a documented CSS-surface audit.
