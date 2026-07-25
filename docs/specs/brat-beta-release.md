@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | In implementation — private pilot and signed-in Issue Form check remain             |
+| Status                | In implementation — private pilot remains                                           |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -353,7 +353,7 @@ Status as of 2026-07-25:
 | BRAT-006    | Implemented; isolated invalid-CSS probe fails and GitHub Actions passes                                              | None                                                          |
 | BRAT-007    | Passed: install, changed stylesheet/manifest delivery, light/dark activation, unregistration, disabling, and removal | Repeat during the private pilot                               |
 | BRAT-008    | Implemented                                                                                                          | Final owner visual review                                     |
-| BRAT-009    | Forms are public and valid                                                                                           | Confirm interactive rendering from a signed-in GitHub session |
+| BRAT-009    | Signed-in rendering passed for both forms; no issue was submitted during the read-only check                         | A private-pilot tester submits a non-sensitive dry-run report |
 | BRAT-010    | Implemented                                                                                                          | Keep limitations current through pilot                        |
 
 ## Source Manifest
@@ -367,6 +367,8 @@ Status as of 2026-07-25:
 - [`README.md`](../../README.md).
 - [`manifest.json`](../../manifest.json).
 - [`VALIDATION.md`](../../VALIDATION.md).
+- [Rendered bug Issue Form](https://github.com/ivan-94/obsidian-archive-olive/issues/new?template=bug.yml).
+- [Rendered platform-validation Issue Form](https://github.com/ivan-94/obsidian-archive-olive/issues/new?template=platform-validation.yml).
 - [BRAT Quick Guide](https://tfthacker.com/brat-quick-guide).
 - [BRAT theme documentation](https://tfthacker.com/brat-themes).
 - [Obsidian developer documentation: Submit your theme](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Themes/App%20themes/Submit%20your%20theme.md).
@@ -414,11 +416,12 @@ Status as of 2026-07-25:
 - GitHub Actions passed on pushed commit `2122ee5`.
 - After GitHub Raw caching cleared, BRAT replaced the installed stylesheet checksum `69c57422…` with `dd5323d8…`, matching the pushed `theme.css`; the updated manifest was also present.
 - Light and dark activation, an update check, BRAT unregistration, theme disabling, and recoverable removal passed in the isolated vault.
+- On 2026-07-25, both Issue Forms rendered in a signed-in Chrome session with their intended fields, required markers, privacy check, and Create control. The check was read-only and did not submit an issue.
 
 ### Open questions and risks
 
 - Compatibility below `minAppVersion: 1.12.7` is not currently claimed.
 - GitHub raw-content caching may delay urgent updates or rollbacks.
-- Interactive Issue Form rendering still needs a signed-in GitHub session; file presence and YAML validity pass.
+- A private-pilot tester still needs to submit a non-sensitive dry-run report through the rendered Issue Forms.
 - Real Windows, Linux, iOS, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.

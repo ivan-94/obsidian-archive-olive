@@ -50,11 +50,11 @@ Desktop testers may use the prepared manual-install bundle for diagnosis, but th
 
 ## Acceptance accounts
 
-| Role             | Account                                                        | Source | Permission / tenant                                     | Purpose                                   | Status                                                                  |
-| ---------------- | -------------------------------------------------------------- | ------ | ------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------- |
-| Repository owner | GitHub account with access to `ivan-94/obsidian-archive-olive` | Owner  | Repository administration                               | Final go/no-go, release, issue triage     | Available through `gh`; browser login still required for form rendering |
-| Pilot tester     | TODO: owner assigns 3–5 testers                                | Owner  | Public repository read; GitHub issue write if reporting | Independent install and visual acceptance | Pending                                                                 |
-| Mobile tester    | TODO: owner assigns iOS and Android devices                    | Owner  | Public repository read                                  | Touch and mobile-layout acceptance        | Pending                                                                 |
+| Role             | Account                                                        | Source | Permission / tenant                                     | Purpose                                   | Status                                         |
+| ---------------- | -------------------------------------------------------------- | ------ | ------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------- |
+| Repository owner | GitHub account with access to `ivan-94/obsidian-archive-olive` | Owner  | Repository administration                               | Final go/no-go, release, issue triage     | Available; signed-in Chrome rendering verified |
+| Pilot tester     | TODO: owner assigns 3–5 testers                                | Owner  | Public repository read; GitHub issue write if reporting | Independent install and visual acceptance | Pending                                        |
+| Mobile tester    | TODO: owner assigns iOS and Android devices                    | Owner  | Public repository read                                  | Touch and mobile-layout acceptance        | Pending                                        |
 
 Never record passwords, access tokens, private email addresses, or personal vault paths in this guide or an issue.
 
@@ -244,7 +244,7 @@ Never record passwords, access tokens, private email addresses, or personal vaul
 
 **Notes**
 
-- This is the remaining P0 check not automatable from a logged-out browser.
+- Signed-in rendering passed on 2026-07-25 for both forms. The read-only check did not fill or submit an issue; repeat the submission path with non-sensitive fixture data during the private pilot.
 
 ### P1-01 — Graph, Canvas, and Bases
 
@@ -365,6 +365,8 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 - [README installation and issue-reporting instructions](../../README.md).
 - [Platform-validation Issue Form](../../.github/ISSUE_TEMPLATE/platform-validation.yml).
 - [Bug Issue Form](../../.github/ISSUE_TEMPLATE/bug.yml).
+- [Rendered platform-validation Issue Form](https://github.com/ivan-94/obsidian-archive-olive/issues/new?template=platform-validation.yml).
+- [Rendered bug Issue Form](https://github.com/ivan-94/obsidian-archive-olive/issues/new?template=bug.yml).
 - [GitHub Actions run for baseline `d73be74`](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30146751956).
 
 ### Produced artifacts
@@ -385,9 +387,10 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 - `bash -n hats/20260725-brat-beta-cross-platform/prepare.sh` passes.
 - `shellcheck` was not available in the preparation environment.
 - The low-risk blank preparation ran successfully for `d73be74`, manifest `0.1.0`, with stylesheet checksum `dd5323d8…`.
+- On 2026-07-25, both Issue Forms rendered in a signed-in Chrome session with the expected fields, required markers, privacy check, and Create control. No issue was submitted.
 
 ### Open questions / risks
 
-- Signed-in GitHub Issue Form rendering remains a human check.
+- A private-pilot tester still needs to exercise the non-sensitive Issue Form submission path.
 - Pilot tester assignments and the real Windows, Linux, iOS, and Android environments are not available in this workspace.
 - GitHub Raw caching can delay BRAT updates.
