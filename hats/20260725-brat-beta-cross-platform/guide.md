@@ -125,7 +125,7 @@ Never record passwords, access tokens, private email addresses, or personal vaul
 
 - BRAT completes without an error.
 - Archive Olive appears in the theme selector and remains active after reload.
-- The installed manifest reports version `0.1.0` and the assigned compatibility floor.
+- The installed manifest reports version `0.1.1` and the assigned compatibility floor.
 
 **Evidence**
 
