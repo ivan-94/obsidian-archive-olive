@@ -3,71 +3,71 @@ version: alpha
 name: Archive Olive
 description: A field-manual-inspired brutalist design system for an Obsidian theme.
 colors:
-  primary: "#59611C"
-  secondary: "#8D1B1B"
-  tertiary: "#00A6B2"
-  neutral: "#D9CBA8"
-  surface: "#F1E7CC"
-  surface-muted: "#C8B98F"
-  on-surface: "#11110D"
-  text-muted: "#4B493F"
-  warning: "#C69214"
-  dark-neutral: "#15160F"
-  dark-surface: "#1D2014"
-  dark-surface-muted: "#252919"
-  dark-on-surface: "#EEE4C8"
-  dark-text-muted: "#B4AA8F"
-  dark-primary: "#9AAA3A"
-  dark-secondary: "#D4574F"
-  dark-tertiary: "#31C2C9"
+  primary: '#59611C'
+  secondary: '#8D1B1B'
+  tertiary: '#00A6B2'
+  neutral: '#D9CBA8'
+  surface: '#F1E7CC'
+  surface-muted: '#C8B98F'
+  on-surface: '#11110D'
+  text-muted: '#4B493F'
+  warning: '#C69214'
+  dark-neutral: '#15160F'
+  dark-surface: '#1D2014'
+  dark-surface-muted: '#252919'
+  dark-on-surface: '#EEE4C8'
+  dark-text-muted: '#B4AA8F'
+  dark-primary: '#9AAA3A'
+  dark-secondary: '#D4574F'
+  dark-tertiary: '#31C2C9'
 typography:
   headline-display:
-    fontFamily: "Arial Narrow, Roboto Condensed, PingFang SC, Microsoft YaHei, sans-serif"
+    fontFamily: 'Arial Narrow, Roboto Condensed, PingFang SC, Microsoft YaHei, sans-serif'
     fontSize: 48px
     fontWeight: 800
     lineHeight: 0.95
     letterSpacing: -0.03em
   headline-lg:
-    fontFamily: "Arial Narrow, Roboto Condensed, PingFang SC, Microsoft YaHei, sans-serif"
+    fontFamily: 'Arial Narrow, Roboto Condensed, PingFang SC, Microsoft YaHei, sans-serif'
     fontSize: 36px
     fontWeight: 800
     lineHeight: 1
     letterSpacing: -0.02em
   headline-md:
-    fontFamily: "Arial Narrow, Roboto Condensed, PingFang SC, Microsoft YaHei, sans-serif"
+    fontFamily: 'Arial Narrow, Roboto Condensed, PingFang SC, Microsoft YaHei, sans-serif'
     fontSize: 28px
     fontWeight: 800
     lineHeight: 1.1
     letterSpacing: -0.01em
   headline-sm:
-    fontFamily: "Arial Narrow, Roboto Condensed, PingFang SC, Microsoft YaHei, sans-serif"
+    fontFamily: 'Arial Narrow, Roboto Condensed, PingFang SC, Microsoft YaHei, sans-serif'
     fontSize: 22px
     fontWeight: 700
     lineHeight: 1.2
   body-md:
-    fontFamily: "IBM Plex Sans, Inter, PingFang SC, Microsoft YaHei, system-ui, sans-serif"
+    fontFamily: 'IBM Plex Sans, Inter, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.65
   body-sm:
-    fontFamily: "IBM Plex Sans, Inter, PingFang SC, Microsoft YaHei, system-ui, sans-serif"
+    fontFamily: 'IBM Plex Sans, Inter, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.55
   label-md:
-    fontFamily: "IBM Plex Mono, SFMono-Regular, Consolas, Liberation Mono, monospace"
+    fontFamily: 'IBM Plex Mono, SFMono-Regular, Consolas, Liberation Mono, monospace'
     fontSize: 12px
     fontWeight: 700
     lineHeight: 1.2
     letterSpacing: 0.06em
   label-sm:
-    fontFamily: "IBM Plex Mono, SFMono-Regular, Consolas, Liberation Mono, monospace"
+    fontFamily: 'IBM Plex Mono, SFMono-Regular, Consolas, Liberation Mono, monospace'
     fontSize: 11px
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: 0.04em
   code:
-    fontFamily: "IBM Plex Mono, SFMono-Regular, Consolas, Liberation Mono, monospace"
+    fontFamily: 'IBM Plex Mono, SFMono-Regular, Consolas, Liberation Mono, monospace'
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.55
@@ -87,95 +87,95 @@ spacing:
   3xl: 48px
 components:
   app-light:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.none}"
+    backgroundColor: '{colors.neutral}'
+    textColor: '{colors.on-surface}'
+    typography: '{typography.body-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.none}'
   editor-light:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.xl}"
+    backgroundColor: '{colors.surface}'
+    textColor: '{colors.on-surface}'
+    typography: '{typography.body-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.xl}'
   panel-light:
-    backgroundColor: "{colors.surface-muted}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.body-sm}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.md}"
+    backgroundColor: '{colors.surface-muted}'
+    textColor: '{colors.on-surface}'
+    typography: '{typography.body-sm}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.md}'
   active-item-light:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.sm}"
+    backgroundColor: '{colors.primary}'
+    textColor: '{colors.surface}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.sm}'
   danger-light:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.md}"
+    backgroundColor: '{colors.secondary}'
+    textColor: '{colors.surface}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.md}'
   info-light:
-    backgroundColor: "{colors.tertiary}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.md}"
+    backgroundColor: '{colors.tertiary}'
+    textColor: '{colors.on-surface}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.md}'
   muted-light:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.text-muted}"
-    typography: "{typography.body-sm}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.sm}"
+    backgroundColor: '{colors.neutral}'
+    textColor: '{colors.text-muted}'
+    typography: '{typography.body-sm}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.sm}'
   warning-light:
-    backgroundColor: "{colors.warning}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.md}"
+    backgroundColor: '{colors.warning}'
+    textColor: '{colors.on-surface}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.md}'
   app-dark:
-    backgroundColor: "{colors.dark-neutral}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.none}"
+    backgroundColor: '{colors.dark-neutral}'
+    textColor: '{colors.dark-on-surface}'
+    typography: '{typography.body-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.none}'
   editor-dark:
-    backgroundColor: "{colors.dark-surface}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.xl}"
+    backgroundColor: '{colors.dark-surface}'
+    textColor: '{colors.dark-on-surface}'
+    typography: '{typography.body-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.xl}'
   panel-dark:
-    backgroundColor: "{colors.dark-surface-muted}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.body-sm}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.md}"
+    backgroundColor: '{colors.dark-surface-muted}'
+    textColor: '{colors.dark-on-surface}'
+    typography: '{typography.body-sm}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.md}'
   active-item-dark:
-    backgroundColor: "{colors.dark-primary}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.sm}"
+    backgroundColor: '{colors.dark-primary}'
+    textColor: '{colors.on-surface}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.sm}'
   danger-dark:
-    backgroundColor: "{colors.dark-secondary}"
-    textColor: "{colors.dark-neutral}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.md}"
+    backgroundColor: '{colors.dark-secondary}'
+    textColor: '{colors.dark-neutral}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.md}'
   info-dark:
-    backgroundColor: "{colors.dark-tertiary}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.md}"
+    backgroundColor: '{colors.dark-tertiary}'
+    textColor: '{colors.on-surface}'
+    typography: '{typography.label-md}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.md}'
   muted-dark:
-    backgroundColor: "{colors.dark-surface}"
-    textColor: "{colors.dark-text-muted}"
-    typography: "{typography.body-sm}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.sm}"
+    backgroundColor: '{colors.dark-surface}'
+    textColor: '{colors.dark-text-muted}'
+    typography: '{typography.body-sm}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.sm}'
 ---
 
 # Archive Olive Design System
@@ -200,17 +200,17 @@ Vercel's influence is behavioral rather than visual: align deliberately, design 
 
 Light mode is canonical and should most closely match the approved concept.
 
-| Role | Token | Value | Usage |
-| --- | --- | --- | --- |
-| Field olive | `primary` | `#59611C` | Active file, selected navigation, success, primary emphasis |
-| Oxblood | `secondary` | `#8D1B1B` | Errors, destructive emphasis, critical callouts, live status |
-| Signal cyan | `tertiary` | `#00A6B2` | Active tab, links, focus, informational callouts, code gutter |
-| Archive khaki | `neutral` | `#D9CBA8` | Workspace shell, sidebars, secondary surfaces |
-| Parchment | `surface` | `#F1E7CC` | Editor and reading surfaces |
-| Worn folder | `surface-muted` | `#C8B98F` | Hovered rows, recessed panels, secondary headers |
-| Carbon ink | `on-surface` | `#11110D` | Primary text, rules, toolbar, table headers |
-| Graphite | `text-muted` | `#4B493F` | Metadata and secondary text |
-| Archive stamp | `warning` | `#C69214` | Warning callouts and pending states |
+| Role          | Token           | Value     | Usage                                                         |
+| ------------- | --------------- | --------- | ------------------------------------------------------------- |
+| Field olive   | `primary`       | `#59611C` | Active file, selected navigation, success, primary emphasis   |
+| Oxblood       | `secondary`     | `#8D1B1B` | Errors, destructive emphasis, critical callouts, live status  |
+| Signal cyan   | `tertiary`      | `#00A6B2` | Active tab, links, focus, informational callouts, code gutter |
+| Archive khaki | `neutral`       | `#D9CBA8` | Workspace shell, sidebars, secondary surfaces                 |
+| Parchment     | `surface`       | `#F1E7CC` | Editor and reading surfaces                                   |
+| Worn folder   | `surface-muted` | `#C8B98F` | Hovered rows, recessed panels, secondary headers              |
+| Carbon ink    | `on-surface`    | `#11110D` | Primary text, rules, toolbar, table headers                   |
+| Graphite      | `text-muted`    | `#4B493F` | Metadata and secondary text                                   |
+| Archive stamp | `warning`       | `#C69214` | Warning callouts and pending states                           |
 
 Light-mode contrast pairs are normative:
 
@@ -225,16 +225,16 @@ Light-mode contrast pairs are normative:
 
 Dark mode is an inversion of material, not a separate neon theme. Carbon and green-black surfaces replace paper; olive, oxblood, and cyan become lighter printing inks.
 
-| Role | Token | Value |
-| --- | --- | --- |
-| Canvas | `dark-neutral` | `#15160F` |
-| Editor | `dark-surface` | `#1D2014` |
+| Role           | Token                | Value     |
+| -------------- | -------------------- | --------- |
+| Canvas         | `dark-neutral`       | `#15160F` |
+| Editor         | `dark-surface`       | `#1D2014` |
 | Recessed panel | `dark-surface-muted` | `#252919` |
-| Primary text | `dark-on-surface` | `#EEE4C8` |
-| Secondary text | `dark-text-muted` | `#B4AA8F` |
-| Active olive | `dark-primary` | `#9AAA3A` |
-| Critical red | `dark-secondary` | `#D4574F` |
-| Signal cyan | `dark-tertiary` | `#31C2C9` |
+| Primary text   | `dark-on-surface`    | `#EEE4C8` |
+| Secondary text | `dark-text-muted`    | `#B4AA8F` |
+| Active olive   | `dark-primary`       | `#9AAA3A` |
+| Critical red   | `dark-secondary`     | `#D4574F` |
+| Signal cyan    | `dark-tertiary`      | `#31C2C9` |
 
 ### Color behavior
 
@@ -307,7 +307,8 @@ Depth is expressed with borders, offset, and tonal contrast—not blur.
 - Ribbon: carbon background; parchment icons; selected tool receives a solid oxblood or olive block plus a visible inset border.
 - Title and tab bars: flat surfaces separated by `2px` rules.
 - Active tab: signal cyan with carbon text in light mode; dark signal cyan with carbon text in dark mode.
-- Inactive tabs: khaki/parchment or dark recessed surface; hover uses a tonal change and underline.
+- Inactive tabs on the carbon title bar use full-opacity khaki in light mode and dark muted ink in dark mode; never place graphite on carbon. Hover uses a tonal change and underline.
+- Side-dock icons on signal cyan use carbon. Vault-switcher icons on field olive use parchment in light mode and carbon in dark mode.
 - Status bar: carbon with parchment utility text. Important transient status may switch to oxblood.
 
 ### File explorer and navigation lists
@@ -409,6 +410,7 @@ Use `:focus-visible` for keyboard focus. Do not remove native focus until the re
 ### Sources
 
 - User direction in this Codex thread: proceed with the fourth palette, Archive Olive.
+- User screenshots from BRAT-installed `0.1.0`: active navigation and dropdown icons disappeared against dark/olive chrome, while inactive root and side-dock tabs lacked contrast.
 - Approved concept: [`design/concepts/01f-archive-olive.png`](design/concepts/01f-archive-olive.png).
 - [Google DESIGN.md format specification](https://github.com/google-labs-code/design.md/blob/main/docs/spec.md).
 - [Vercel Web Interface Guidelines](https://vercel.com/design/guidelines).
@@ -431,12 +433,14 @@ Use `:focus-visible` for keyboard focus. Do not remove native focus until the re
 - Light mode is canonical; dark mode is a material inversion using the same semantic palette.
 - Vercel is used as a quality and interaction reference, not as a visual palette.
 - The core theme must work without remote assets or companion plugins.
+- Application-chrome foregrounds are semantic tokens tied to their actual surface, not generic muted body text.
 
 ### Verification evidence
 
 - Palette contrast pairs were calculated locally using the WCAG relative luminance formula.
 - `npx -y @google/design.md lint DESIGN.md --format json` completed with `0` errors and `0` warnings on 2026-07-25.
 - Light and dark implementations were reviewed in an isolated vault on Obsidian Desktop `1.12.7`; evidence is recorded in `VALIDATION.md`.
+- The `0.1.1` contrast repair was reviewed in the real three-pane Obsidian workspace in both light and dark appearances.
 
 ### Open questions / risks
 

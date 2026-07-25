@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.0` pre-release published — post-release pilot remains                          |
+| Status                | `0.1.1` contrast patch prepared — publication and retest pending                    |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -331,11 +331,11 @@ The official candidate is ready only when all P2 requirements pass. Successful m
 
 ## 13. Open decisions
 
-| Decision                 | Current state                                                                                 | Owner |
-| ------------------------ | --------------------------------------------------------------------------------------------- | ----- |
-| Public license           | Applied: MIT license selected and added at repository root.                                   | Ivan  |
-| Beta compatibility floor | Applied: `minAppVersion` is the currently tested `1.12.7`; lower only after new evidence.     | Ivan  |
-| Beta pre-release         | Deferred until the private pilot is green; then create a matching `0.1.0` GitHub pre-release. | Ivan  |
+| Decision                 | Current state                                                                             | Owner |
+| ------------------------ | ----------------------------------------------------------------------------------------- | ----- |
+| Public license           | Applied: MIT license selected and added at repository root.                               | Ivan  |
+| Beta compatibility floor | Applied: `minAppVersion` is the currently tested `1.12.7`; lower only after new evidence. | Ivan  |
+| Beta pre-release         | `0.1.0` published; prepare `0.1.1` as an immutable contrast-fix checkpoint.               | Ivan  |
 
 BRAT-004 now passes locally with the owner-selected MIT license. Revisit the compatibility decision only if the project intends to support versions older than `1.12.7`.
 
@@ -394,6 +394,8 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - `hats/20260725-brat-beta-cross-platform/prepare.sh`
 - `docs/releases/0.1.0-beta.md`
 - `docs/releases/0.1.0-beta-notes.md`
+- `docs/releases/0.1.1-beta.md`
+- `docs/releases/0.1.1-beta-notes.md`
 
 ### Key decisions
 
@@ -422,12 +424,14 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - GitHub Actions run [30148368218](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30148368218) passed on release commit `034515d`.
 - Annotated tag `0.1.0` resolves to `034515ddc03b245d2635324465f8aac8e47bea43`.
 - The [Archive Olive 0.1.0 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0) is published with verified `theme.css`, `manifest.json`, `LICENSE`, and release-image digests.
+- User screenshots from the BRAT-installed `0.1.0` artifact exposed low-contrast root tabs, side-dock icons, tab-list controls, and the vault-switcher chevron.
+- The `0.1.1` candidate replaces generic muted body text on application chrome with surface-specific semantic foreground tokens and passes real-application light/dark checks.
 
 ### Open questions and risks
 
 - Compatibility below `minAppVersion: 1.12.7` is not currently claimed.
 - GitHub raw-content caching may delay urgent updates or rollbacks.
 - A private-pilot tester still needs to submit a non-sensitive dry-run report through the rendered Issue Forms.
-- Owner-led BRAT visual acceptance is intentionally deferred until after the `0.1.0` pre-release.
+- Owner-led BRAT retest of the `0.1.1` contrast repair remains pending.
 - Real Windows, Linux, iOS, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.

@@ -226,21 +226,21 @@ Do not duplicate colors in component selectors; reference mapped variables or `-
 
 ### P0 — first usable desktop build
 
-| ID     | Requirement                | Acceptance                                                                                                                                             |
-| ------ | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| AO-001 | Valid theme package        | Obsidian loads `manifest.json` and `theme.css` without console errors.                                                                                 |
-| AO-002 | Light and dark foundations | Switching Obsidian color scheme updates all primary surfaces and text without stale light/dark regions.                                                |
-| AO-003 | Workspace shell            | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a coherent exposed grid.                                            |
-| AO-004 | Active navigation          | Active file and active tab use full color blocks plus non-color state cues.                                                                            |
-| AO-005 | Editor parity              | Headings, body, links, lists, tasks, blockquotes, code, tables, tags, embeds, and callouts have equivalent hierarchy in Live Preview and Reading View. |
-| AO-006 | Source Mode                | Markdown syntax remains readable and cursor/selection states remain obvious.                                                                           |
-| AO-007 | Inputs and overlays        | Command palette, quick switcher, menus, dialogs, settings, notices, inputs, tooltips, and dropdowns use theme surfaces and visible focus.              |
-| AO-008 | Interaction states         | Default, hover, pressed, selected, focus, and disabled states are distinguishable without color alone.                                                 |
-| AO-009 | Long-form readability      | Body text maintains at least `1.55` line height and a target maximum width of `80ch` without constraining tables/media incorrectly.                    |
-| AO-010 | Accessibility              | Normal text pairs meet WCAG AA; keyboard focus is visible; native keyboard navigation is preserved.                                                    |
-| AO-011 | No network dependency      | Theme works offline and contains no remote font, image, analytics, or CSS request.                                                                     |
-| AO-012 | Performance baseline       | No routine `!important`; no undocumented `:has()`; no global texture on Graph or Canvas.                                                               |
-| AO-013 | User preferences           | Changing Obsidian interface, text, monospace fonts, and accent does not break layout or contrast.                                                      |
+| ID     | Requirement                | Acceptance                                                                                                                                               |
+| ------ | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AO-001 | Valid theme package        | Obsidian loads `manifest.json` and `theme.css` without console errors.                                                                                   |
+| AO-002 | Light and dark foundations | Switching Obsidian color scheme updates all primary surfaces and text without stale light/dark regions.                                                  |
+| AO-003 | Workspace shell            | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a coherent exposed grid.                                              |
+| AO-004 | Navigation state hierarchy | Active file and active tab use full color blocks plus non-color state cues; inactive chrome icons and labels retain AA contrast on their actual surface. |
+| AO-005 | Editor parity              | Headings, body, links, lists, tasks, blockquotes, code, tables, tags, embeds, and callouts have equivalent hierarchy in Live Preview and Reading View.   |
+| AO-006 | Source Mode                | Markdown syntax remains readable and cursor/selection states remain obvious.                                                                             |
+| AO-007 | Inputs and overlays        | Command palette, quick switcher, menus, dialogs, settings, notices, inputs, tooltips, and dropdowns use theme surfaces and visible focus.                |
+| AO-008 | Interaction states         | Default, hover, pressed, selected, focus, and disabled states are distinguishable without color alone.                                                   |
+| AO-009 | Long-form readability      | Body text maintains at least `1.55` line height and a target maximum width of `80ch` without constraining tables/media incorrectly.                      |
+| AO-010 | Accessibility              | Normal text pairs meet WCAG AA; keyboard focus is visible; native keyboard navigation is preserved.                                                      |
+| AO-011 | No network dependency      | Theme works offline and contains no remote font, image, analytics, or CSS request.                                                                       |
+| AO-012 | Performance baseline       | No routine `!important`; no undocumented `:has()`; no global texture on Graph or Canvas.                                                                 |
+| AO-013 | User preferences           | Changing Obsidian interface, text, monospace fonts, and accent does not break layout or contrast.                                                        |
 
 ### P1 — public-release completeness
 
@@ -285,6 +285,8 @@ Do not duplicate colors in component selectors; reference mapped variables or `-
 
 - Active file is a full-width olive block with parchment text.
 - Hover is a worn-folder fill plus left rule.
+- Inactive tabs and controls on carbon chrome use khaki/dark-muted foregrounds at full opacity; signal-cyan side-dock controls use carbon.
+- Vault-switcher icons inherit the high-contrast foreground of the olive profile block.
 - Folder collapse icons, indentation guides, drag targets, and file rename inputs remain visible.
 - Deep nesting and long paths must not create horizontal page overflow outside the panel.
 
@@ -461,6 +463,7 @@ Public `1.0.0` additionally requires P1, release packaging, platform testing, cu
 
 - User direction in this Codex thread: select the fourth palette and create `DESIGN.md`, then a specification.
 - User confirmation in this Codex thread: use the MIT license.
+- User screenshots from BRAT-installed `0.1.0` showing low-contrast root tabs, side-dock icons, tab-list controls, and the vault-switcher icon.
 - [`DESIGN.md`](../../DESIGN.md).
 - [`design/concepts/01f-archive-olive.png`](../../design/concepts/01f-archive-olive.png).
 - [Google DESIGN.md format specification](https://github.com/google-labs-code/design.md/blob/main/docs/spec.md).
@@ -493,6 +496,7 @@ Public `1.0.0` additionally requires P1, release packaging, platform testing, cu
 - Mobile, Graph, Canvas, Bases, and public packaging are P1 requirements.
 - Implementation begins with a maintainable single `theme.css`; no build pipeline is required initially.
 - Vercel guidance informs interaction quality and accessibility, not the visual palette.
+- Chrome-level inactive and utility states use surface-specific semantic foregrounds instead of generic muted body text.
 
 ### Verification evidence
 
@@ -502,6 +506,7 @@ Public `1.0.0` additionally requires P1, release packaging, platform testing, cu
 - The official Obsidian community theme index contained 647 entries and no `Archive Olive` name or repository match when checked on 2026-07-25; recheck immediately before submission.
 - The runtime theme was loaded from the repository into an isolated local vault on Obsidian Desktop `1.12.7` for macOS.
 - Light, dark, narrow-window, source-mode, Graph, Canvas, Bases, settings, prompt, pop-out-window, and mobile-emulation evidence is recorded in `VALIDATION.md`.
+- The `0.1.1` navigation-contrast repair was checked in the real three-pane Obsidian workspace in both light and dark appearances.
 - Obsidian's developer error and console buffers reported no theme-caused errors after the final local test cycle.
 
 ### Open questions / risks

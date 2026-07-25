@@ -40,6 +40,8 @@ const [
 ]);
 
 const manifest = JSON.parse(manifestText);
+const currentReleaseRecord = `docs/releases/${manifest.version}-beta.md`;
+const currentReleaseNotes = `docs/releases/${manifest.version}-beta-notes.md`;
 JSON.parse(canvasText);
 
 assert.equal(manifest.name, 'Archive Olive');
@@ -62,8 +64,8 @@ for (const requiredPath of [
   'CHANGELOG.md',
   'assets/screenshots/archive-olive-512x288.png',
   'docs/specs/brat-beta-release.md',
-  'docs/releases/0.1.0-beta.md',
-  'docs/releases/0.1.0-beta-notes.md',
+  currentReleaseRecord,
+  currentReleaseNotes,
   'hats/20260725-brat-beta-cross-platform/guide.md',
   'hats/20260725-brat-beta-cross-platform/prepare.sh',
   '.github/workflows/validate.yml',
@@ -91,6 +93,16 @@ assert.match(
   css,
   /BRAT channel: main\/theme\.css/,
   'theme.css must identify the active BRAT channel',
+);
+assert.match(
+  css,
+  /\.workspace-drawer-vault-switcher-icon/,
+  'theme.css must keep the vault switcher icon legible',
+);
+assert.match(
+  css,
+  /--ao-chrome-muted/,
+  'theme.css must define a semantic inactive-chrome color',
 );
 assert.match(changelog, /## \[Unreleased\]/);
 assert.match(workflow, /node scripts\/validate\.mjs/);
@@ -157,11 +169,17 @@ const normalTextPairs = [
   ['light muted', '#4b493f', '#f1e7cc'],
   ['light active file', '#f1e7cc', '#59611c'],
   ['light active tab', '#11110d', '#00a6b2'],
+  ['light inactive chrome', '#d9cba8', '#11110d'],
+  ['light sidebar tab icon', '#11110d', '#00a6b2'],
+  ['light vault switcher', '#f1e7cc', '#59611c'],
   ['light critical block', '#f1e7cc', '#8d1b1b'],
   ['dark body', '#eee4c8', '#1d2014'],
   ['dark muted', '#b4aa8f', '#1d2014'],
   ['dark active file', '#11110d', '#9aaa3a'],
   ['dark active tab', '#11110d', '#31c2c9'],
+  ['dark inactive chrome', '#b4aa8f', '#0e0f0a'],
+  ['dark sidebar tab icon', '#11110d', '#31c2c9'],
+  ['dark vault switcher', '#11110d', '#9aaa3a'],
   ['dark critical block', '#15160f', '#d4574f'],
 ];
 

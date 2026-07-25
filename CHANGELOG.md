@@ -8,6 +8,15 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 No unreleased changes.
 
+## [0.1.1] - 2026-07-25
+
+### Fixed
+
+- Restored high-contrast navigation and tab-list icons on carbon application chrome.
+- Raised inactive root-tab and side-dock-tab labels and icons to surface-appropriate AA contrast.
+- Made the vault-switcher chevron inherit the foreground of its olive profile block.
+- Added semantic chrome foreground tokens and six regression contrast pairs covering light and dark application chrome.
+
 ## [0.1.0] - 2026-07-25
 
 ### Added
@@ -44,6 +53,7 @@ No unreleased changes.
 
 - User direction in this Codex thread: begin implementing the BRAT Beta release specification.
 - User confirmation in this Codex thread: use the MIT license.
+- User screenshots from BRAT-installed `0.1.0` showing low-contrast navigation, tab-list, inactive-tab, and vault-switcher states.
 - [`docs/specs/brat-beta-release.md`](docs/specs/brat-beta-release.md).
 - Existing Git history and [`VALIDATION.md`](VALIDATION.md).
 
@@ -56,6 +66,8 @@ No unreleased changes.
 
 - `0.1.0` records the initial locally validated theme.
 - `0.1.0` is an opt-in GitHub pre-release; pilot acceptance remains required before broader announcement or official-directory submission.
+- `0.1.1` is a focused accessibility patch; it does not change the palette, layout, or compatibility floor.
 
-[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.1...HEAD
+[0.1.1]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0
