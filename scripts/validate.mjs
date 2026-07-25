@@ -83,6 +83,11 @@ assert.match(readme, /Install with BRAT/);
 assert.match(readme, /ivan-94\/obsidian-archive-olive/);
 assert.match(readme, /GitHub caching can delay an update/);
 assert.match(readme, /Removing the BRAT registration stops monitoring/);
+assert.match(
+  css,
+  /BRAT channel: main\/theme\.css/,
+  'theme.css must identify the active BRAT channel',
+);
 assert.match(changelog, /## \[Unreleased\]/);
 assert.match(workflow, /node scripts\/validate\.mjs/);
 assert.match(workflow, /lightningcss-cli@1\.33\.0/);
