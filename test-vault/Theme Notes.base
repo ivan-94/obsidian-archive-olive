@@ -1,0 +1,15 @@
+filters:
+  and:
+    - file.hasTag("theme")
+views:
+  - type: table
+    name: Theme notes
+    order:
+      - file.name
+      - file.tags
+      - file.mtime
+  - type: cards
+    name: Cards
+    order:
+      - file.name
+      - file.tags

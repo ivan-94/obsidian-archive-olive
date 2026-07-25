@@ -1,0 +1,11 @@
+{
+	"nodes":[
+		{"id":"text-intent","type":"text","text":"# Archive Olive\nInformation before decoration.","x":0,"y":0,"width":360,"height":220,"color":"4"},
+		{"id":"file-showcase","type":"file","file":"00 - Theme Showcase.md","x":460,"y":-40,"width":420,"height":300,"color":"5"},
+		{"id":"text-states","type":"text","text":"## State language\n- olive = active\n- oxblood = critical\n- cyan = focus","x":180,"y":340,"width":360,"height":220,"color":"1"}
+	],
+	"edges":[
+		{"id":"edge-intent-showcase","fromNode":"text-intent","fromSide":"right","toNode":"file-showcase","toSide":"left","label":"drives"},
+		{"id":"edge-showcase-states","fromNode":"file-showcase","fromSide":"bottom","toNode":"text-states","toSide":"right","label":"reveals"}
+	]
+}
