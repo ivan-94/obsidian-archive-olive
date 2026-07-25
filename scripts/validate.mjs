@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { access, readFile } from 'node:fs/promises';
+import { access, readFile, readlink } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
@@ -23,6 +23,7 @@ const [
   readme,
   changelog,
   validation,
+  agents,
   workflow,
   bugForm,
   platformForm,
@@ -34,6 +35,7 @@ const [
   read('README.md'),
   read('CHANGELOG.md'),
   read('VALIDATION.md'),
+  read('AGENTS.md'),
   read('.github/workflows/validate.yml'),
   read('.github/ISSUE_TEMPLATE/bug.yml'),
   read('.github/ISSUE_TEMPLATE/platform-validation.yml'),
@@ -62,6 +64,7 @@ for (const requiredPath of [
   'manifest.json',
   'README.md',
   'CHANGELOG.md',
+  'AGENTS.md',
   'assets/screenshots/archive-olive-512x288.png',
   'docs/specs/brat-beta-release.md',
   currentReleaseRecord,
@@ -83,6 +86,30 @@ assert.equal(
   await exists('theme-beta.css'),
   false,
   'theme-beta.css must not exist while main/theme.css is the only beta channel',
+);
+assert.match(
+  agents,
+  /Use the repository's isolated `test-vault\/` for all Obsidian runtime acceptance/,
+  'AGENTS.md must require runtime acceptance in the isolated test vault',
+);
+assert.match(
+  agents,
+  /Do not use or modify a personal vault for theme acceptance/,
+  'AGENTS.md must keep personal vaults outside theme acceptance',
+);
+assert.equal(
+  await readlink(
+    resolve(root, 'test-vault/.obsidian/themes/Archive Olive/theme.css'),
+  ),
+  '../../../../theme.css',
+  'test-vault must load the working-tree theme through its symlink',
+);
+assert.equal(
+  await readlink(
+    resolve(root, 'test-vault/.obsidian/themes/Archive Olive/manifest.json'),
+  ),
+  '../../../../manifest.json',
+  'test-vault must load the working-tree manifest through its symlink',
 );
 
 assert.match(readme, /Install with BRAT/);
@@ -134,6 +161,106 @@ assert.match(
   /\.table-cell-wrapper[\s\S]*\.cm-editor[\s\S]*background-color:\s*transparent/,
   'theme.css must keep live table-header editors on the header surface',
 );
+assert.match(
+  css,
+  /\.workspace-split\.mod-sidedock\s+\.workspace-tab-header-container-inner\s*\{[\s\S]*scrollbar-width:\s*none/,
+  'theme.css must hide side-dock tab-strip scrollbars without disabling overflow',
+);
+assert.match(
+  css,
+  /\.workspace-tab-header-container-inner::\-webkit-scrollbar\s*\{[\s\S]*display:\s*none/,
+  'theme.css must hide side-dock tab-strip scrollbars in WebKit',
+);
+assert.match(
+  css,
+  /body\s+\.menu\s+\.menu-item:is\(:hover,\s*\.selected\):not\(\.is-disabled\):not\(\.mod-disabled\)\s*\{[\s\S]*background:\s*var\(--ao-menu-hover-background\)[\s\S]*color:\s*var\(--ao-menu-hover-foreground\)/,
+  'theme.css must keep enabled menu hover and selected states legible',
+);
+assert.match(
+  css,
+  /\.menu-item-icon,[\s\S]*\.menu-item-title,[\s\S]*\.menu-item-hotkey,[\s\S]*\.menu-item-chevron,[\s\S]*svg[\s\S]*color:\s*inherit/,
+  'theme.css must make menu-item children inherit the state foreground',
+);
+assert.match(
+  css,
+  /\.notice\s*\{[\s\S]*background:\s*var\(--ao-feedback-background\)[\s\S]*color:\s*var\(--ao-feedback-foreground\)/,
+  'theme.css must give notices an explicit high-contrast surface and foreground',
+);
+assert.match(
+  css,
+  /\.tooltip\s*\{[\s\S]*background:\s*var\(--ao-feedback-background\)[\s\S]*color:\s*var\(--ao-feedback-foreground\)/,
+  'theme.css must give tooltips an explicit high-contrast surface and foreground',
+);
+assert.match(
+  css,
+  /\.theme-dark\.is-mobile\s*\{[\s\S]*--ao-mobile-surface:\s*var\(--ao-dark-canvas\)[\s\S]*--ao-mobile-surface-raised:\s*var\(--ao-dark-recessed\)[\s\S]*--ao-mobile-foreground:\s*var\(--ao-dark-paper\)[\s\S]*--ao-mobile-active-background:\s*var\(--ao-dark-olive\)[\s\S]*--ao-mobile-active-foreground:\s*var\(--ao-ink\)/,
+  'theme.css must define isolated high-contrast dark mobile semantic surfaces',
+);
+assert.match(
+  css,
+  /\.theme-dark\.is-mobile\s*\{[\s\S]*--interactive-normal:\s*var\(--ao-mobile-surface-raised\)[\s\S]*--interactive-hover:\s*var\(--ao-mobile-surface\)[\s\S]*--background-modifier-form-field:\s*var\(--ao-mobile-surface-raised\)/,
+  'theme.css must neutralize Obsidian dark-mobile interactive remapping',
+);
+assert.match(
+  css,
+  /\.theme-light\.is-mobile\s*\{[\s\S]*--ao-mobile-surface:\s*var\(--ao-paper\)[\s\S]*--ao-mobile-surface-raised:\s*var\(--ao-khaki\)[\s\S]*--ao-mobile-foreground:\s*var\(--ao-ink\)[\s\S]*--ao-mobile-active-background:\s*var\(--ao-olive\)[\s\S]*--ao-mobile-active-foreground:\s*var\(--ao-paper\)/,
+  'theme.css must define isolated high-contrast light mobile semantic surfaces',
+);
+assert.match(
+  css,
+  /body\.is-mobile[\s\S]*\.menu-item:is\(\s*:hover,\s*:active,\s*\.mobile-tap,\s*\.selected,\s*\.is-selected\s*\)[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must give mobile menu interaction states a high-contrast semantic surface',
+);
+assert.match(
+  css,
+  /body\.is-mobile[\s\S]*\.workspace-drawer-tab-options\.is-collapsed[\s\S]*input\[type='search'\][\s\S]*background:\s*var\(--ao-mobile-surface-raised\)[\s\S]*border-radius:\s*0[\s\S]*color:\s*var\(--ao-mobile-foreground\)/,
+  'theme.css must give mobile drawer selectors and search fields readable square surfaces',
+);
+assert.match(
+  css,
+  /body\.is-mobile[\s\S]*\.workspace-drawer-tab-options[\s\S]*\.workspace-tab-header:is\(\.is-active,\s*\.mobile-tap\)[\s\S]*\.workspace-tab-header-inner[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must distinguish active and tapped mobile drawer tabs',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+\.prompt\s*\{[\s\S]*backdrop-filter:\s*none[\s\S]*background:\s*var\(--ao-mobile-surface\)[\s\S]*border-radius:\s*0[\s\S]*body\.is-mobile\s+\.prompt-results[\s\S]*background:\s*var\(--ao-mobile-surface\)/,
+  'theme.css must keep the complete mobile prompt surface opaque',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+\.prompt\s+\.suggestion-item:is\(\.is-selected,\s*\.mobile-tap\)\s*\{[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must keep mobile prompt selection states legible',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s*:is\([\s\S]*\.mobile-navbar[\s\S]*\.vertical-tab-header-group-items[\s\S]*\.workspace-drawer-tab-options\.is-collapsed[\s\S]*\)\s*\{[\s\S]*border-radius:\s*0/,
+  'theme.css must keep non-semantic mobile containers square',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-phone\s+\.menu\s+\.menu-group\s+\.menu-item\s*\{[\s\S]*border-radius:\s*0/,
+  'theme.css must override phone-specific menu group pill radii',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s*\{[\s\S]*--clickable-icon-radius:\s*0[\s\S]*--input-radius:\s*0[\s\S]*--nav-item-radius:\s*0[\s\S]*--setting-items-radius:\s*0[\s\S]*--view-header-action-radius:\s*0/,
+  'theme.css must reset Obsidian mobile-only pill radii without changing touch sizes',
+);
+assert.match(
+  css,
+  /body\.is-mobile[\s\S]*\.mobile-navbar[\s\S]*\.clickable-icon:is\(:active,\s*\.mobile-tap,\s*\.is-active,\s*\[aria-pressed='true'\]\)[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must give active mobile toolbar actions a distinct semantic state',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+\.mobile-navbar-action\.mobile-tap\s+\.clickable-icon\s*\{[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must style the parent-based tap state used by the mobile navbar',
+);
+assert.match(
+  css,
+  /body\.is-mobile[\s\S]*\.vertical-tab-nav-item:is\(\.is-active,\s*\.mobile-tap\)[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must distinguish selected mobile settings navigation',
+);
 assert.match(changelog, /## \[Unreleased\]/);
 assert.match(workflow, /node scripts\/validate\.mjs/);
 assert.match(workflow, /lightningcss-cli@1\.33\.0/);
@@ -173,6 +300,21 @@ assert.deepEqual(
   `Undefined Archive Olive variables: ${missingAoDefinitions.join(', ')}`,
 );
 
+const mobileSemanticRules = [
+  ...css.matchAll(/([^{}]+)\{([^{}]*--ao-mobile-[^{}]*)\}/g),
+];
+assert.ok(
+  mobileSemanticRules.length > 0,
+  'theme.css must contain mobile semantic rules',
+);
+for (const [, selector] of mobileSemanticRules) {
+  assert.match(
+    selector.trim(),
+    /\.is-mobile/,
+    `Mobile semantic declarations escaped their mobile scope: ${selector.trim()}`,
+  );
+}
+
 assert.match(baseText, /^filters:/m);
 assert.match(baseText, /^views:/m);
 
@@ -203,6 +345,10 @@ const normalTextPairs = [
   ['light titlebar control hover', '#f1e7cc', '#11110d'],
   ['light sidebar tab icon', '#11110d', '#00a6b2'],
   ['light vault switcher', '#f1e7cc', '#59611c'],
+  ['light menu hover', '#f1e7cc', '#59611c'],
+  ['light feedback', '#f1e7cc', '#11110d'],
+  ['light mobile raised', '#11110d', '#d9cba8'],
+  ['light mobile muted', '#4b493f', '#d9cba8'],
   ['light table header', '#f1e7cc', '#11110d'],
   ['light critical block', '#f1e7cc', '#8d1b1b'],
   ['dark body', '#eee4c8', '#1d2014'],
@@ -213,6 +359,10 @@ const normalTextPairs = [
   ['dark titlebar control hover', '#eee4c8', '#0e0f0a'],
   ['dark sidebar tab icon', '#11110d', '#31c2c9'],
   ['dark vault switcher', '#11110d', '#9aaa3a'],
+  ['dark menu hover', '#11110d', '#9aaa3a'],
+  ['dark feedback', '#11110d', '#eee4c8'],
+  ['dark mobile raised', '#eee4c8', '#252919'],
+  ['dark mobile muted', '#b4aa8f', '#252919'],
   ['dark table header', '#11110d', '#eee4c8'],
   ['dark critical block', '#15160f', '#d4574f'],
 ];

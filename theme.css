@@ -1,5 +1,5 @@
 /*!
- * Archive Olive 0.1.2
+ * Archive Olive 0.1.3
  * A practical brutalist theme for Obsidian.
  * Design source: DESIGN.md
  * BRAT channel: main/theme.css
@@ -368,6 +368,12 @@ body {
 
   --menu-background: var(--ao-khaki);
   --menu-border-color: var(--ao-ink);
+  --ao-menu-hover-background: var(--ao-olive);
+  --ao-menu-hover-foreground: var(--ao-paper);
+  --ao-feedback-background: var(--ao-ink);
+  --ao-feedback-foreground: var(--ao-paper);
+  --ao-feedback-border: var(--ao-paper);
+  --ao-feedback-shadow: var(--ao-ink);
   --modal-background: var(--ao-paper);
   --modal-border-color: var(--ao-ink);
   --prompt-background: var(--ao-paper);
@@ -554,6 +560,12 @@ body {
 
   --menu-background: var(--ao-dark-canvas);
   --menu-border-color: var(--ao-dark-muted);
+  --ao-menu-hover-background: var(--ao-dark-olive);
+  --ao-menu-hover-foreground: var(--ao-ink);
+  --ao-feedback-background: var(--ao-dark-paper);
+  --ao-feedback-foreground: var(--ao-ink);
+  --ao-feedback-border: var(--ao-dark-canvas);
+  --ao-feedback-shadow: var(--ao-dark-olive);
   --modal-background: var(--ao-dark-surface);
   --modal-border-color: var(--ao-dark-muted);
   --prompt-background: var(--ao-dark-surface);
@@ -697,6 +709,17 @@ body {
   > .workspace-tabs
   > .workspace-tab-header-container {
   background: var(--ao-dark-cyan);
+}
+
+.workspace-split.mod-sidedock .workspace-tab-header-container-inner {
+  scrollbar-width: none;
+}
+
+.workspace-split.mod-sidedock
+  .workspace-tab-header-container-inner::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 body:not(.is-mobile)
@@ -1452,12 +1475,32 @@ select:focus,
   border-radius: 0;
 }
 
-.menu-item:hover,
-.menu-item.selected,
 .suggestion-item.is-selected {
   background: var(--interactive-accent);
   border-color: var(--background-modifier-border);
   color: var(--text-on-accent);
+}
+
+body
+  .menu
+  .menu-item:is(:hover, .selected):not(.is-disabled):not(.mod-disabled) {
+  background: var(--ao-menu-hover-background);
+  border-color: var(--background-modifier-border);
+  color: var(--ao-menu-hover-foreground);
+}
+
+body
+  .menu
+  .menu-item:is(:hover, .selected):not(.is-disabled):not(.mod-disabled)
+  :is(
+    .menu-item-icon,
+    .menu-item-title,
+    .menu-item-hotkey,
+    .menu-item-chevron,
+    svg
+  ) {
+  color: inherit;
+  opacity: 1;
 }
 
 .prompt-input-container {
@@ -1492,21 +1535,25 @@ input.prompt-input:focus-visible {
 }
 
 .notice {
-  border: var(--ao-border-default) solid var(--ao-paper);
+  background: var(--ao-feedback-background);
+  border: var(--ao-border-default) solid var(--ao-feedback-border);
   border-radius: 0;
-  box-shadow: var(--ao-shadow-offset) var(--ao-ink);
+  box-shadow: var(--ao-shadow-offset) var(--ao-feedback-shadow);
+  color: var(--ao-feedback-foreground);
   font-family: var(--ao-font-mono);
-}
-
-.theme-dark .notice {
-  border-color: var(--ao-dark-paper);
-  box-shadow: var(--ao-shadow-offset) var(--ao-dark-olive);
+  font-weight: 700;
+  line-height: 1.45;
 }
 
 .tooltip {
-  border: var(--ao-border-thin) solid currentColor;
+  background: var(--ao-feedback-background);
+  border: var(--ao-border-default) solid var(--ao-feedback-border);
   border-radius: 0;
+  box-shadow: var(--ao-shadow-offset) var(--ao-feedback-shadow);
+  color: var(--ao-feedback-foreground);
   font-family: var(--ao-font-mono);
+  font-weight: 700;
+  line-height: 1.45;
 }
 
 /* 08. Core views: search, graph, canvas, bases
@@ -1638,6 +1685,8 @@ select:disabled {
    -------------------------------------------------------------------------- */
 
 body.is-mobile {
+  --canvas-controls-radius: 0;
+  --clickable-icon-radius: 0;
   --font-ui-smaller: 13px;
   --font-ui-small: 14px;
   --font-ui-medium: 16px;
@@ -1646,9 +1695,229 @@ body.is-mobile {
   --h3-size: 1.4rem;
   --inline-title-size: 3rem;
   --header-height: 48px;
+  --input-radius: 0;
+  --modal-radius: 0;
+  --navbar-radius: 0;
+  --nav-item-radius: 0;
   --ribbon-width: 52px;
+  --setting-items-radius: 0;
+  --textarea-radius: 0;
+  --view-header-action-radius: 0;
   --file-margins-x: 16px;
   --file-margins-y: 24px;
+}
+
+.theme-light.is-mobile {
+  --ao-mobile-surface: var(--ao-paper);
+  --ao-mobile-surface-raised: var(--ao-khaki);
+  --ao-mobile-foreground: var(--ao-ink);
+  --ao-mobile-muted-foreground: var(--ao-graphite);
+  --ao-mobile-border: var(--ao-ink);
+  --ao-mobile-focus: var(--ao-cyan);
+  --ao-mobile-active-background: var(--ao-olive);
+  --ao-mobile-active-foreground: var(--ao-paper);
+  --interactive-normal: var(--ao-mobile-surface-raised);
+  --interactive-hover: var(--ao-mobile-surface);
+  --background-modifier-form-field: var(--ao-mobile-surface-raised);
+}
+
+.theme-dark.is-mobile {
+  --ao-mobile-surface: var(--ao-dark-canvas);
+  --ao-mobile-surface-raised: var(--ao-dark-recessed);
+  --ao-mobile-foreground: var(--ao-dark-paper);
+  --ao-mobile-muted-foreground: var(--ao-dark-muted);
+  --ao-mobile-border: var(--ao-dark-muted);
+  --ao-mobile-focus: var(--ao-dark-cyan);
+  --ao-mobile-active-background: var(--ao-dark-olive);
+  --ao-mobile-active-foreground: var(--ao-ink);
+  --interactive-normal: var(--ao-mobile-surface-raised);
+  --interactive-hover: var(--ao-mobile-surface);
+  --background-modifier-form-field: var(--ao-mobile-surface-raised);
+}
+
+body.is-mobile .menu {
+  background: var(--ao-mobile-surface);
+  color: var(--ao-mobile-foreground);
+}
+
+body.is-mobile .menu .menu-item {
+  border-radius: 0;
+  color: inherit;
+}
+
+body.is-mobile.is-phone .menu .menu-group .menu-item {
+  border-radius: 0;
+}
+
+body.is-mobile .menu .menu-item.is-label,
+body.is-mobile .menu .menu-item.is-disabled {
+  color: var(--ao-mobile-muted-foreground);
+  opacity: 1;
+}
+
+body.is-mobile
+  .menu
+  .menu-item
+  :is(
+    .menu-item-icon,
+    .menu-item-title,
+    .menu-item-hotkey,
+    .menu-item-chevron,
+    svg
+  ) {
+  color: inherit;
+}
+
+body.is-mobile
+  .menu
+  .menu-item:is(:hover, :active, .mobile-tap, .selected, .is-selected):not(
+    .is-disabled
+  ):not(.mod-disabled) {
+  background: var(--ao-mobile-active-background);
+  color: var(--ao-mobile-active-foreground);
+}
+
+body.is-mobile.is-phone .menu .menu-item:not(.is-label),
+body.is-mobile.is-phone
+  .menu
+  .suggestion-group
+  .suggestion-item:not(.is-label) {
+  background: var(--ao-mobile-surface-raised);
+  color: var(--ao-mobile-foreground);
+}
+
+body.is-mobile.is-phone
+  .menu
+  .menu-item:is(.mobile-tap, .selected):not(.is-disabled),
+body.is-mobile.is-phone
+  .menu
+  .suggestion-group
+  .suggestion-item:is(.mobile-tap, .is-selected):not(.is-disabled) {
+  background: var(--ao-mobile-active-background);
+  color: var(--ao-mobile-active-foreground);
+}
+
+body.is-mobile
+  .workspace-drawer-tab-options.is-collapsed
+  .workspace-tab-header-inner,
+body.is-mobile input[type='search'],
+body.is-mobile input.search-input {
+  -webkit-text-fill-color: currentColor;
+  background: var(--ao-mobile-surface-raised);
+  border: var(--ao-border-default) solid var(--ao-mobile-border);
+  border-radius: 0;
+  color: var(--ao-mobile-foreground);
+}
+
+body.is-mobile .workspace-drawer-tab-options-list {
+  background: var(--ao-mobile-surface);
+  border: var(--ao-border-default) solid var(--ao-mobile-border);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--ao-mobile-border);
+  color: var(--ao-mobile-foreground);
+}
+
+body.is-mobile
+  .workspace-drawer-tab-options
+  .workspace-tab-header:is(.is-active, .mobile-tap)
+  .workspace-tab-header-inner {
+  --icon-color: var(--ao-mobile-active-foreground);
+  background: var(--ao-mobile-active-background);
+  border-radius: 0;
+  color: var(--ao-mobile-active-foreground);
+}
+
+body.is-mobile :is(input[type='search'], input.search-input)::placeholder {
+  -webkit-text-fill-color: var(--ao-mobile-muted-foreground);
+  color: var(--ao-mobile-muted-foreground);
+  opacity: 1;
+}
+
+body.is-mobile :is(input[type='search'], input.search-input):focus {
+  border-color: var(--ao-mobile-focus);
+  box-shadow: 3px 3px 0 var(--ao-mobile-border);
+}
+
+body.is-mobile .prompt {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: var(--ao-mobile-surface);
+  border-radius: 0;
+  color: var(--ao-mobile-foreground);
+  opacity: 1;
+}
+
+body.is-mobile .prompt-results,
+body.is-mobile .prompt-input-container,
+body.is-mobile .prompt .suggestion-container {
+  background: var(--ao-mobile-surface);
+}
+
+body.is-mobile .prompt .suggestion-item:is(.is-selected, .mobile-tap) {
+  background: var(--ao-mobile-active-background);
+  border-color: var(--ao-mobile-border);
+  color: var(--ao-mobile-active-foreground);
+}
+
+body.is-mobile .prompt-input {
+  -webkit-text-fill-color: currentColor;
+  background: var(--ao-mobile-surface-raised);
+  border-radius: 0;
+  color: var(--ao-mobile-foreground);
+}
+
+body.is-mobile
+  :is(
+    .mobile-navbar,
+    .vertical-tab-header-group-items,
+    .workspace-drawer-tab-options.is-collapsed,
+    .menu,
+    .menu-scroll,
+    .prompt,
+    .prompt-input-container
+  ) {
+  border-radius: 0;
+}
+
+body.is-mobile .mobile-navbar {
+  background: var(--ao-mobile-surface);
+  border: var(--ao-border-default) solid var(--ao-mobile-border);
+  box-shadow: 3px 3px 0 var(--ao-mobile-border);
+}
+
+body.is-mobile :is(.mobile-navbar, .view-actions) .clickable-icon {
+  background: transparent;
+  border: var(--ao-border-default) solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ao-mobile-foreground);
+}
+
+body.is-mobile
+  .mobile-navbar
+  .clickable-icon:is(:active, .mobile-tap, .is-active, [aria-pressed='true']),
+body.is-mobile
+  :is(.view-actions, .workspace-drawer-header)
+  .clickable-icon:is(:active, .mobile-tap, .is-active, [aria-pressed='true']) {
+  background: var(--ao-mobile-active-background);
+  border-color: var(--ao-mobile-border);
+  box-shadow: 3px 3px 0 var(--ao-mobile-border);
+  color: var(--ao-mobile-active-foreground);
+}
+
+body.is-mobile .mobile-navbar-action.mobile-tap .clickable-icon {
+  background: var(--ao-mobile-active-background);
+  border-color: var(--ao-mobile-border);
+  box-shadow: 3px 3px 0 var(--ao-mobile-border);
+  color: var(--ao-mobile-active-foreground);
+}
+
+body.is-mobile .vertical-tab-nav-item:is(.is-active, .mobile-tap),
+body.is-mobile .horizontal-tab-nav-item:is(.is-active, .mobile-tap) {
+  --icon-color: var(--ao-mobile-active-foreground);
+  background: var(--ao-mobile-active-background);
+  border-color: var(--ao-mobile-border);
+  color: var(--ao-mobile-active-foreground);
 }
 
 body.is-mobile .clickable-icon,

@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.2` published — owner BRAT retest pending                                       |
+| Status                | `0.1.3` authorized for beta publication — owner iPhone retest pending               |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -335,7 +335,7 @@ The official candidate is ready only when all P2 requirements pass. Successful m
 | ------------------------ | ----------------------------------------------------------------------------------------- | ----- |
 | Public license           | Applied: MIT license selected and added at repository root.                               | Ivan  |
 | Beta compatibility floor | Applied: `minAppVersion` is the currently tested `1.12.7`; lower only after new evidence. | Ivan  |
-| Beta pre-release         | `0.1.2` published as an immutable interaction-state checkpoint.                           | Ivan  |
+| Beta pre-release         | `0.1.3` authorized as a mobile-hardening checkpoint for owner-led acceptance.             | Ivan  |
 
 BRAT-004 now passes locally with the owner-selected MIT license. Revisit the compatibility decision only if the project intends to support versions older than `1.12.7`.
 
@@ -398,6 +398,8 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - `docs/releases/0.1.1-beta-notes.md`
 - `docs/releases/0.1.2-beta.md`
 - `docs/releases/0.1.2-beta-notes.md`
+- `docs/releases/0.1.3-beta.md`
+- `docs/releases/0.1.3-beta-notes.md`
 
 ### Key decisions
 
@@ -433,12 +435,13 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - The `0.1.2` candidate preserves chrome foregrounds after pane blur, restores a non-color active side-dock cue, and keeps interactive Markdown table headers readable in the real Obsidian runtime.
 - GitHub Actions run [30155669146](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30155669146) passed on release commit `a6352c5bb1fb14dbd97c0c741212f45d50c7e266`.
 - Annotated tag `0.1.2` resolves to that commit, and the [0.1.2 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.2) exposes four assets whose downloaded SHA-256 values match the tagged files.
+- The `0.1.3` candidate uses mobile-scoped semantic surfaces, explicit tap/selected states, opaque prompts, and square mobile geometry while keeping the accepted desktop baseline unchanged.
 
 ### Open questions and risks
 
 - Compatibility below `minAppVersion: 1.12.7` is not currently claimed.
 - GitHub raw-content caching may delay urgent updates or rollbacks.
 - A private-pilot tester still needs to submit a non-sensitive dry-run report through the rendered Issue Forms.
-- Owner-led BRAT retest of the published `0.1.2` interaction-state repair remains pending.
+- Owner-led BRAT and real-iPhone retest of the `0.1.3` mobile-hardening candidate remains pending.
 - Real Windows, Linux, iOS, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.

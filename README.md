@@ -6,11 +6,11 @@ Archive Olive is a practical brutalist theme for Obsidian. It combines archival 
 
 ## Status
 
-Version `0.1.2` is an opt-in pre-release beta validated on Obsidian Desktop `1.12.7` for macOS. It is not yet an official Obsidian community theme.
+Version `0.1.3` is an opt-in pre-release beta validated on Obsidian Desktop `1.12.7` for macOS. It is not yet an official Obsidian community theme.
 
-Archive Olive currently uses `main/theme.css` as its only BRAT channel. Windows, Linux, iOS, and Android acceptance is still pending.
+Archive Olive currently uses `main/theme.css` as its only BRAT channel. The `0.1.3` mobile hardening candidate is ready for owner-led iPhone acceptance; Windows, Linux, Android, and final iOS acceptance remain pending.
 
-[Download the Archive Olive 0.1.2 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.2).
+[Download the Archive Olive 0.1.3 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.3).
 
 ![Archive Olive light workspace](validation/screenshots/light-workspace.png)
 
@@ -76,7 +76,7 @@ Run the repeatable static checks:
 node scripts/validate.mjs
 npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
 npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md docs/specs/README.md docs/specs/brat-beta-release.md docs/releases/0.1.2-beta.md docs/releases/0.1.2-beta-notes.md
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.3-beta.md docs/releases/0.1.3-beta-notes.md
 ```
 
 Before publishing a beta build, run the stricter release gate:
@@ -91,7 +91,7 @@ The isolated `test-vault` covers Markdown primitives, multilingual text, dense n
 
 Use the [BRAT Beta cross-platform HAT guide](hats/20260725-brat-beta-cross-platform/guide.md) for the private pilot and owner-led Windows, Linux, iOS, and Android acceptance. The guide includes preparation, evidence, privacy, update, removal, and platform-specific checklists.
 
-The [`0.1.2` beta release record](docs/releases/0.1.2-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
+The [`0.1.3` beta release record](docs/releases/0.1.3-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
 
 ## Reporting beta issues
 
@@ -114,7 +114,7 @@ Archive Olive is available under the [MIT License](LICENSE).
 
 ## Known release limitations
 
-- Real mobile-device and cross-platform desktop testing is pending.
+- Owner-led verification of the `0.1.3` candidate on a real iPhone and cross-platform desktop testing are pending.
 - The GitHub pre-release is an opt-in checkpoint; pilot feedback and final community-theme checks remain required before an official-directory submission.
 - BRAT and GitHub raw-content caching can delay urgent fixes or rollbacks.
 - Optional paper texture, Style Settings integration, curated plugin rules, and Obsidian Publish support remain P2 work.
@@ -128,7 +128,7 @@ Archive Olive is available under the [MIT License](LICENSE).
 - [Theme specification](docs/specs/theme.md)
 - [BRAT Beta release specification](docs/specs/brat-beta-release.md)
 - [BRAT Beta cross-platform HAT](hats/20260725-brat-beta-cross-platform/guide.md)
-- [`0.1.2` beta release record](docs/releases/0.1.2-beta.md)
+- [`0.1.3` beta release record](docs/releases/0.1.3-beta.md)
 - [CHANGELOG.md](CHANGELOG.md)
 - [BRAT Beta release image](assets/screenshots/archive-olive-512x288.png)
 - [Archive Olive reference concept](design/concepts/01f-archive-olive.png)

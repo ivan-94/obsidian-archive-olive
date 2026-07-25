@@ -2,10 +2,11 @@
 
 All project specifications live in this directory.
 
-| Specification                             | Status                                       | Purpose                                                                                       |
-| ----------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [Theme](theme.md)                         | Implemented; public-release gates remain     | Defines the theme behavior, compatibility, requirements, and acceptance criteria.             |
-| [BRAT Beta Release](brat-beta-release.md) | `0.1.2` published; owner BRAT retest pending | Defines the repository preparation, beta channel, validation, rollout, and rollback contract. |
+| Specification                                                 | Status                                   | Purpose                                                                                         |
+| ------------------------------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [Theme](theme.md)                                             | Implemented; public-release gates remain | Defines the theme behavior, compatibility, requirements, and acceptance criteria.               |
+| [BRAT Beta Release](brat-beta-release.md)                     | `0.1.3` authorized for beta publication  | Defines the repository preparation, beta channel, validation, rollout, and rollback contract.   |
+| [iOS Mobile Visual Hardening](mobile-ios-visual-hardening.md) | Implemented; owner iPhone retest pending | Fixes audited iPhone visual issues while treating the accepted desktop appearance as immutable. |
 
 ## Source Manifest
 
@@ -17,8 +18,10 @@ All project specifications live in this directory.
 ### Produced artifacts
 
 - `docs/specs/README.md`
+- `docs/specs/mobile-ios-visual-hardening.md`
 
 ### Key decisions
 
 - `docs/specs/` is the canonical location for all project specifications.
 - Each specification remains independently readable and carries its own Source Manifest.
+- The accepted desktop appearance is a frozen regression baseline for mobile visual hardening.

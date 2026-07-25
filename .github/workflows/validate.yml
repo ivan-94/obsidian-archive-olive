@@ -49,14 +49,18 @@ jobs:
           manifest.json
           README.md
           CHANGELOG.md
+          AGENTS.md
           docs/specs/README.md
           docs/specs/brat-beta-release.md
+          docs/specs/mobile-ios-visual-hardening.md
           docs/releases/0.1.0-beta.md
           docs/releases/0.1.0-beta-notes.md
           docs/releases/0.1.1-beta.md
           docs/releases/0.1.1-beta-notes.md
           docs/releases/0.1.2-beta.md
           docs/releases/0.1.2-beta-notes.md
+          docs/releases/0.1.3-beta.md
+          docs/releases/0.1.3-beta-notes.md
           hats/20260725-brat-beta-cross-platform/guide.md
           hats/20260725-brat-beta-cross-platform/human-report.md
           scripts/validate.mjs

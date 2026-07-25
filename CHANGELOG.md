@@ -8,6 +8,19 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 No unreleased changes.
 
+## [0.1.3] - 2026-07-25
+
+### Fixed
+
+- Restored high-contrast tooltip and notice foregrounds in both light and dark modes while preserving the theme's hard borders and offset shadows.
+- Replaced Obsidian's low-contrast dark-mobile interactive remapping with mobile-scoped semantic surfaces for menus, drawer tabs, search prompts, settings navigation, and form fields.
+- Made mobile search surfaces opaque and added explicit, readable `.mobile-tap`, selected, active, label, and disabled states.
+- Removed non-semantic mobile pill geometry while preserving 44 px touch targets and iOS safe-area behavior.
+
+### Changed
+
+- Required Obsidian runtime and visual acceptance to use the isolated repository `test-vault/` instead of personal vaults.
+
 ## [0.1.2] - 2026-07-25
 
 ### Fixed
@@ -63,6 +76,9 @@ No unreleased changes.
 - User direction in this Codex thread: begin implementing the BRAT Beta release specification.
 - User confirmation in this Codex thread: use the MIT license.
 - User screenshots from BRAT-installed `0.1.0` showing low-contrast navigation, tab-list, inactive-tab, and vault-switcher states.
+- User screenshot in this Codex thread showing low-contrast tooltips and notices.
+- User direction in this Codex thread to perform Obsidian acceptance only in the repository `test-vault/`.
+- User direction and iPhone audit evidence in [`docs/specs/mobile-ios-visual-hardening.md`](docs/specs/mobile-ios-visual-hardening.md).
 - [`docs/specs/brat-beta-release.md`](docs/specs/brat-beta-release.md).
 - Existing Git history and [`VALIDATION.md`](VALIDATION.md).
 
@@ -77,8 +93,10 @@ No unreleased changes.
 - `0.1.0` is an opt-in GitHub pre-release; pilot acceptance remains required before broader announcement or official-directory submission.
 - `0.1.1` is a focused accessibility patch; it does not change the palette, layout, or compatibility floor.
 - `0.1.2` completes the interaction-state repair without changing the palette, layout, compatibility floor, or BRAT channel.
+- `0.1.3` ships mobile-scoped visual hardening for owner-led iPhone acceptance while preserving the accepted desktop baseline.
 
-[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.2...HEAD
+[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.3...HEAD
+[0.1.3]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0

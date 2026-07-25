@@ -2,7 +2,7 @@
 
 Date: 2026-07-25
 
-Build: `0.1.2`
+Build: `0.1.3`
 
 Runtime: Obsidian Desktop `1.12.7`, macOS
 
@@ -16,21 +16,21 @@ The final implementation has no remote assets, `@import`, routine `!important`, 
 
 ## P0 requirement matrix
 
-| ID     | Status | Evidence                                                                                                                                                            |
-| ------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.2`; final developer error buffer is empty.                                                               |
-| AO-002 | Pass   | Light and dark computed surface, text, active-tab, and active-file colors changed coherently; see workspace screenshots.                                            |
-| AO-003 | Pass   | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a continuous square grid.                                                        |
-| AO-004 | Pass   | Active file uses an olive fill plus a carbon inset rule; active root tab uses cyan plus a heavy bottom rule; inactive root and side-dock tabs remain legible.       |
-| AO-005 | Pass   | Fixture content was reviewed in Live Preview and Reading View with headings, lists, tasks, quotes, callouts, code, tables, tags, properties, and links.             |
-| AO-006 | Pass   | Pure Source Mode exposes readable Markdown/YAML syntax, visible selection, and an oxblood caret.                                                                    |
-| AO-007 | Pass   | Command palette, quick switcher, settings dialog, native file menu, notices, inputs, tooltips, and dropdown rules were exercised or inspected.                      |
-| AO-008 | Pass   | Default, hover, active, selected, focus-visible, and disabled treatments use borders, offsets, or geometry as well as color.                                        |
-| AO-009 | Pass   | Body line height computes to `1.65`; readable-line width maps to `80ch`; tables and media are not globally constrained.                                             |
-| AO-010 | Pass   | All twenty normative normal-text, application-chrome, and table-header pairs exceed WCAG AA; ratios range from `4.57:1` to `15.36:1`; prompt focus remains visible. |
-| AO-011 | Pass   | Static scan finds no remote CSS asset or import.                                                                                                                    |
-| AO-012 | Pass   | Static scan finds no `!important`, `:has()`, or global Graph/Canvas texture.                                                                                        |
-| AO-013 | Pass   | Theme uses Obsidian's interface/text/monospace variables and maintains layout under the local user accent/font preference pipeline.                                 |
+| ID     | Status | Evidence                                                                                                                                                        |
+| ------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.3`; final developer error buffer is empty.                                                           |
+| AO-002 | Pass   | Light and dark computed surface, text, active-tab, and active-file colors changed coherently; see workspace screenshots.                                        |
+| AO-003 | Pass   | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a continuous square grid.                                                    |
+| AO-004 | Pass   | Active file uses an olive fill plus a carbon inset rule; active root tab uses cyan plus a heavy bottom rule; inactive root and side-dock tabs remain legible.   |
+| AO-005 | Pass   | Fixture content was reviewed in Live Preview and Reading View with headings, lists, tasks, quotes, callouts, code, tables, tags, properties, and links.         |
+| AO-006 | Pass   | Pure Source Mode exposes readable Markdown/YAML syntax, visible selection, and an oxblood caret.                                                                |
+| AO-007 | Pass   | Command palette, quick switcher, settings dialog, native file menu, notices, inputs, tooltips, and dropdown rules were exercised or inspected.                  |
+| AO-008 | Pass   | Default, hover, active, selected, focus-visible, and disabled treatments use borders, offsets, or geometry as well as color.                                    |
+| AO-009 | Pass   | Body line height computes to `1.65`; readable-line width maps to `80ch`; tables and media are not globally constrained.                                         |
+| AO-010 | Pass   | All 28 normative desktop, feedback, menu, mobile, and table-header pairs exceed WCAG AA; ratios range from `4.57:1` to `15.36:1`; prompt focus remains visible. |
+| AO-011 | Pass   | Static scan finds no remote CSS asset or import.                                                                                                                |
+| AO-012 | Pass   | Static scan finds no `!important`, `:has()`, or global Graph/Canvas texture.                                                                                    |
+| AO-013 | Pass   | Theme uses Obsidian's interface/text/monospace variables and maintains layout under the local user accent/font preference pipeline.                             |
 
 ## P1 local status
 
@@ -63,12 +63,20 @@ node scripts/validate.mjs
 node scripts/validate.mjs --release
 npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
 npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md docs/specs/README.md docs/specs/brat-beta-release.md scripts/validate.mjs .github/workflows/validate.yml .github/ISSUE_TEMPLATE/bug.yml .github/ISSUE_TEMPLATE/platform-validation.yml .prettierrc.json
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.3-beta.md docs/releases/0.1.3-beta-notes.md scripts/validate.mjs .github/workflows/validate.yml .github/ISSUE_TEMPLATE/bug.yml .github/ISSUE_TEMPLATE/platform-validation.yml .prettierrc.json
 jq empty manifest.json "test-vault/Archive Olive.canvas"
 git diff --check
 ```
 
-`scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, and twenty WCAG contrast pairs. Release mode also verifies the MIT license and README link.
+`scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, mobile scope isolation, and 28 WCAG contrast pairs. Release mode also verifies the MIT license and README link.
+
+## 0.1.3 mobile visual hardening
+
+- A real iPhone and Safari Web Inspector audit identified low-contrast dark-mobile interactive surfaces, translucent search results, weak tap/selected states, and non-semantic pill geometry.
+- The repair introduces `.is-mobile`-scoped semantic surfaces for light and dark modes, overrides Obsidian's dark-mobile interactive remapping, and keeps menus, drawer tabs, prompts, settings navigation, and form fields readable.
+- Tooltip and notice surfaces now use explicit high-contrast foreground/background pairs; side-dock tab-strip scrollbars remain hidden without disabling overflow.
+- Static rules reject mobile semantic declarations that escape `.is-mobile`; desktop light, dark, and blurred-window screenshots showed no visual regression and desktop computed styles do not receive `--ao-mobile-*` tokens.
+- The candidate is published for owner-led iPhone acceptance. A repair-after screenshot matrix on the real device remains pending and is not claimed as passed.
 
 ## 0.1.2 interaction-state regression
 
