@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.3` authorized for beta publication — owner iPhone retest pending               |
+| Status                | `0.1.3` published — owner BRAT and iPhone retest pending                            |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -335,7 +335,7 @@ The official candidate is ready only when all P2 requirements pass. Successful m
 | ------------------------ | ----------------------------------------------------------------------------------------- | ----- |
 | Public license           | Applied: MIT license selected and added at repository root.                               | Ivan  |
 | Beta compatibility floor | Applied: `minAppVersion` is the currently tested `1.12.7`; lower only after new evidence. | Ivan  |
-| Beta pre-release         | `0.1.3` authorized as a mobile-hardening checkpoint for owner-led acceptance.             | Ivan  |
+| Beta pre-release         | `0.1.3` published as a mobile-hardening checkpoint for owner-led acceptance.              | Ivan  |
 
 BRAT-004 now passes locally with the owner-selected MIT license. Revisit the compatibility decision only if the project intends to support versions older than `1.12.7`.
 
@@ -436,6 +436,8 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - GitHub Actions run [30155669146](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30155669146) passed on release commit `a6352c5bb1fb14dbd97c0c741212f45d50c7e266`.
 - Annotated tag `0.1.2` resolves to that commit, and the [0.1.2 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.2) exposes four assets whose downloaded SHA-256 values match the tagged files.
 - The `0.1.3` candidate uses mobile-scoped semantic surfaces, explicit tap/selected states, opaque prompts, and square mobile geometry while keeping the accepted desktop baseline unchanged.
+- GitHub Actions run [30162413956](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30162413956) passed on release commit `f0dbcb2ca1eab9a5f29ed6ff197d888f63e33f47`.
+- Annotated tag `0.1.3` resolves to that commit, and the [0.1.3 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.3) exposes four assets whose downloaded SHA-256 values match the tagged files.
 
 ### Open questions and risks
 
