@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | In implementation — private pilot remains                                           |
+| Status                | Pre-release publication authorized — post-release pilot remains                     |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -343,6 +343,8 @@ BRAT-004 now passes locally with the owner-selected MIT license. Revisit the com
 
 Status as of 2026-07-25:
 
+The owner authorized the opt-in GitHub pre-release before completing the human pilot. This exception publishes a recoverable beta checkpoint but does not mark the pending human acceptance requirements as passed or authorize official-directory submission.
+
 | Requirement | Local state                                                                                                          | Remaining work                                                |
 | ----------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | BRAT-001    | Public root files confirmed on pushed `main`                                                                         | None                                                          |
@@ -423,5 +425,6 @@ Status as of 2026-07-25:
 - Compatibility below `minAppVersion: 1.12.7` is not currently claimed.
 - GitHub raw-content caching may delay urgent updates or rollbacks.
 - A private-pilot tester still needs to submit a non-sensitive dry-run report through the rendered Issue Forms.
+- Owner-led BRAT visual acceptance is intentionally deferred until after the `0.1.0` pre-release.
 - Real Windows, Linux, iOS, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.

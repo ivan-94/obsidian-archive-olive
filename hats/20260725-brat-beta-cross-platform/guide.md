@@ -13,7 +13,7 @@
 | Environment mode   | `blank`                                                                                                                                                         |
 | Mode reason        | A theme does not depend on historical application data. New vaults with public, non-sensitive fixtures give the safest and most reproducible platform evidence. |
 | Preparation status | `prepared`                                                                                                                                                      |
-| Target             | Archive Olive `0.1.0` BRAT private pilot                                                                                                                        |
+| Target             | Archive Olive `0.1.0` post-release BRAT acceptance                                                                                                              |
 
 <!-- HAT:END metadata -->
 
@@ -46,7 +46,7 @@ Desktop testers may use the prepared manual-install bundle for diagnosis, but th
 - A signed-in GitHub session is required to render and optionally submit the Issue Forms.
 - Windows, Linux, iOS, and Android require real environments supplied by the owner or pilot testers.
 - A BRAT update scenario requires a tester to retain an installed baseline until a later assigned commit changes `theme.css`.
-- Do not publish the `0.1.0` tag or pre-release until the private-pilot exit criteria pass.
+- The owner authorized an opt-in `0.1.0` pre-release before human acceptance; broader announcement and official-directory submission remain blocked.
 
 ## Acceptance accounts
 
@@ -378,7 +378,7 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 
 - Use `blank` mode with disposable vaults and public fixtures; no historical or shared data is required.
 - Keep BRAT as the primary installation and update path.
-- Keep tag and pre-release publication blocked until private-pilot exit criteria pass.
+- Preserve pending human acceptance honestly after the owner-authorized pre-release.
 
 ### Verification evidence
 
