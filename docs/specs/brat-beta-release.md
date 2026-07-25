@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.1` contrast patch prepared — publication and retest pending                    |
+| Status                | `0.1.1` published — owner BRAT retest pending                                       |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -335,7 +335,7 @@ The official candidate is ready only when all P2 requirements pass. Successful m
 | ------------------------ | ----------------------------------------------------------------------------------------- | ----- |
 | Public license           | Applied: MIT license selected and added at repository root.                               | Ivan  |
 | Beta compatibility floor | Applied: `minAppVersion` is the currently tested `1.12.7`; lower only after new evidence. | Ivan  |
-| Beta pre-release         | `0.1.0` published; prepare `0.1.1` as an immutable contrast-fix checkpoint.               | Ivan  |
+| Beta pre-release         | `0.1.1` published as an immutable contrast-fix checkpoint.                                | Ivan  |
 
 BRAT-004 now passes locally with the owner-selected MIT license. Revisit the compatibility decision only if the project intends to support versions older than `1.12.7`.
 
@@ -425,7 +425,9 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - Annotated tag `0.1.0` resolves to `034515ddc03b245d2635324465f8aac8e47bea43`.
 - The [Archive Olive 0.1.0 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0) is published with verified `theme.css`, `manifest.json`, `LICENSE`, and release-image digests.
 - User screenshots from the BRAT-installed `0.1.0` artifact exposed low-contrast root tabs, side-dock icons, tab-list controls, and the vault-switcher chevron.
-- The `0.1.1` candidate replaces generic muted body text on application chrome with surface-specific semantic foreground tokens and passes real-application light/dark checks.
+- The `0.1.1` release replaces generic muted body text on application chrome with surface-specific semantic foreground tokens and passes real-application light/dark checks.
+- GitHub Actions run [30151853100](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30151853100) passed on release commit `d011427e3310a170a230b4743c7cc3c476b3443f`.
+- Annotated tag `0.1.1` resolves to that commit, and the [0.1.1 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.1) exposes four assets whose downloaded SHA-256 values match the tagged files.
 
 ### Open questions and risks
 

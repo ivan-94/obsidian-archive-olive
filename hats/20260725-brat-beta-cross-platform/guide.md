@@ -12,7 +12,7 @@
 | Repository root    | `obsidian-brutalism-theme`                                                                                                                                      |
 | Environment mode   | `blank`                                                                                                                                                         |
 | Mode reason        | A theme does not depend on historical application data. New vaults with public, non-sensitive fixtures give the safest and most reproducible platform evidence. |
-| Preparation status | `0.1.1` patch prepared; publication and human retest pending                                                                                                    |
+| Preparation status | `0.1.1` published; human BRAT retest pending                                                                                                                    |
 | Target             | Archive Olive `0.1.1` navigation-contrast acceptance                                                                                                            |
 
 <!-- HAT:END metadata -->
@@ -392,7 +392,8 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 - On 2026-07-25, both Issue Forms rendered in a signed-in Chrome session with the expected fields, required markers, privacy check, and Create control. No issue was submitted.
 - Release commit `034515d` passed GitHub Actions, annotated tag `0.1.0` resolves to that commit, and all four downloaded release assets match their tagged SHA-256 values.
 - User feedback on the BRAT-installed `0.1.0` artifact identified unreadable navigation, tab-list, inactive-tab, and vault-switcher states.
-- The `0.1.1` candidate passes real-application light/dark checks and sixteen automated contrast pairs; human BRAT retest remains pending.
+- The `0.1.1` release passes real-application light/dark checks and sixteen automated contrast pairs; human BRAT retest remains pending.
+- GitHub Actions run `30151853100` passed on `d011427e3310a170a230b4743c7cc3c476b3443f`; tag `0.1.1` resolves to that commit and its four downloaded assets match their tagged hashes.
 
 ### Open questions / risks
 

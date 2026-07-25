@@ -21,7 +21,7 @@
 
 | Item                              | Result                                                                                                          |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Candidate commit                  | Local `0.1.1` candidate; release commit pending                                                                 |
+| Published candidate               | Tag `0.1.1` → `d011427e3310a170a230b4743c7cc3c476b3443f`                                                        |
 | Obsidian version                  | Desktop `1.12.7`                                                                                                |
 | BRAT version                      | `2.2.0` from the preceding lifecycle smoke test; the current vault no longer contains the BRAT plugin directory |
 | Operating system                  | macOS                                                                                                           |
@@ -106,6 +106,7 @@
 - [`0.1.0` release commit](https://github.com/ivan-94/obsidian-archive-olive/commit/034515ddc03b245d2635324465f8aac8e47bea43).
 - [Archive Olive 0.1.0 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0).
 - [Archive Olive 0.1.1 Beta release record](../../docs/releases/0.1.1-beta.md).
+- [Archive Olive 0.1.1 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.1).
 
 ### Produced artifacts
 
@@ -132,6 +133,8 @@
 - The published release is not a draft, is marked as a pre-release, and exposes four assets whose downloaded SHA-256 values match the tagged files.
 - User screenshots reproduce the `0.1.0` contrast defects across the carbon root strip, signal-cyan side dock, and field-olive vault profile.
 - The `0.1.1` candidate passes real-application checks in light and dark appearances plus sixteen automated contrast pairs.
+- GitHub Actions run `30151853100` passed on release commit `d011427e3310a170a230b4743c7cc3c476b3443f`.
+- Annotated tag `0.1.1` resolves to the release commit; the published pre-release is not a draft and all four downloaded assets match their tagged SHA-256 values.
 
 ### Open questions / risks
 
