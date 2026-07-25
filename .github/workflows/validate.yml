@@ -52,8 +52,10 @@ jobs:
           .github/workflows/validate.yml
           .github/ISSUE_TEMPLATE/bug.yml
           .github/ISSUE_TEMPLATE/platform-validation.yml
+          .prettierrc.json
 
 # Source Manifest:
 # - docs/specs/brat-beta-release.md
+# - .prettierrc.json
 # - https://github.com/actions/checkout
 # - https://github.com/actions/setup-node

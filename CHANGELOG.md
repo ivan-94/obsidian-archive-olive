@@ -25,6 +25,7 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 - Set the beta compatibility floor to the locally tested Obsidian version `1.12.7`.
 - Added the project author URL to `manifest.json`.
+- Pinned repository-local Prettier settings so local and GitHub Actions formatting checks agree.
 
 ## [0.1.0] - 2026-07-25
 
