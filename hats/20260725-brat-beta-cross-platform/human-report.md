@@ -21,7 +21,7 @@
 
 | Item                              | Result                                                                                                          |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Candidate commit                  | `2dab3b7b244b454ce4321a309244f17a2ad86b2f`; local HEAD and remote `main` match                                  |
+| Candidate commit                  | Published tag `0.1.0` → `034515ddc03b245d2635324465f8aac8e47bea43`                                              |
 | Obsidian version                  | Desktop `1.12.7`                                                                                                |
 | BRAT version                      | `2.2.0` from the preceding lifecycle smoke test; the current vault no longer contains the BRAT plugin directory |
 | Operating system                  | macOS                                                                                                           |
@@ -37,7 +37,7 @@
 - [x] P0-01 — Identify the BRAT-installed candidate
   - Status: Passed
   - Human result: Not required for checksum comparison
-  - Notes: Installed `theme.css` and `manifest.json` hashes exactly match the immutable raw files from remote `main@2dab3b7`. The installed manifest is Archive Olive `0.1.0` with `minAppVersion: 1.12.7`; `appearance.json` selects `Archive Olive`; Obsidian is running.
+  - Notes: Installed `theme.css` and `manifest.json` hashes exactly match the published `0.1.0` release assets. The installed manifest is Archive Olive `0.1.0` with `minAppVersion: 1.12.7`; `appearance.json` selects `Archive Olive`; Obsidian is running.
   - Next: Human confirms that the installed candidate survives an Obsidian reload.
 - [ ] P0-02 — Install, activate, and survive reload
   - Status: Deferred by owner until after pre-release publication
@@ -102,7 +102,8 @@
 - [BRAT beta release specification](../../docs/specs/brat-beta-release.md).
 - [Validation evidence](../../VALIDATION.md).
 - [Repository README](../../README.md).
-- [`main` candidate commit](https://github.com/ivan-94/obsidian-archive-olive/commit/2dab3b7b244b454ce4321a309244f17a2ad86b2f).
+- [`0.1.0` release commit](https://github.com/ivan-94/obsidian-archive-olive/commit/034515ddc03b245d2635324465f8aac8e47bea43).
+- [Archive Olive 0.1.0 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0).
 
 ### Produced artifacts
 
@@ -118,12 +119,14 @@
 
 ### Verification evidence
 
-- Local HEAD and remote `main` both resolved to `2dab3b7b244b454ce4321a309244f17a2ad86b2f`.
+- Annotated tag `0.1.0` resolves to release commit `034515ddc03b245d2635324465f8aac8e47bea43`.
 - The BRAT-installed `theme.css` SHA-256 `dd5323d8…` exactly matched the immutable remote candidate file.
 - The BRAT-installed `manifest.json` SHA-256 `42c6912a…` exactly matched the immutable remote candidate file.
 - The installed manifest reports Archive Olive `0.1.0` and `minAppVersion: 1.12.7`.
 - Obsidian Desktop `1.12.7` is running and the vault configuration selects `Archive Olive`.
 - `node scripts/validate.mjs --release` passed against the candidate repository.
+- GitHub Actions run `30148368218` passed on the release commit.
+- The published release is not a draft, is marked as a pre-release, and exposes four assets whose downloaded SHA-256 values match the tagged files.
 
 ### Open questions / risks
 

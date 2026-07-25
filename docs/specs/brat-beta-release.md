@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | Pre-release publication authorized — post-release pilot remains                     |
+| Status                | `0.1.0` pre-release published — post-release pilot remains                          |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -419,6 +419,9 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - After GitHub Raw caching cleared, BRAT replaced the installed stylesheet checksum `69c57422…` with `dd5323d8…`, matching the pushed `theme.css`; the updated manifest was also present.
 - Light and dark activation, an update check, BRAT unregistration, theme disabling, and recoverable removal passed in the isolated vault.
 - On 2026-07-25, both Issue Forms rendered in a signed-in Chrome session with their intended fields, required markers, privacy check, and Create control. The check was read-only and did not submit an issue.
+- GitHub Actions run [30148368218](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30148368218) passed on release commit `034515d`.
+- Annotated tag `0.1.0` resolves to `034515ddc03b245d2635324465f8aac8e47bea43`.
+- The [Archive Olive 0.1.0 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0) is published with verified `theme.css`, `manifest.json`, `LICENSE`, and release-image digests.
 
 ### Open questions and risks
 

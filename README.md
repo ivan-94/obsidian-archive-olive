@@ -10,6 +10,8 @@ Version `0.1.0` is an opt-in pre-release beta validated on Obsidian Desktop `1.1
 
 Archive Olive currently uses `main/theme.css` as its only BRAT channel. Windows, Linux, iOS, and Android acceptance is still pending.
 
+[Download the Archive Olive 0.1.0 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0).
+
 ![Archive Olive light workspace](validation/screenshots/light-workspace.png)
 
 ![Archive Olive dark workspace](validation/screenshots/dark-workspace.png)

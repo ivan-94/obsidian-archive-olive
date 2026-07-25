@@ -12,7 +12,7 @@
 | Repository root    | `obsidian-brutalism-theme`                                                                                                                                      |
 | Environment mode   | `blank`                                                                                                                                                         |
 | Mode reason        | A theme does not depend on historical application data. New vaults with public, non-sensitive fixtures give the safest and most reproducible platform evidence. |
-| Preparation status | `prepared`                                                                                                                                                      |
+| Preparation status | `published`; acceptance pending                                                                                                                                 |
 | Target             | Archive Olive `0.1.0` post-release BRAT acceptance                                                                                                              |
 
 <!-- HAT:END metadata -->
@@ -368,6 +368,7 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 - [Rendered platform-validation Issue Form](https://github.com/ivan-94/obsidian-archive-olive/issues/new?template=platform-validation.yml).
 - [Rendered bug Issue Form](https://github.com/ivan-94/obsidian-archive-olive/issues/new?template=bug.yml).
 - [GitHub Actions run for baseline `d73be74`](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30146751956).
+- [Archive Olive 0.1.0 Beta pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.0).
 
 ### Produced artifacts
 
@@ -388,6 +389,7 @@ Add go/no-go reasoning, accepted visual differences, and links to pilot issues h
 - `shellcheck` was not available in the preparation environment.
 - The low-risk blank preparation ran successfully for `d73be74`, manifest `0.1.0`, with stylesheet checksum `dd5323d8…`.
 - On 2026-07-25, both Issue Forms rendered in a signed-in Chrome session with the expected fields, required markers, privacy check, and Create control. No issue was submitted.
+- Release commit `034515d` passed GitHub Actions, annotated tag `0.1.0` resolves to that commit, and all four downloaded release assets match their tagged SHA-256 values.
 
 ### Open questions / risks
 
