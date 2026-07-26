@@ -198,7 +198,8 @@ The exact list must be verified against the current Obsidian CSS variable refere
 | Archive Olive role | Obsidian variable intent                    | Value     |
 | ------------------ | ------------------------------------------- | --------- |
 | Canvas             | `--background-secondary`                    | `#15160F` |
-| Editor             | `--background-primary`                      | `#1D2014` |
+| Editor chrome      | `--background-primary`                      | `#1D2014` |
+| Note body          | `--ao-dark-content` (Markdown content only) | `#000000` |
 | Recessed panel     | `--background-secondary-alt`                | `#252919` |
 | Primary text       | `--text-normal`                             | `#EEE4C8` |
 | Secondary text     | `--text-muted`                              | `#B4AA8F` |

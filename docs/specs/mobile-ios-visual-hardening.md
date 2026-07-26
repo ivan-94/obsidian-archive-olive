@@ -78,7 +78,7 @@
 
 菜单、抽屉选择器和图谱设置输入框把浅沙色表面 `#b4aa8f` 与纸色文字 `#eee4c8` 组合使用。实测对比度约为 **1.82:1**，低于普通文字要求的 4.5:1。受影响菜单项并非禁用状态，实际 `opacity` 为 1。
 
-截图证据来自本次真实 iPhone 审计，覆盖深色移动抽屉、菜单和图谱设置。原图包含真实 vault 名称、目录结构和笔记片段，依据 BRAT-008 隐私规则仅保留在本机未跟踪审计目录，不进入公开仓库。
+截图证据来自本次真实 iPhone 审计，覆盖深色移动抽屉、菜单和图谱设置。原图包含真实 vault 名称、目录结构和笔记片段，依据 BRAT-008 隐私规则不进入公开仓库。
 
 期望：
 
@@ -91,7 +91,7 @@
 
 全局搜索 `.prompt` 实测背景约为 `rgba(..., 0.9)`，`.prompt-results` 和 `.prompt-input` 为透明背景。搜索结果区域能看到笔记正文穿透，导致内容层级和文字辨识度下降。
 
-截图证据记录了搜索结果表面下方可见的正文穿透。原图因包含真实笔记片段，仅保留在本机未跟踪审计目录。
+截图证据记录了搜索结果表面下方可见的正文穿透。原图因包含真实笔记片段而不进入公开仓库。
 
 期望：
 
@@ -104,7 +104,7 @@
 
 审计发现菜单项、prompt、输入框、抽屉选择器、顶部按钮和底部导航存在 24–60 px 的大圆角；例如 44 × 44 顶部按钮使用 44 px 圆角，底部导航约使用 52 px 圆角。这与项目“矩形、硬边、仅语义圆形元素使用圆形”的设计规则冲突。
 
-截图证据覆盖深色设置页胶囊容器、圆形工具按钮及浅色笔记页移动工具栏。原图因包含真实 vault 上下文，仅保留在本机未跟踪审计目录。
+截图证据覆盖深色设置页胶囊容器、圆形工具按钮及浅色笔记页移动工具栏。原图因包含真实 vault 上下文而不进入公开仓库。
 
 期望：
 
@@ -278,6 +278,55 @@
 - Android 未纳入本期完整验收矩阵；共享 `.is-mobile` 规则必须保持保守，iOS 专属差异使用 `.is-ios` 隔离。
 - 审计控制台中的缺失 `leaf-*.png` 来自 vault 内容，不属于主题缺陷。
 
+## 13. `0.1.3` 发布后真机复验
+
+2026-07-26 通过 iPhone 镜像与 Safari Web Inspector 对已发布的 `0.1.3` 继续复验，确认以下遗漏：
+
+- 顶部导航和侧栏设置按钮保持了 44 × 44 CSS px 触控区，但 `.mod-raised` 的 4 px 外投影跨过分割线。
+- `.metadata-container` 宽 361 px，而 `.metadata-content` 宽 365 px 并使用 `translateX(-12px)`，左右越过父边框各 2 px；内部圆角仍为 24 px。
+- 展开的 `.workspace-drawer-tab-select .workspace-tab-header-inner` 圆角仍为 30 px。
+- `.workspace-drawer-header-switcher` 使用 flex，但未设置垂直居中。
+- `.mobile-toolbar-options-list` 圆角仍为 44 px。
+- `.prompt-input` 在命令面板聚焦时圆角仍为 44 px。
+
+本轮候选修复保留 44 px 触控目标，把 raised 状态改为不越界的内嵌规则；同时以 `body.is-mobile.is-phone` 提高针对 Obsidian phone 样式的选择器优先级，并将 metadata 的位移、宽度和剩余非语义圆角归零。候选仅部署到 iCloud `test-vault` 供人工复验，未提交或发布。
+
+候选部署后的真机复测结果：
+
+- 顶部导航按钮仍为 44 × 44 px，边框透明；raised 状态为 `inset 0 -3px`，不再跨过分割线。
+- `.metadata-content` 为 `x=26 / width=341 / right=367`，完整位于父容器 `x=16 / width=361 / right=377` 内，`transform:none`、圆角 0 px。
+- 侧栏选择器、命令输入框和选中命令结果的圆角均为 0 px。
+- vault selector 的 `align-items` 为 `center`；设置按钮仍为 44 × 44 px，且仅使用内嵌状态线。
+- 编辑 action strip 的 `.mobile-toolbar-options-list` 圆角为 0 px，但 2026-07-26 用户截图证明外层 `.mobile-toolbar-options-list-container` 与独立的 `.mobile-toolbar-floating-options` 仍保留圆角，实际可见轮廓仍是胶囊形。
+- iPhone 小屏的 view header 不再绘制重复的全宽横线；drawer 内容区和 vault footer 的同类线条在 iPhone 与 iPad 上均移除。规则仍限定为 iOS，不改变 Android 或桌面布局。
+
+2026-07-26 第二轮截图复验追加确认：
+
+- 展开侧栏视图选择器时，底部固定的 `.workspace-drawer-tab-select` 会覆盖 `.workspace-drawer-tab-options-list` 的边框与分隔线。
+- 编辑模式底部操作栏的圆角来自三层结构，不能只覆盖 `.mobile-toolbar-options-list`；`.mobile-toolbar-options-list-container`、`.mobile-toolbar-options-list` 与 `.mobile-toolbar-floating-options` 必须一起归零。
+- 用户确认这两个缺陷在 iPad 同样存在，因此修复范围为 `body.is-mobile.is-ios`：展开列表使用内缩 outline 保持框线可见，底部固定选择器补回 block-start 分隔边；操作栏三个可见层统一为方形，同时保留横向滚动、44 px 触控目标与安全区。
+- 后续 iPad 真机复验确认 drawer 内容区和 vault footer 存在同样的冗余横线，因此 drawer 规则扩展为 `body.is-mobile.is-ios`；view header 规则仍限定为 iPhone。
+
+2026-07-26 第三轮 iPhone Inspector 复验定位出弹层三层问题：
+
+- `.workspace-drawer-tab-options-list` 实测为 `306.109 × 264 px`，同时包含 `padding: 8px 8px 52px`、`2px border` 与 `2px outline`，形成多余留白和双层框线。
+- 可见的直接子级 `.workspace-drawer-tab-select` 占据弹层最后 `52px`；其 inner 从外框 `x=12` 开始、宽 `305.109px`、高 `52px`，覆盖左右及底部框线。
+- 候选在真机页面临时注入后，将弹层调整为 `padding: 0 0 52px`、`border: 0`，只保留一层 outline；激活选择器 inner 收进至 `x=14`、宽 `301.109px`、高 `50px`，外框四边保持可见。
+- 最终规则继续使用 `body.is-mobile.is-ios`，因此同一弹层结构在 iPhone 与 iPad 上共享修复；桌面端不进入该选择器。
+
+2026-07-26 iPad 后续复验定位出隐藏功能区占位和选择器高度跳变：
+
+- body 不含 `.show-ribbon` 时，`.workspace-drawer-ribbon` 已为 `display:none`，但 `.workspace-drawer-inner` 仍保留 `padding-left:52px`；iPad 专用规则在 ribbon 隐藏时将该起始内边距归零。
+- 折叠状态的选择器高 52 px，展开状态曾缩为 40 px。iPad 规则将选择器及弹层中的当前项占位行统一为 52 px；修复后下一项从 `y=116` 开始，选择器与下一项重叠为 0。
+- iPhone 继续使用既有的 40 px 展开态规则，iPad 高度稳定规则限定为 `.is-tablet`，不改变桌面端。
+
+2026-07-26 iPad 展开菜单叠层复验修正：
+
+- 激活选择器并非绝对定位；实测为 `position:static / z-index:5 / rect 28,64,332,52`。绝对定位的是 `.workspace-drawer-tab-options-list`，其原始 `z-index:1 / rect 28,64,332,264` 与选择器从同一坐标开始。
+- 列表第一项“文件列表”原始 rect 为 `28,64,332,40`，因此被选择器完整覆盖；切换到“搜索”等视图后，用户无法看到并点回文件列表。
+- iPad 规则为展开选择器绘制独立 2 px 边框，并把绝对定位列表下移至 `top:calc(52px - 2px)`；同时移除原先为错误叠层方向保留的 52 px 底部 padding。
+- 临时 Inspector 探针验证后，选择器保持 `28,64,332,52`，列表变为 `28,114,332,212`，第一项变为 `28,114,332,40`；2 px 边框重合形成连续外框，所有选项均可见。
+
 ## Source Manifest
 
 ### Sources
@@ -285,6 +334,12 @@
 - 2026-07-25 用户要求：为移动端审计问题新建独立 spec。
 - 2026-07-25 用户要求：桌面端样式已通过验收并固化，移动端修复不得造成桌面端回归。
 - 2026-07-25 真实 iPhone + Safari Web Inspector 视觉审计与 computed-style 测量。
+- 2026-07-26 用户提供的四张 `0.1.3` iPhone 复验截图。
+- 2026-07-26 用户提供的侧栏选择器边框遮挡与编辑操作栏胶囊形复验截图。
+- 2026-07-26 用户确认上述两个缺陷同样存在于 iPad，要求扩大修复范围。
+- 2026-07-26 用户提供 iPhone 弹出菜单双层框线、留白和激活选择器逃逸截图；Safari Web Inspector 提供修复前后 computed-style 与几何测量。
+- 2026-07-26 用户提供 iPad 功能区隐藏后残留占位及菜单展开后选择器高度变化截图；真实 iPad Inspector 提供折叠/展开几何测量。
+- 2026-07-26 iPhone 镜像 + Safari Web Inspector 复现与 computed-style 测量。
 - [`DESIGN.md`](../../DESIGN.md) 中的 Archive Olive 设计语言、颜色、硬边和交互原则。
 - [`theme.md`](theme.md) 中的主题兼容性和现有验收合同。
 
@@ -308,7 +363,8 @@
 - 页面在 393 px 视口无页面级横向溢出。
 - 菜单滚动区保留约 34 px iOS 底部安全区。
 - 当前文件实测文字对比度约 7.38:1；浅色菜单约 15.36:1。
-- 六张原始审计截图保留在本机未跟踪目录；因含真实 vault 上下文而不进入公开仓库。
+- iPad 隐藏 ribbon 后 drawer 起始内边距为 0；选择器折叠和展开均为 52 px，且与下一选项重叠为 0。
+- 六张原始审计截图已在本机完成审阅；因含真实 vault 上下文而未进入公开仓库。
 
 ### Open questions and risks
 

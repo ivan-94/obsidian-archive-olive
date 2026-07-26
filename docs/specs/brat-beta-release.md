@@ -2,12 +2,12 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.3` published — owner BRAT and iPhone retest pending                            |
+| Status                | `0.1.4` candidate ready for publication — owner iPhone retest pending               |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
 | Owner                 | Ivan                                                                                |
-| Last updated          | 2026-07-25                                                                          |
+| Last updated          | 2026-07-26                                                                          |
 | Related specification | [Theme specification](theme.md)                                                     |
 
 ## 1. Purpose
@@ -400,6 +400,8 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - `docs/releases/0.1.2-beta-notes.md`
 - `docs/releases/0.1.3-beta.md`
 - `docs/releases/0.1.3-beta-notes.md`
+- `docs/releases/0.1.4-beta.md`
+- `docs/releases/0.1.4-beta-notes.md`
 
 ### Key decisions
 
@@ -438,12 +440,13 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - The `0.1.3` candidate uses mobile-scoped semantic surfaces, explicit tap/selected states, opaque prompts, and square mobile geometry while keeping the accepted desktop baseline unchanged.
 - GitHub Actions run [30162413956](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30162413956) passed on release commit `f0dbcb2ca1eab9a5f29ed6ff197d888f63e33f47`.
 - Annotated tag `0.1.3` resolves to that commit, and the [0.1.3 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.3) exposes four assets whose downloaded SHA-256 values match the tagged files.
+- The `0.1.4` candidate incorporates real-iPad drawer and safe-area verification, keeps the first drawer option reachable after switching views, and applies pure black only to dark Markdown content across desktop and iOS.
 
 ### Open questions and risks
 
 - Compatibility below `minAppVersion: 1.12.7` is not currently claimed.
 - GitHub raw-content caching may delay urgent updates or rollbacks.
 - A private-pilot tester still needs to submit a non-sensitive dry-run report through the rendered Issue Forms.
-- Owner-led BRAT and real-iPhone retest of the `0.1.3` mobile-hardening candidate remains pending.
-- Real Windows, Linux, iOS, and Android testing remains external to this implementation environment.
+- Owner-led BRAT and real-iPhone retest of the `0.1.4` iOS follow-up remains pending.
+- Real Windows, Linux, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.

@@ -163,6 +163,11 @@ assert.match(
 );
 assert.match(
   css,
+  /body\.theme-dark[\s\S]*\.workspace-split\.mod-root[\s\S]*\.workspace-leaf-content\[data-type='markdown'\][\s\S]*\.view-content\s*\{[\s\S]*--background-primary:\s*var\(--ao-dark-content\)[\s\S]*--background-primary-alt:\s*var\(--ao-dark-content\)[\s\S]*background:\s*var\(--ao-dark-content\)/,
+  'theme.css must give dark Markdown content a pure-black surface on every platform',
+);
+assert.match(
+  css,
   /\.workspace-split\.mod-sidedock\s+\.workspace-tab-header-container-inner\s*\{[\s\S]*scrollbar-width:\s*none/,
   'theme.css must hide side-dock tab-strip scrollbars without disabling overflow',
 );
@@ -228,8 +233,8 @@ assert.match(
 );
 assert.match(
   css,
-  /body\.is-mobile\s+\.prompt\s+\.suggestion-item:is\(\.is-selected,\s*\.mobile-tap\)\s*\{[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
-  'theme.css must keep mobile prompt selection states legible',
+  /body\.is-mobile\s+\.prompt\s+\.suggestion-item:is\(\.is-selected,\s*\.mobile-tap\)\s*\{[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*border-radius:\s*0[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must keep mobile prompt selection states legible and square',
 );
 assert.match(
   css,
@@ -258,8 +263,88 @@ assert.match(
 );
 assert.match(
   css,
-  /body\.is-mobile[\s\S]*\.vertical-tab-nav-item:is\(\.is-active,\s*\.mobile-tap\)[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
-  'theme.css must distinguish selected mobile settings navigation',
+  /body\.is-mobile[\s\S]*\.vertical-tab-nav-item:is\(\.is-active,\s*\.mobile-tap\)[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*border-radius:\s*0[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must distinguish selected mobile settings navigation without pills',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+:is\(\.view-header,\s*\.workspace-drawer-header\)\s+\.clickable-icon\s*\{[\s\S]*border-color:\s*transparent[\s\S]*box-shadow:\s*none[\s\S]*transform:\s*none[\s\S]*body\.is-mobile[\s\S]*\.clickable-icon\.mod-raised[\s\S]*box-shadow:\s*inset\s+0\s+-3px\s+0\s+var\(--ao-mobile-active-background\)/,
+  'theme.css must keep 44px mobile header targets without raised decoration crossing dividers',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+\.metadata-content\s*\{[\s\S]*border-radius:\s*0[\s\S]*max-width:\s*100%[\s\S]*transform:\s*none[\s\S]*width:\s*100%/,
+  'theme.css must keep mobile metadata content inside its parent border',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\s+\.workspace-drawer-tab-select\s+\.workspace-tab-header-inner\s*\{[\s\S]*border-radius:\s*0/,
+  'theme.css must square the expanded and focused iOS drawer selector',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\s+\.workspace-drawer-tab-options-list\s*\{[\s\S]*border:\s*0[\s\S]*outline:\s*var\(--ao-border-default\)\s+solid\s+var\(--ao-mobile-border\)[\s\S]*outline-offset:\s*calc\(-1\s*\*\s*var\(--ao-border-default\)\)[\s\S]*padding:\s*0\s+0\s+var\(--touch-size-l\)[\s\S]*body\.is-mobile\.is-ios\.is-phone[\s\S]*\.workspace-drawer-tab-options:not\(\.is-collapsed\)\s*>\s*\.workspace-drawer-tab-select\s*\{[\s\S]*height:\s*var\(--touch-size-s\)[\s\S]*min-height:\s*var\(--touch-size-s\)[\s\S]*body\.is-mobile\.is-ios\.is-phone[\s\S]*\.workspace-drawer-tab-options:not\(\.is-collapsed\)\s*>\s*\.workspace-drawer-tab-select[\s\S]*\.workspace-tab-header-inner[\s\S]*box-sizing:\s*border-box[\s\S]*height:\s*var\(--touch-size-s\)[\s\S]*margin-inline:\s*var\(--ao-border-default\)[\s\S]*min-height:\s*var\(--touch-size-s\)[\s\S]*width:\s*calc\(100%\s*-\s*2\s*\*\s*var\(--ao-border-default\)\)/,
+  'theme.css must keep the expanded iPhone drawer selector inside one row without covering the next option',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\.is-tablet[\s\S]*\.workspace-drawer-tab-options:not\(\.is-collapsed\)\s*>\s*\.workspace-drawer-tab-select,[\s\S]*\.workspace-drawer-tab-options-list[\s\S]*>\s*\.workspace-tab-header\.is-active\s*\{[\s\S]*height:\s*var\(--touch-size-l\)[\s\S]*min-height:\s*var\(--touch-size-l\)[\s\S]*body\.is-mobile\.is-ios\.is-tablet[\s\S]*\.workspace-drawer-tab-select[\s\S]*\.workspace-tab-header-inner\s*\{[\s\S]*box-sizing:\s*border-box[\s\S]*border:\s*var\(--ao-border-default\)\s+solid\s+var\(--ao-mobile-border\)[\s\S]*height:\s*var\(--touch-size-l\)[\s\S]*margin:\s*0[\s\S]*min-height:\s*var\(--touch-size-l\)[\s\S]*width:\s*100%[\s\S]*body\.is-mobile\.is-ios\.is-tablet\s+\.workspace-drawer-tab-options-list\s*\{[\s\S]*padding-bottom:\s*0[\s\S]*top:\s*calc\(var\(--touch-size-l\)\s*-\s*var\(--ao-border-default\)\)/,
+  'theme.css must keep the iPad drawer selector framed above the complete option list',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+:is\(\.workspace-drawer-header-name,\s*\.workspace-drawer-header-switcher\)\s*\{[\s\S]*align-items:\s*center/,
+  'theme.css must vertically center the mobile vault selector and chevron',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\s+:is\(\s*\.mobile-toolbar-options-list-container,\s*\.mobile-toolbar-options-list,\s*\.mobile-toolbar-floating-options\s*\)\s*\{[\s\S]*border-radius:\s*0/,
+  'theme.css must square every visible layer of the iOS editor action strip',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-phone\s+\.prompt\s+\.prompt-input\s*\{[\s\S]*border-radius:\s*0/,
+  'theme.css must override phone-specific rounding on search and command inputs',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-phone\s+:is\(input,\s*textarea,\s*select,\s*\.dropdown\)\s*\{[\s\S]*border-radius:\s*0/,
+  'theme.css must keep all phone form controls square',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-phone\s+\.prompt\s+\.suggestion-item:is\(\.is-selected,\s*\.mobile-tap\)\s*\{[\s\S]*border-radius:\s*0/,
+  'theme.css must square selected mobile prompt results as well as the input',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\.is-phone\s+\.view-header\s*\{[\s\S]*border-bottom:\s*0/,
+  'theme.css must remove the redundant iPhone view-header divider',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\s+:is\(\.workspace-drawer-header,\s*\.workspace-drawer-tab-container\)\s*\{[\s\S]*border-bottom:\s*0[\s\S]*body\.is-mobile\.is-ios\s+\.workspace-drawer-header\s+\.clickable-icon\.mod-raised\s*\{[\s\S]*box-shadow:\s*none/,
+  'theme.css must remove redundant iOS drawer dividers and raised underlines',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\.is-tablet\s+\.workspace-drawer\s*\{[\s\S]*border-radius:\s*0[\s\S]*max-width:\s*calc\(50vw\s*-\s*16px\)/,
+  'theme.css must keep paired iPad drawers square and non-overlapping',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\.is-tablet:not\(\.show-ribbon\)[\s\S]*\.workspace-drawer\.mod-left[\s\S]*\.workspace-drawer-inner\s*\{[\s\S]*padding-inline-start:\s*0/,
+  'theme.css must release the iPad drawer ribbon gutter when the ribbon is hidden',
+);
+assert.match(
+  css,
+  /\.theme-light\.is-mobile\.is-ios\.is-tablet\s*\{[\s\S]*--titlebar-background:\s*var\(--ao-mobile-surface\)[\s\S]*--ao-chrome-control-foreground:\s*var\(--ao-mobile-foreground\)[\s\S]*body\.theme-light\.is-mobile\.is-ios\.is-tablet\s+\.workspace-split\.mod-root[\s\S]*background:\s*var\(--ao-mobile-surface\)[\s\S]*body\.theme-light\.is-mobile\.is-ios\.is-tablet[\s\S]*\.sidebar-toggle-button[\s\S]*--icon-color:\s*var\(--ao-mobile-foreground\)/,
+  'theme.css must keep the light iPad safe area and sidebar controls visible',
+);
+assert.match(
+  css,
+  /body\.theme-light\.is-mobile\s+\.callout-title,[\s\S]*body\.theme-light\.is-mobile\s+\.callout-icon,[\s\S]*body\.theme-light\.is-mobile\s+\.callout-fold\s*\{[\s\S]*color:\s*var\(--ao-mobile-foreground\)/,
+  'theme.css must keep light mobile callout labels and icons readable',
 );
 assert.match(changelog, /## \[Unreleased\]/);
 assert.match(workflow, /node scripts\/validate\.mjs/);
@@ -349,9 +434,11 @@ const normalTextPairs = [
   ['light feedback', '#f1e7cc', '#11110d'],
   ['light mobile raised', '#11110d', '#d9cba8'],
   ['light mobile muted', '#4b493f', '#d9cba8'],
+  ['light mobile callout label', '#11110d', '#d4dfc9'],
   ['light table header', '#f1e7cc', '#11110d'],
   ['light critical block', '#f1e7cc', '#8d1b1b'],
   ['dark body', '#eee4c8', '#1d2014'],
+  ['dark note content', '#eee4c8', '#000000'],
   ['dark muted', '#b4aa8f', '#1d2014'],
   ['dark active file', '#11110d', '#9aaa3a'],
   ['dark active tab', '#11110d', '#31c2c9'],

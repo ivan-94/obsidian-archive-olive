@@ -8,6 +8,21 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 No unreleased changes.
 
+## [0.1.4] - 2026-07-26
+
+### Fixed
+
+- Separated the dark-mode Markdown body from the surrounding olive-black chrome with a pure-black editing and reading surface on desktop, iPhone, and iPad.
+- Replaced offset shadows on mobile header and drawer controls with inset state rules so 44 px touch targets no longer cover pane dividers.
+- Kept mobile metadata content inside its parent border by neutralizing the phone-only negative transform and oversized width.
+- Removed remaining phone-specific rounding from the drawer selector, every visible layer of the editor action strip, prompts, search fields, and form controls.
+- Flattened expanded iOS drawer menu padding to a single frame and matched the fixed active selector to one list row so it cannot cover the next option on iPhone or iPad.
+- Vertically centered the mobile vault selector label and chevron.
+- Removed redundant iOS drawer and iPhone view-header dividers while preserving component borders and active-state rules.
+- Restored the light iPad safe-area and sidebar-control contrast, prevented paired drawers from overlapping, squared tablet selection states, and made light-mobile callout labels readable.
+- Released the iPad drawer gutter when the ribbon is hidden and kept the drawer switcher at a stable 52 px height while expanded.
+- Moved the absolute iPad drawer option list below its static active selector so the frame and the first “File explorer” option remain visible.
+
 ## [0.1.3] - 2026-07-25
 
 ### Fixed
@@ -94,8 +109,10 @@ No unreleased changes.
 - `0.1.1` is a focused accessibility patch; it does not change the palette, layout, or compatibility floor.
 - `0.1.2` completes the interaction-state repair without changing the palette, layout, compatibility floor, or BRAT channel.
 - `0.1.3` ships mobile-scoped visual hardening for owner-led iPhone acceptance while preserving the accepted desktop baseline.
+- `0.1.4` follows the real-device iOS review with stable drawer geometry, visible navigation options, tablet-safe chrome, and a pure-black dark Markdown surface across desktop, iPhone, and iPad.
 
-[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.3...HEAD
+[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.4...HEAD
+[0.1.4]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.3...0.1.4
 [0.1.3]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.0...0.1.1

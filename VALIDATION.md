@@ -1,8 +1,8 @@
 # Archive Olive Validation Report
 
-Date: 2026-07-25
+Date: 2026-07-26
 
-Build: `0.1.3`
+Build: `0.1.4`
 
 Runtime: Obsidian Desktop `1.12.7`, macOS
 
@@ -18,7 +18,7 @@ The final implementation has no remote assets, `@import`, routine `!important`, 
 
 | ID     | Status | Evidence                                                                                                                                                        |
 | ------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.3`; final developer error buffer is empty.                                                           |
+| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.4`; final developer error buffer is empty.                                                           |
 | AO-002 | Pass   | Light and dark computed surface, text, active-tab, and active-file colors changed coherently; see workspace screenshots.                                        |
 | AO-003 | Pass   | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a continuous square grid.                                                    |
 | AO-004 | Pass   | Active file uses an olive fill plus a carbon inset rule; active root tab uses cyan plus a heavy bottom rule; inactive root and side-dock tabs remain legible.   |
@@ -27,7 +27,7 @@ The final implementation has no remote assets, `@import`, routine `!important`, 
 | AO-007 | Pass   | Command palette, quick switcher, settings dialog, native file menu, notices, inputs, tooltips, and dropdown rules were exercised or inspected.                  |
 | AO-008 | Pass   | Default, hover, active, selected, focus-visible, and disabled treatments use borders, offsets, or geometry as well as color.                                    |
 | AO-009 | Pass   | Body line height computes to `1.65`; readable-line width maps to `80ch`; tables and media are not globally constrained.                                         |
-| AO-010 | Pass   | All 28 normative desktop, feedback, menu, mobile, and table-header pairs exceed WCAG AA; ratios range from `4.57:1` to `15.36:1`; prompt focus remains visible. |
+| AO-010 | Pass   | All 30 normative desktop, feedback, menu, mobile, and table-header pairs exceed WCAG AA; ratios range from `4.57:1` to `16.57:1`; prompt focus remains visible. |
 | AO-011 | Pass   | Static scan finds no remote CSS asset or import.                                                                                                                |
 | AO-012 | Pass   | Static scan finds no `!important`, `:has()`, or global Graph/Canvas texture.                                                                                    |
 | AO-013 | Pass   | Theme uses Obsidian's interface/text/monospace variables and maintains layout under the local user accent/font preference pipeline.                             |
@@ -63,12 +63,21 @@ node scripts/validate.mjs
 node scripts/validate.mjs --release
 npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
 npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.3-beta.md docs/releases/0.1.3-beta-notes.md scripts/validate.mjs .github/workflows/validate.yml .github/ISSUE_TEMPLATE/bug.yml .github/ISSUE_TEMPLATE/platform-validation.yml .prettierrc.json
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.4-beta.md docs/releases/0.1.4-beta-notes.md scripts/validate.mjs .github/workflows/validate.yml .github/ISSUE_TEMPLATE/bug.yml .github/ISSUE_TEMPLATE/platform-validation.yml .prettierrc.json
 jq empty manifest.json "test-vault/Archive Olive.canvas"
 git diff --check
 ```
 
-`scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, mobile scope isolation, and 28 WCAG contrast pairs. Release mode also verifies the MIT license and README link.
+`scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, mobile scope isolation, and 30 WCAG contrast pairs. Release mode also verifies the MIT license and README link.
+
+## 0.1.4 iOS visual follow-up
+
+- Real iPad inspection removed the hidden ribbon gutter, preserved a stable 52 px drawer selector, and moved the absolute option list below the static active selector so its frame and first “File explorer” option remain visible.
+- Light iPad safe-area chrome and sidebar controls now use readable foregrounds; paired drawers remain square and do not overlap.
+- Redundant iOS drawer dividers and phone-only view-header lines are removed without changing desktop or Android layouts.
+- Dark Markdown editing and reading content uses pure black on desktop, iPhone, and iPad while surrounding application chrome remains olive-black.
+- The real iPad check used the isolated `test-vault/` on iPadOS `27.0`; Safari Web Inspector measured a `744 × 1133` CSS-pixel viewport at DPR `2`, pure-black Markdown content, and non-overlapping drawer rows.
+- Final owner-led iPhone validation of the published artifact remains pending and is not claimed as passed.
 
 ## 0.1.3 mobile visual hardening
 
