@@ -77,6 +77,7 @@ git diff --check
 - Redundant iOS drawer dividers and phone-only view-header lines are removed without changing desktop or Android layouts.
 - Dark Markdown editing and reading content uses pure black on desktop, iPhone, and iPad while surrounding application chrome remains olive-black.
 - The real iPad check used the isolated `test-vault/` on iPadOS `27.0`; Safari Web Inspector measured a `744 × 1133` CSS-pixel viewport at DPR `2`, pure-black Markdown content, and non-overlapping drawer rows.
+- GitHub Actions run `30195789535` passed on release commit `d2ce75c`; annotated tag `0.1.4` and all four downloaded release assets match that commit.
 - Final owner-led iPhone validation of the published artifact remains pending and is not claimed as passed.
 
 ## 0.1.3 mobile visual hardening
