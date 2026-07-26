@@ -173,6 +173,9 @@ canvas, panels, recessed surfaces, chrome, accents, and semantic colors.
   visibly applies Forestry File in light mode and Oxblood Archive in dark mode.
   Both selectors and the appearance mode were restored to their defaults after
   acceptance.
+- The immutable
+  [`0.1.5` pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.5)
+  publishes the approved implementation with four verified release assets.
 
 ### Open questions / risks
 

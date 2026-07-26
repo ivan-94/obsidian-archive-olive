@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.5` candidate ready for publication — cross-platform review pending             |
+| Status                | `0.1.5` published — cross-platform colorway review pending                          |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -449,6 +449,11 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
   four independently selectable dark colorways through optional Style Settings,
   keeps all dark Markdown content pure black, and passes the expanded colorway
   token and contrast validation locally.
+- GitHub Actions run [30201817564](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30201817564)
+  passed on release commit `d8d57dc7de691a23aa399abac60cd81990337513`.
+- Annotated tag `0.1.5` resolves to that commit, and the
+  [0.1.5 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.5)
+  exposes four assets whose downloaded SHA-256 values match the tagged files.
 
 ### Open questions and risks
 

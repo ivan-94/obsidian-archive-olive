@@ -6,7 +6,7 @@ All project specifications live in this directory.
 | ------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------- |
 | [Theme](theme.md)                                             | Implemented; public-release gates remain   | Defines the theme behavior, compatibility, requirements, and acceptance criteria.               |
 | [Colorways](colorways.md)                                     | Implemented; cross-platform review pending | Defines independent optional light and dark palette selection through Style Settings.           |
-| [BRAT Beta Release](brat-beta-release.md)                     | `0.1.5` candidate ready for publication    | Defines the repository preparation, beta channel, validation, rollout, and rollback contract.   |
+| [BRAT Beta Release](brat-beta-release.md)                     | `0.1.5` published; platform review pending | Defines the repository preparation, beta channel, validation, rollout, and rollback contract.   |
 | [iOS Mobile Visual Hardening](mobile-ios-visual-hardening.md) | iPad accepted; owner iPhone retest pending | Fixes audited iPhone visual issues while treating the accepted desktop appearance as immutable. |
 
 ## Source Manifest

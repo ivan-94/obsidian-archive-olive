@@ -85,6 +85,8 @@ git diff --check
 - Obsidian Desktop `1.12.7` in the isolated `test-vault/` parsed both selectors,
   listed all options, and visibly applied Forestry File and Oxblood Archive.
   Defaults were restored after acceptance.
+- GitHub Actions run `30201817564` passed on release commit `d8d57dc`; annotated
+  tag `0.1.5` and all four downloaded release assets match that commit.
 
 ## 0.1.4 iOS visual follow-up
 
