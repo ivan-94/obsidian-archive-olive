@@ -228,7 +228,8 @@ Dark mode is an inversion of material, not a separate neon theme. Carbon and gre
 | Role           | Token                | Value     |
 | -------------- | -------------------- | --------- |
 | Canvas         | `dark-neutral`       | `#15160F` |
-| Editor         | `dark-surface`       | `#1D2014` |
+| Panel surface  | `dark-surface`       | `#1D2014` |
+| Markdown body  | `dark-content`       | `#000000` |
 | Recessed panel | `dark-surface-muted` | `#252919` |
 | Primary text   | `dark-on-surface`    | `#EEE4C8` |
 | Secondary text | `dark-text-muted`    | `#B4AA8F` |
@@ -236,10 +237,36 @@ Dark mode is an inversion of material, not a separate neon theme. Carbon and gre
 | Critical red   | `dark-secondary`     | `#D4574F` |
 | Signal cyan    | `dark-tertiary`      | `#31C2C9` |
 
+### Optional colorways
+
+Archive Olive and Archive Night remain the canonical defaults. Optional
+colorways may reinterpret material and ink while preserving the same semantic
+roles, contrast thresholds, geometry, typography, and state hierarchy.
+
+| Light colorway    | Material direction               |
+| ----------------- | -------------------------------- |
+| Archive Olive     | Paper, field manual, old archive |
+| Blueprint News    | Engineering drawing, newsroom    |
+| Terracotta Ledger | Warm publishing, bound ledger    |
+| Forestry File     | Field research, natural tools    |
+
+| Dark colorway      | Material direction               |
+| ------------------ | -------------------------------- |
+| Archive Night      | Olive-black archive              |
+| Carbon Teal        | Carbon, oxidized metal           |
+| Oxblood Archive    | Wine-red binding, aged print     |
+| Midnight Blueprint | Blueprint paper, technical night |
+
+Light and dark selections are independent. Colorway classes replace semantic
+tokens only; component-level selectors must not branch by colorway. Exact
+values, class names, defaults, and acceptance criteria are defined in
+[`docs/specs/colorways.md`](docs/specs/colorways.md).
+
 ### Color behavior
 
 - Large color blocks communicate current context: active file, active tab, panel title, or status.
-- Keep the editor body predominantly parchment in light mode and green-black in dark mode.
+- Keep the editor body predominantly parchment in light mode and pure black in
+  every dark colorway. Dark workspace chrome remains colorway-specific.
 - Oxblood is scarce and meaningful. Do not use it as ambient decoration.
 - Signal cyan identifies navigation, information, focus, and code—not warnings.
 - Active and selected states must also use a border, weight, label, or icon change.

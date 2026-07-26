@@ -54,7 +54,10 @@ assert.equal(manifest.authorUrl, 'https://github.com/ivan-94');
 assert.match(
   validation,
   new RegExp(
-    `Runtime: Obsidian Desktop \\\`${manifest.minAppVersion.replaceAll('.', '\\.')}\\\``,
+    `Runtime: Obsidian Desktop \\\`${manifest.minAppVersion.replaceAll(
+      '.',
+      '\\.',
+    )}\\\``,
   ),
   `VALIDATION.md must record runtime evidence for minAppVersion ${manifest.minAppVersion}`,
 );
@@ -67,6 +70,7 @@ for (const requiredPath of [
   'AGENTS.md',
   'assets/screenshots/archive-olive-512x288.png',
   'docs/specs/brat-beta-release.md',
+  'docs/specs/colorways.md',
   currentReleaseRecord,
   currentReleaseNotes,
   'hats/20260725-brat-beta-cross-platform/guide.md',
@@ -148,6 +152,21 @@ assert.match(
 );
 assert.match(
   css,
+  /body:not\(\.is-phone\)[\s\S]*:is\(\.titlebar,\s*\.view-header,\s*\.workspace-tab-header-container\)\s*\{[\s\S]*border-bottom-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-ribbon\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-split\.mod-left-split\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-split\.mod-right-split\s*\{[\s\S]*border-inline-start-width:\s*0/,
+  'theme.css must hide persistent desktop and tablet shell dividers without changing phone chrome',
+);
+assert.match(
+  css,
+  /body:not\(\.is-phone\)\s+\.workspace-leaf-resize-handle\s*\{[\s\S]*background:\s*transparent[\s\S]*body:not\(\.is-phone\)\s+\.workspace-leaf-resize-handle:hover\s*\{[\s\S]*background:\s*var\(--divider-color-hover\)/,
+  'theme.css must keep desktop and tablet resize handles discoverable only on hover',
+);
+assert.match(
+  css,
+  /body:not\(\.is-phone\)\s+\.workspace-tab-header\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)[\s\S]*:is\(\.workspace-tab-header-new-tab,\s*\.workspace-tab-header-tab-list\)\s*\{[\s\S]*border-inline-start-width:\s*0[\s\S]*body:not\(\.is-phone\)[\s\S]*\.workspace-tab-header:is\(\.is-active,\s*:hover\)\s*\{[\s\S]*box-shadow:\s*none/,
+  'theme.css must remove desktop and tablet tab separators and inset state lines',
+);
+assert.match(
+  css,
   /\.workspace-split\.mod-left-split[\s\S]*\.workspace-tab-header\.is-active[\s\S]*background:\s*var\(--interactive-accent\)/,
   'theme.css must give active side-dock tabs a focus-independent background',
 );
@@ -198,7 +217,7 @@ assert.match(
 );
 assert.match(
   css,
-  /\.theme-dark\.is-mobile\s*\{[\s\S]*--ao-mobile-surface:\s*var\(--ao-dark-canvas\)[\s\S]*--ao-mobile-surface-raised:\s*var\(--ao-dark-recessed\)[\s\S]*--ao-mobile-foreground:\s*var\(--ao-dark-paper\)[\s\S]*--ao-mobile-active-background:\s*var\(--ao-dark-olive\)[\s\S]*--ao-mobile-active-foreground:\s*var\(--ao-ink\)/,
+  /\.theme-dark\.is-mobile\s*\{[\s\S]*--ao-mobile-surface:\s*var\(--ao-dark-canvas\)[\s\S]*--ao-mobile-surface-raised:\s*var\(--ao-dark-recessed\)[\s\S]*--ao-mobile-foreground:\s*var\(--ao-dark-paper\)[\s\S]*--ao-mobile-active-background:\s*var\(--ao-dark-olive\)[\s\S]*--ao-mobile-active-foreground:\s*var\(--ao-dark-on-accent\)/,
   'theme.css must define isolated high-contrast dark mobile semantic surfaces',
 );
 assert.match(
@@ -385,6 +404,208 @@ assert.deepEqual(
   `Undefined Archive Olive variables: ${missingAoDefinitions.join(', ')}`,
 );
 
+const settingsBlock = css.match(/\/\* @settings([\s\S]*?)\*\//)?.[1];
+assert.ok(settingsBlock, 'theme.css must contain a Style Settings block');
+assert.match(settingsBlock, /id:\s*archive-olive-style-settings/);
+assert.match(
+  settingsBlock,
+  /id:\s*ao-light-colorway[\s\S]*type:\s*class-select[\s\S]*allowEmpty:\s*false[\s\S]*default:\s*ao-light-archive-olive/,
+  'Style Settings must expose the required light colorway selector',
+);
+assert.match(
+  settingsBlock,
+  /id:\s*ao-dark-colorway[\s\S]*type:\s*class-select[\s\S]*allowEmpty:\s*false[\s\S]*default:\s*ao-dark-archive-night/,
+  'Style Settings must expose the required dark colorway selector',
+);
+
+const expectedColorwayClasses = [
+  'ao-light-archive-olive',
+  'ao-light-blueprint-news',
+  'ao-light-terracotta-ledger',
+  'ao-light-forestry-file',
+  'ao-dark-archive-night',
+  'ao-dark-carbon-teal',
+  'ao-dark-oxblood-archive',
+  'ao-dark-midnight-blueprint',
+];
+const configuredColorwayClasses = [
+  ...settingsBlock.matchAll(/^\s*value:\s*(ao-(?:light|dark)-[\w-]+)\s*$/gm),
+].map(match => match[1]);
+assert.deepEqual(
+  configuredColorwayClasses,
+  expectedColorwayClasses,
+  'Style Settings must list exactly the eight approved colorways',
+);
+
+const parseDeclarations = block =>
+  new Map(
+    [...block.matchAll(/(--ao-[\w-]+)\s*:\s*([^;]+);/g)].map(match => [
+      match[1],
+      match[2].trim(),
+    ]),
+  );
+const defaultColorwayBlock = css.match(
+  /body,\s*body\.ao-light-archive-olive,\s*body\.ao-dark-archive-night\s*\{([\s\S]*?)\n\}/,
+)?.[1];
+assert.ok(
+  defaultColorwayBlock,
+  'theme.css must bind plugin-free defaults to the two default colorway classes',
+);
+const defaultColorwayTokens = parseDeclarations(defaultColorwayBlock);
+
+const getClassTokenOverrides = className => {
+  if (
+    className === 'ao-light-archive-olive' ||
+    className === 'ao-dark-archive-night'
+  ) {
+    return new Map();
+  }
+  const escaped = className.replaceAll('-', '\\-');
+  const block = css.match(
+    new RegExp(`body\\.${escaped}\\s*\\{([\\s\\S]*?)\\n\\}`),
+  )?.[1];
+  assert.ok(block, `Missing colorway rule: ${className}`);
+  return parseDeclarations(block);
+};
+
+const lightColorwayTokens = [
+  '--ao-ink',
+  '--ao-ink-rgb',
+  '--ao-paper',
+  '--ao-paper-rgb',
+  '--ao-khaki',
+  '--ao-khaki-rgb',
+  '--ao-folder',
+  '--ao-graphite',
+  '--ao-olive',
+  '--ao-olive-rgb',
+  '--ao-olive-hover',
+  '--ao-oxblood',
+  '--ao-oxblood-rgb',
+  '--ao-cyan',
+  '--ao-cyan-rgb',
+  '--ao-cyan-ink',
+  '--ao-stamp',
+  '--ao-stamp-rgb',
+  '--ao-yellow',
+  '--ao-yellow-rgb',
+  '--ao-blue',
+  '--ao-blue-rgb',
+  '--ao-purple',
+  '--ao-purple-rgb',
+  '--ao-pink',
+  '--ao-pink-rgb',
+  '--ao-paper-hover',
+  '--ao-oxblood-hover',
+  '--ao-warning-ink',
+  '--ao-code-surface',
+  '--ao-light-on-accent',
+  ...[
+    '00',
+    '05',
+    '10',
+    '20',
+    '25',
+    '30',
+    '35',
+    '40',
+    '50',
+    '60',
+    '70',
+    '100',
+  ].map(level => `--ao-light-base-${level}`),
+  '--ao-light-mono-rgb-0',
+  '--ao-light-mono-rgb-100',
+  '--ao-light-accent-h',
+  '--ao-light-accent-s',
+  '--ao-light-accent-l',
+];
+const darkColorwayTokens = [
+  '--ao-dark-canvas',
+  '--ao-dark-surface',
+  '--ao-dark-recessed',
+  '--ao-dark-content',
+  '--ao-dark-paper',
+  '--ao-dark-paper-rgb',
+  '--ao-dark-muted',
+  '--ao-dark-olive',
+  '--ao-dark-olive-rgb',
+  '--ao-dark-olive-hover',
+  '--ao-dark-red',
+  '--ao-dark-red-rgb',
+  '--ao-dark-red-hover',
+  '--ao-dark-cyan',
+  '--ao-dark-cyan-rgb',
+  '--ao-dark-orange',
+  '--ao-dark-orange-rgb',
+  '--ao-dark-yellow',
+  '--ao-dark-yellow-rgb',
+  '--ao-dark-blue',
+  '--ao-dark-blue-rgb',
+  '--ao-dark-purple',
+  '--ao-dark-purple-rgb',
+  '--ao-dark-pink',
+  '--ao-dark-pink-rgb',
+  '--ao-dark-chrome',
+  '--ao-dark-code-surface',
+  '--ao-dark-on-accent',
+  '--ao-dark-on-info',
+  ...[
+    '00',
+    '05',
+    '10',
+    '20',
+    '25',
+    '30',
+    '35',
+    '40',
+    '50',
+    '60',
+    '70',
+    '100',
+  ].map(level => `--ao-dark-base-${level}`),
+  '--ao-dark-mono-rgb-0',
+  '--ao-dark-mono-rgb-100',
+  '--ao-dark-accent-h',
+  '--ao-dark-accent-s',
+  '--ao-dark-accent-l',
+];
+
+const colorwayPalettes = new Map();
+for (const className of expectedColorwayClasses) {
+  const overrides = getClassTokenOverrides(className);
+  const tokens = new Map(defaultColorwayTokens);
+  for (const [name, value] of overrides) tokens.set(name, value);
+  const requiredTokens = className.startsWith('ao-light-')
+    ? lightColorwayTokens
+    : darkColorwayTokens;
+  const missingTokens = requiredTokens.filter(name => !tokens.has(name));
+  assert.deepEqual(
+    missingTokens,
+    [],
+    `${className} is missing palette tokens: ${missingTokens.join(', ')}`,
+  );
+  if (className.startsWith('ao-light-')) {
+    assert.deepEqual(
+      [...overrides.keys()].filter(name => name.startsWith('--ao-dark-')),
+      [],
+      `${className} must not override dark colorway tokens`,
+    );
+  } else {
+    assert.deepEqual(
+      [...overrides.keys()].filter(name => !name.startsWith('--ao-dark-')),
+      [],
+      `${className} must not override light or shared tokens`,
+    );
+    assert.equal(
+      tokens.get('--ao-dark-content')?.toLowerCase(),
+      '#000000',
+      `${className} must use pure black for Markdown content`,
+    );
+  }
+  colorwayPalettes.set(className, tokens);
+}
+
 const mobileSemanticRules = [
   ...css.matchAll(/([^{}]+)\{([^{}]*--ao-mobile-[^{}]*)\}/g),
 ];
@@ -420,6 +641,58 @@ const contrast = (foreground, background) => {
   const b = luminance(background);
   return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
 };
+
+const resolveColorwayHex = (tokens, name, seen = new Set()) => {
+  assert.equal(
+    seen.has(name),
+    false,
+    `Circular colorway token reference: ${[...seen, name].join(' -> ')}`,
+  );
+  seen.add(name);
+  const value = tokens.get(name);
+  assert.ok(value, `Missing colorway token value: ${name}`);
+  const reference = value.match(/^var\((--ao-[\w-]+)\)$/)?.[1];
+  if (reference) return resolveColorwayHex(tokens, reference, seen);
+  assert.match(value, /^#[0-9a-f]{6}$/i, `${name} must resolve to a hex color`);
+  return value;
+};
+
+for (const [className, tokens] of colorwayPalettes) {
+  const pairs = className.startsWith('ao-light-')
+    ? [
+        ['body', '--ao-ink', '--ao-paper'],
+        ['muted', '--ao-graphite', '--ao-paper'],
+        ['active', '--ao-light-on-accent', '--ao-olive'],
+        ['active tab', '--ao-ink', '--ao-cyan'],
+        ['chrome', '--ao-paper', '--ao-ink'],
+        ['raised mobile', '--ao-ink', '--ao-khaki'],
+        ['critical', '--ao-paper', '--ao-oxblood'],
+        ['warning text', '--ao-warning-ink', '--ao-paper'],
+        ['information text', '--ao-cyan-ink', '--ao-paper'],
+      ]
+    : [
+        ['body', '--ao-dark-paper', '--ao-dark-surface'],
+        ['content', '--ao-dark-paper', '--ao-dark-content'],
+        ['muted', '--ao-dark-muted', '--ao-dark-surface'],
+        ['active', '--ao-dark-on-accent', '--ao-dark-olive'],
+        ['active tab', '--ao-dark-on-info', '--ao-dark-cyan'],
+        ['chrome', '--ao-dark-paper', '--ao-dark-chrome'],
+        ['raised mobile', '--ao-dark-paper', '--ao-dark-recessed'],
+        ['table header', '--ao-dark-on-accent', '--ao-dark-paper'],
+        ['critical', '--ao-dark-on-accent', '--ao-dark-red'],
+      ];
+
+  for (const [label, foregroundToken, backgroundToken] of pairs) {
+    const foreground = resolveColorwayHex(tokens, foregroundToken);
+    const background = resolveColorwayHex(tokens, backgroundToken);
+    const ratio = contrast(foreground, background);
+    assert.ok(
+      ratio >= 4.5,
+      `${className} ${label} contrast is ${ratio.toFixed(2)}:1`,
+    );
+    console.log(`PASS contrast ${className} ${label}: ${ratio.toFixed(2)}:1`);
+  }
+}
 
 const normalTextPairs = [
   ['light body', '#11110d', '#f1e7cc'],
@@ -490,5 +763,7 @@ if (releaseMode) {
 }
 
 console.log(
-  `PASS manifest, repository policy, CSS policy, token integrity, Canvas, Bases${releaseMode ? ', and release files' : ''}`,
+  `PASS manifest, repository policy, CSS policy, token integrity, Canvas, Bases${
+    releaseMode ? ', and release files' : ''
+  }`,
 );

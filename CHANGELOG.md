@@ -8,6 +8,25 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 No unreleased changes.
 
+## [0.1.5] - 2026-07-26
+
+### Added
+
+- Added optional Style Settings integration with four independently selectable
+  light colorways and four independently selectable dark colorways.
+- Added complete semantic ramps, syntax colors, graph colors, mobile inputs, and
+  WCAG AA regression checks for all eight colorways.
+- Added the canonical colorway contract under
+  [`docs/specs/colorways.md`](docs/specs/colorways.md).
+
+### Changed
+
+- Unified the Markdown editing and reading surface to pure black across all four
+  dark colorways while retaining their distinct surrounding workspace palettes.
+- Removed persistent desktop and iPad titlebar, tab-strip, view-header, ribbon,
+  pane, and tab-item divider lines while preserving resize affordances on hover
+  and leaving iPhone chrome unchanged.
+
 ## [0.1.4] - 2026-07-26
 
 ### Fixed
@@ -94,6 +113,8 @@ No unreleased changes.
 - User screenshot in this Codex thread showing low-contrast tooltips and notices.
 - User direction in this Codex thread to perform Obsidian acceptance only in the repository `test-vault/`.
 - User direction and iPhone audit evidence in [`docs/specs/mobile-ios-visual-hardening.md`](docs/specs/mobile-ios-visual-hardening.md).
+- User direction in this Codex task to retain all approved light and dark
+  colorways, write their specification, and implement them.
 - [`docs/specs/brat-beta-release.md`](docs/specs/brat-beta-release.md).
 - Existing Git history and [`VALIDATION.md`](VALIDATION.md).
 
@@ -110,8 +131,13 @@ No unreleased changes.
 - `0.1.2` completes the interaction-state repair without changing the palette, layout, compatibility floor, or BRAT channel.
 - `0.1.3` ships mobile-scoped visual hardening for owner-led iPhone acceptance while preserving the accepted desktop baseline.
 - `0.1.4` follows the real-device iOS review with stable drawer geometry, visible navigation options, tablet-safe chrome, and a pure-black dark Markdown surface across desktop, iPhone, and iPad.
+- `0.1.5` keeps Archive Olive and Archive Night as
+  plugin-free defaults while exposing independent optional selectors through
+  Style Settings, adds six alternate colorways, and standardizes every dark
+  Markdown body on pure black.
 
-[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.4...HEAD
+[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.5...HEAD
+[0.1.5]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.4...0.1.5
 [0.1.4]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.3...0.1.4
 [0.1.3]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.1...0.1.2

@@ -6,11 +6,11 @@ Archive Olive is a practical brutalist theme for Obsidian. It combines archival 
 
 ## Status
 
-Version `0.1.4` is an opt-in pre-release beta validated on Obsidian Desktop `1.12.7` for macOS and on a real iPad running iPadOS `27.0`. It is not yet an official Obsidian community theme.
+Version `0.1.5` is an opt-in pre-release beta validated on Obsidian Desktop `1.12.7` for macOS. Its inherited mobile foundation was previously reviewed on a real iPad running iPadOS `27.0`. It is not yet an official Obsidian community theme.
 
-Archive Olive currently uses `main/theme.css` as its only BRAT channel. The `0.1.4` follow-up fixes the iOS drawer geometry found during real-device review and gives dark Markdown content a pure-black surface on desktop, iPhone, and iPad. Windows, Linux, Android, and final iPhone acceptance remain pending.
+Archive Olive currently uses `main/theme.css` as its only BRAT channel. The `0.1.5` patch adds optional independent light and dark colorways through Style Settings, keeps every dark Markdown content surface pure black, and simplifies persistent desktop and iPad workspace dividers. Broader colorway review on mobile, Windows, Linux, and Android remains pending.
 
-[Download the Archive Olive 0.1.4 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.4).
+[Download the Archive Olive 0.1.5 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.5).
 
 ![Archive Olive light workspace](validation/screenshots/light-workspace.png)
 
@@ -23,7 +23,7 @@ Archive Olive currently uses `main/theme.css` as its only BRAT channel. The `0.1
 - Color communicates state and hierarchy.
 - Long-form writing remains calm and readable.
 - Keyboard focus and non-color state cues remain visible.
-- No remote fonts, images, analytics, or companion plugin.
+- No remote fonts, images, analytics, or required companion plugin.
 
 See [DESIGN.md](DESIGN.md) for the design system and the [theme specification](docs/specs/theme.md) for the implementation contract.
 
@@ -60,6 +60,34 @@ Removing the BRAT registration stops monitoring but does not delete the installe
 
 Manual installations do not receive BRAT updates. The repository includes an isolated `test-vault` used for development and acceptance.
 
+## Optional colorways
+
+Archive Olive includes four light colorways and four dark colorways. The existing
+Archive Olive and Archive Night palettes remain the defaults.
+Every dark colorway keeps the Markdown editing and reading surface pure black;
+its surrounding workspace chrome retains the selected palette.
+
+| Light colorways         | Dark colorways          |
+| ----------------------- | ----------------------- |
+| Archive Olive (default) | Archive Night (default) |
+| Blueprint News          | Carbon Teal             |
+| Terracotta Ledger       | Oxblood Archive         |
+| Forestry File           | Midnight Blueprint      |
+
+To select them:
+
+1. Install and enable the
+   [Style Settings community plugin](https://obsidian.md/plugins?id=obsidian-style-settings).
+2. Open **Settings → Style Settings → Archive Olive**.
+3. Choose **Light colorway** and **Dark colorway** independently.
+
+The selections are stored by Style Settings for the current vault. Disabling or
+removing Style Settings returns the theme to its built-in Archive Olive and
+Archive Night defaults; the theme itself remains usable without the plugin.
+
+See the [colorways specification](docs/specs/colorways.md) for the semantic
+palette contract and exact primary values.
+
 ## Compatibility
 
 - Obsidian Desktop `1.12.7` is the current validation target.
@@ -77,7 +105,7 @@ Run the repeatable static checks:
 node scripts/validate.mjs
 npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
 npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.4-beta.md docs/releases/0.1.4-beta-notes.md
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/colorways.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.5-beta.md docs/releases/0.1.5-beta-notes.md
 ```
 
 Before publishing a beta build, run the stricter release gate:
@@ -92,7 +120,7 @@ The isolated `test-vault` covers Markdown primitives, multilingual text, dense n
 
 Use the [BRAT Beta cross-platform HAT guide](hats/20260725-brat-beta-cross-platform/guide.md) for the private pilot and owner-led Windows, Linux, iOS, and Android acceptance. The guide includes preparation, evidence, privacy, update, removal, and platform-specific checklists.
 
-The [`0.1.4` beta release record](docs/releases/0.1.4-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
+The [`0.1.5` beta release record](docs/releases/0.1.5-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
 
 ## Reporting beta issues
 
@@ -115,10 +143,11 @@ Archive Olive is available under the [MIT License](LICENSE).
 
 ## Known release limitations
 
-- Owner-led verification of the `0.1.4` candidate on a real iPhone and cross-platform desktop testing are pending.
+- Owner-led verification of the `0.1.5` colorways on mobile and cross-platform desktop testing are pending.
 - The GitHub pre-release is an opt-in checkpoint; pilot feedback and final community-theme checks remain required before an official-directory submission.
 - BRAT and GitHub raw-content caching can delay urgent fixes or rollbacks.
-- Optional paper texture, Style Settings integration, curated plugin rules, and Obsidian Publish support remain P2 work.
+- Alternate colorways still require broader desktop and mobile runtime review before a public release can claim full cross-platform visual acceptance.
+- Optional paper texture, curated plugin rules, and Obsidian Publish support remain P2 work.
 
 ## Source Manifest
 
@@ -127,9 +156,10 @@ Archive Olive is available under the [MIT License](LICENSE).
 - [Obsidian developer documentation](https://docs.obsidian.md/)
 - [DESIGN.md](DESIGN.md)
 - [Theme specification](docs/specs/theme.md)
+- [Colorways specification](docs/specs/colorways.md)
 - [BRAT Beta release specification](docs/specs/brat-beta-release.md)
 - [BRAT Beta cross-platform HAT](hats/20260725-brat-beta-cross-platform/guide.md)
-- [`0.1.4` beta release record](docs/releases/0.1.4-beta.md)
+- [`0.1.5` beta release record](docs/releases/0.1.5-beta.md)
 - [CHANGELOG.md](CHANGELOG.md)
 - [BRAT Beta release image](assets/screenshots/archive-olive-512x288.png)
 - [Archive Olive reference concept](design/concepts/01f-archive-olive.png)

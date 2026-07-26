@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.4` published — owner BRAT and iPhone retest pending                            |
+| Status                | `0.1.5` candidate ready for publication — cross-platform review pending             |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -335,7 +335,7 @@ The official candidate is ready only when all P2 requirements pass. Successful m
 | ------------------------ | ----------------------------------------------------------------------------------------- | ----- |
 | Public license           | Applied: MIT license selected and added at repository root.                               | Ivan  |
 | Beta compatibility floor | Applied: `minAppVersion` is the currently tested `1.12.7`; lower only after new evidence. | Ivan  |
-| Beta pre-release         | `0.1.3` published as a mobile-hardening checkpoint for owner-led acceptance.              | Ivan  |
+| Beta pre-release         | `0.1.5` authorized as a colorway checkpoint with cross-platform review pending.           | Ivan  |
 
 BRAT-004 now passes locally with the owner-selected MIT license. Revisit the compatibility decision only if the project intends to support versions older than `1.12.7`.
 
@@ -402,6 +402,8 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - `docs/releases/0.1.3-beta-notes.md`
 - `docs/releases/0.1.4-beta.md`
 - `docs/releases/0.1.4-beta-notes.md`
+- `docs/releases/0.1.5-beta.md`
+- `docs/releases/0.1.5-beta-notes.md`
 
 ### Key decisions
 
@@ -443,12 +445,16 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - The `0.1.4` candidate incorporates real-iPad drawer and safe-area verification, keeps the first drawer option reachable after switching views, and applies pure black only to dark Markdown content across desktop and iOS.
 - GitHub Actions run [30195789535](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30195789535) passed on release commit `d2ce75c2f4ea8b8aa242a767f7ce5e2c9c79b806`.
 - Annotated tag `0.1.4` resolves to that commit, and the [0.1.4 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.4) exposes four assets whose downloaded SHA-256 values match the tagged files.
+- The `0.1.5` candidate adds four independently selectable light colorways and
+  four independently selectable dark colorways through optional Style Settings,
+  keeps all dark Markdown content pure black, and passes the expanded colorway
+  token and contrast validation locally.
 
 ### Open questions and risks
 
 - Compatibility below `minAppVersion: 1.12.7` is not currently claimed.
 - GitHub raw-content caching may delay urgent updates or rollbacks.
 - A private-pilot tester still needs to submit a non-sensitive dry-run report through the rendered Issue Forms.
-- Owner-led BRAT and real-iPhone retest of the `0.1.4` iOS follow-up remains pending.
+- Owner-led BRAT and cross-platform colorway review of `0.1.5` remains pending.
 - Real Windows, Linux, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.

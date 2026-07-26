@@ -1,5 +1,5 @@
 /*!
- * Archive Olive 0.1.4
+ * Archive Olive 0.1.5
  * A practical brutalist theme for Obsidian.
  * Design source: DESIGN.md
  * BRAT channel: main/theme.css
@@ -8,7 +8,55 @@
 /* 01. Metadata and custom properties
    -------------------------------------------------------------------------- */
 
-body {
+/* @settings
+name: Archive Olive
+id: archive-olive-style-settings
+settings:
+  -
+    id: ao-light-colorway
+    title: Light colorway
+    description: Select the palette used when Obsidian is in light mode.
+    type: class-select
+    allowEmpty: false
+    default: ao-light-archive-olive
+    options:
+      -
+        label: Archive Olive
+        value: ao-light-archive-olive
+      -
+        label: Blueprint News
+        value: ao-light-blueprint-news
+      -
+        label: Terracotta Ledger
+        value: ao-light-terracotta-ledger
+      -
+        label: Forestry File
+        value: ao-light-forestry-file
+  -
+    id: ao-dark-colorway
+    title: Dark colorway
+    description: Select the palette used when Obsidian is in dark mode.
+    type: class-select
+    allowEmpty: false
+    default: ao-dark-archive-night
+    options:
+      -
+        label: Archive Night
+        value: ao-dark-archive-night
+      -
+        label: Carbon Teal
+        value: ao-dark-carbon-teal
+      -
+        label: Oxblood Archive
+        value: ao-dark-oxblood-archive
+      -
+        label: Midnight Blueprint
+        value: ao-dark-midnight-blueprint
+*/
+
+body,
+body.ao-light-archive-olive,
+body.ao-dark-archive-night {
   --ao-ink: #11110d;
   --ao-ink-rgb: 17, 17, 13;
   --ao-paper: #f1e7cc;
@@ -24,21 +72,88 @@ body {
   --ao-oxblood-rgb: 141, 27, 27;
   --ao-cyan: #00a6b2;
   --ao-cyan-rgb: 0, 166, 178;
+  --ao-cyan-ink: #006f77;
   --ao-stamp: #c69214;
   --ao-stamp-rgb: 198, 146, 20;
+  --ao-yellow: #d6af2d;
+  --ao-yellow-rgb: 214, 175, 45;
+  --ao-blue: #26709a;
+  --ao-blue-rgb: 38, 112, 154;
+  --ao-purple: #70427c;
+  --ao-purple-rgb: 112, 66, 124;
+  --ao-pink: #a33e66;
+  --ao-pink-rgb: 163, 62, 102;
+  --ao-paper-hover: #fff6df;
+  --ao-oxblood-hover: #a62727;
+  --ao-warning-ink: #755006;
+  --ao-code-surface: #e7dab8;
+  --ao-light-on-accent: var(--ao-paper);
+
+  --ao-light-base-00: #f1e7cc;
+  --ao-light-base-05: #ede1c4;
+  --ao-light-base-10: #e6d9b7;
+  --ao-light-base-20: #d9cba8;
+  --ao-light-base-25: #d0c198;
+  --ao-light-base-30: #c8b98f;
+  --ao-light-base-35: #b6a77d;
+  --ao-light-base-40: #9f916b;
+  --ao-light-base-50: #81765b;
+  --ao-light-base-60: #6a624e;
+  --ao-light-base-70: #4b493f;
+  --ao-light-base-100: #11110d;
+  --ao-light-mono-rgb-0: 241, 231, 204;
+  --ao-light-mono-rgb-100: 17, 17, 13;
+  --ao-light-accent-h: 67;
+  --ao-light-accent-s: 55%;
+  --ao-light-accent-l: 25%;
 
   --ao-dark-canvas: #15160f;
   --ao-dark-surface: #1d2014;
   --ao-dark-recessed: #252919;
   --ao-dark-content: #000000;
   --ao-dark-paper: #eee4c8;
+  --ao-dark-paper-rgb: 238, 228, 200;
   --ao-dark-muted: #b4aa8f;
   --ao-dark-olive: #9aaa3a;
   --ao-dark-olive-rgb: 154, 170, 58;
+  --ao-dark-olive-hover: #afbf4b;
   --ao-dark-red: #d4574f;
   --ao-dark-red-rgb: 212, 87, 79;
+  --ao-dark-red-hover: #e66a62;
   --ao-dark-cyan: #31c2c9;
   --ao-dark-cyan-rgb: 49, 194, 201;
+  --ao-dark-orange: #e0ac3f;
+  --ao-dark-orange-rgb: 224, 172, 63;
+  --ao-dark-yellow: #e2c256;
+  --ao-dark-yellow-rgb: 226, 194, 86;
+  --ao-dark-blue: #60a9cb;
+  --ao-dark-blue-rgb: 96, 169, 203;
+  --ao-dark-purple: #b585c2;
+  --ao-dark-purple-rgb: 181, 133, 194;
+  --ao-dark-pink: #dd759c;
+  --ao-dark-pink-rgb: 221, 117, 156;
+  --ao-dark-chrome: #0e0f0a;
+  --ao-dark-code-surface: #14170d;
+  --ao-dark-on-accent: #11110d;
+  --ao-dark-on-info: #11110d;
+
+  --ao-dark-base-00: #15160f;
+  --ao-dark-base-05: #191b11;
+  --ao-dark-base-10: #1d2014;
+  --ao-dark-base-20: #252919;
+  --ao-dark-base-25: #2c311e;
+  --ao-dark-base-30: #343a23;
+  --ao-dark-base-35: #46502b;
+  --ao-dark-base-40: #5a6338;
+  --ao-dark-base-50: #747c54;
+  --ao-dark-base-60: #919873;
+  --ao-dark-base-70: #b4aa8f;
+  --ao-dark-base-100: #eee4c8;
+  --ao-dark-mono-rgb-0: 21, 22, 15;
+  --ao-dark-mono-rgb-100: 238, 228, 200;
+  --ao-dark-accent-h: 67;
+  --ao-dark-accent-s: 49%;
+  --ao-dark-accent-l: 45%;
 
   --ao-border-thin: 1px;
   --ao-border-default: 2px;
@@ -210,50 +325,356 @@ body {
   --bases-embed-border-width: var(--ao-border-default);
 }
 
+body.ao-light-blueprint-news {
+  --ao-ink: #14242a;
+  --ao-ink-rgb: 20, 36, 42;
+  --ao-paper: #f5f1e6;
+  --ao-paper-rgb: 245, 241, 230;
+  --ao-khaki: #d4dedc;
+  --ao-khaki-rgb: 212, 222, 220;
+  --ao-folder: #b9c9c7;
+  --ao-graphite: #4c5f63;
+  --ao-olive: #24566b;
+  --ao-olive-rgb: 36, 86, 107;
+  --ao-olive-hover: #2d6b84;
+  --ao-oxblood: #9a362b;
+  --ao-oxblood-rgb: 154, 54, 43;
+  --ao-cyan: #25a5b3;
+  --ao-cyan-rgb: 37, 165, 179;
+  --ao-cyan-ink: #057681;
+  --ao-stamp: #b47b12;
+  --ao-stamp-rgb: 180, 123, 18;
+  --ao-yellow: #d2a83a;
+  --ao-yellow-rgb: 210, 168, 58;
+  --ao-blue: #2e6f9e;
+  --ao-blue-rgb: 46, 111, 158;
+  --ao-purple: #735283;
+  --ao-purple-rgb: 115, 82, 131;
+  --ao-pink: #a14668;
+  --ao-pink-rgb: 161, 70, 104;
+  --ao-paper-hover: #fffcf1;
+  --ao-oxblood-hover: #b24435;
+  --ao-warning-ink: #7b520b;
+  --ao-code-surface: #e3e7df;
+  --ao-light-on-accent: var(--ao-paper);
+
+  --ao-light-base-00: #f5f1e6;
+  --ao-light-base-05: #edece4;
+  --ao-light-base-10: #e3e7e1;
+  --ao-light-base-20: #d4dedc;
+  --ao-light-base-25: #c7d4d2;
+  --ao-light-base-30: #b9c9c7;
+  --ao-light-base-35: #a3b4b3;
+  --ao-light-base-40: #8d9f9f;
+  --ao-light-base-50: #728486;
+  --ao-light-base-60: #5c6f72;
+  --ao-light-base-70: #4c5f63;
+  --ao-light-base-100: #14242a;
+  --ao-light-mono-rgb-0: 245, 241, 230;
+  --ao-light-mono-rgb-100: 20, 36, 42;
+  --ao-light-accent-h: 198;
+  --ao-light-accent-s: 53%;
+  --ao-light-accent-l: 28%;
+}
+
+body.ao-light-terracotta-ledger {
+  --ao-ink: #24150f;
+  --ao-ink-rgb: 36, 21, 15;
+  --ao-paper: #f4e7d3;
+  --ao-paper-rgb: 244, 231, 211;
+  --ao-khaki: #dfc2a3;
+  --ao-khaki-rgb: 223, 194, 163;
+  --ao-folder: #caa883;
+  --ao-graphite: #624c40;
+  --ao-olive: #923f24;
+  --ao-olive-rgb: 146, 63, 36;
+  --ao-olive-hover: #ad4d2c;
+  --ao-oxblood: #8a2930;
+  --ao-oxblood-rgb: 138, 41, 48;
+  --ao-cyan: #2b9a9c;
+  --ao-cyan-rgb: 43, 154, 156;
+  --ao-cyan-ink: #17686b;
+  --ao-stamp: #b37a16;
+  --ao-stamp-rgb: 179, 122, 22;
+  --ao-yellow: #d0a33a;
+  --ao-yellow-rgb: 208, 163, 58;
+  --ao-blue: #367296;
+  --ao-blue-rgb: 54, 114, 150;
+  --ao-purple: #7b4d74;
+  --ao-purple-rgb: 123, 77, 116;
+  --ao-pink: #a14762;
+  --ao-pink-rgb: 161, 71, 98;
+  --ao-paper-hover: #fff3e1;
+  --ao-oxblood-hover: #a5363f;
+  --ao-warning-ink: #77500e;
+  --ao-code-surface: #e6ceb0;
+  --ao-light-on-accent: #fff1dd;
+
+  --ao-light-base-00: #f4e7d3;
+  --ao-light-base-05: #efdec7;
+  --ao-light-base-10: #e8d3b9;
+  --ao-light-base-20: #dfc2a3;
+  --ao-light-base-25: #d5b593;
+  --ao-light-base-30: #caa883;
+  --ao-light-base-35: #b59676;
+  --ao-light-base-40: #a08368;
+  --ao-light-base-50: #866c57;
+  --ao-light-base-60: #725a4a;
+  --ao-light-base-70: #624c40;
+  --ao-light-base-100: #24150f;
+  --ao-light-mono-rgb-0: 244, 231, 211;
+  --ao-light-mono-rgb-100: 36, 21, 15;
+  --ao-light-accent-h: 15;
+  --ao-light-accent-s: 60%;
+  --ao-light-accent-l: 36%;
+}
+
+body.ao-light-forestry-file {
+  --ao-ink: #142019;
+  --ao-ink-rgb: 20, 32, 25;
+  --ao-paper: #edf0e4;
+  --ao-paper-rgb: 237, 240, 228;
+  --ao-khaki: #c3cfbb;
+  --ao-khaki-rgb: 195, 207, 187;
+  --ao-folder: #aebe9f;
+  --ao-graphite: #4c5e50;
+  --ao-olive: #285a3d;
+  --ao-olive-rgb: 40, 90, 61;
+  --ao-olive-hover: #34734e;
+  --ao-oxblood: #9c3c26;
+  --ao-oxblood-rgb: 156, 60, 38;
+  --ao-cyan: #2c929b;
+  --ao-cyan-rgb: 44, 146, 155;
+  --ao-cyan-ink: #196b73;
+  --ao-stamp: #a77a16;
+  --ao-stamp-rgb: 167, 122, 22;
+  --ao-yellow: #c9a33a;
+  --ao-yellow-rgb: 201, 163, 58;
+  --ao-blue: #2f6f92;
+  --ao-blue-rgb: 47, 111, 146;
+  --ao-purple: #6e547b;
+  --ao-purple-rgb: 110, 84, 123;
+  --ao-pink: #985065;
+  --ao-pink-rgb: 152, 80, 101;
+  --ao-paper-hover: #f8faf1;
+  --ao-oxblood-hover: #b44c33;
+  --ao-warning-ink: #6c5110;
+  --ao-code-surface: #dce4d4;
+  --ao-light-on-accent: var(--ao-paper);
+
+  --ao-light-base-00: #edf0e4;
+  --ao-light-base-05: #e3e8da;
+  --ao-light-base-10: #d6decd;
+  --ao-light-base-20: #c3cfbb;
+  --ao-light-base-25: #b9c7ad;
+  --ao-light-base-30: #aebe9f;
+  --ao-light-base-35: #9aab8f;
+  --ao-light-base-40: #87987f;
+  --ao-light-base-50: #6e806c;
+  --ao-light-base-60: #5b6c5c;
+  --ao-light-base-70: #4c5e50;
+  --ao-light-base-100: #142019;
+  --ao-light-mono-rgb-0: 237, 240, 228;
+  --ao-light-mono-rgb-100: 20, 32, 25;
+  --ao-light-accent-h: 145;
+  --ao-light-accent-s: 38%;
+  --ao-light-accent-l: 25%;
+}
+
+body.ao-dark-carbon-teal {
+  --ao-dark-canvas: #101718;
+  --ao-dark-surface: #172224;
+  --ao-dark-recessed: #223033;
+  --ao-dark-content: #000000;
+  --ao-dark-paper: #e4ece5;
+  --ao-dark-paper-rgb: 228, 236, 229;
+  --ao-dark-muted: #a4b6ad;
+  --ao-dark-olive: #55b7a7;
+  --ao-dark-olive-rgb: 85, 183, 167;
+  --ao-dark-olive-hover: #6cc8b9;
+  --ao-dark-red: #dd7167;
+  --ao-dark-red-rgb: 221, 113, 103;
+  --ao-dark-red-hover: #eb877e;
+  --ao-dark-cyan: #6ab9d0;
+  --ao-dark-cyan-rgb: 106, 185, 208;
+  --ao-dark-orange: #d7b553;
+  --ao-dark-orange-rgb: 215, 181, 83;
+  --ao-dark-yellow: #e0c96c;
+  --ao-dark-yellow-rgb: 224, 201, 108;
+  --ao-dark-blue: #72a9d3;
+  --ao-dark-blue-rgb: 114, 169, 211;
+  --ao-dark-purple: #b58bc8;
+  --ao-dark-purple-rgb: 181, 139, 200;
+  --ao-dark-pink: #d887aa;
+  --ao-dark-pink-rgb: 216, 135, 170;
+  --ao-dark-chrome: #090e0f;
+  --ao-dark-code-surface: #0d1415;
+  --ao-dark-on-accent: #0d1a18;
+  --ao-dark-on-info: #0d1a18;
+
+  --ao-dark-base-00: #101718;
+  --ao-dark-base-05: #141d1e;
+  --ao-dark-base-10: #172224;
+  --ao-dark-base-20: #223033;
+  --ao-dark-base-25: #29393d;
+  --ao-dark-base-30: #304247;
+  --ao-dark-base-35: #47595b;
+  --ao-dark-base-40: #5e7070;
+  --ao-dark-base-50: #7b8d89;
+  --ao-dark-base-60: #93a59e;
+  --ao-dark-base-70: #a4b6ad;
+  --ao-dark-base-100: #e4ece5;
+  --ao-dark-mono-rgb-0: 16, 23, 24;
+  --ao-dark-mono-rgb-100: 228, 236, 229;
+  --ao-dark-accent-h: 170;
+  --ao-dark-accent-s: 41%;
+  --ao-dark-accent-l: 53%;
+}
+
+body.ao-dark-oxblood-archive {
+  --ao-dark-canvas: #1a1011;
+  --ao-dark-surface: #241719;
+  --ao-dark-recessed: #322124;
+  --ao-dark-content: #000000;
+  --ao-dark-paper: #f0dfc9;
+  --ao-dark-paper-rgb: 240, 223, 201;
+  --ao-dark-muted: #c3a995;
+  --ao-dark-olive: #c86551;
+  --ao-dark-olive-rgb: 200, 101, 81;
+  --ao-dark-olive-hover: #de7964;
+  --ao-dark-red: #ef8176;
+  --ao-dark-red-rgb: 239, 129, 118;
+  --ao-dark-red-hover: #f1948c;
+  --ao-dark-cyan: #58b4b0;
+  --ao-dark-cyan-rgb: 88, 180, 176;
+  --ao-dark-orange: #d7aa4c;
+  --ao-dark-orange-rgb: 215, 170, 76;
+  --ao-dark-yellow: #e2c16c;
+  --ao-dark-yellow-rgb: 226, 193, 108;
+  --ao-dark-blue: #79a7ce;
+  --ao-dark-blue-rgb: 121, 167, 206;
+  --ao-dark-purple: #c08dbb;
+  --ao-dark-purple-rgb: 192, 141, 187;
+  --ao-dark-pink: #e28ca5;
+  --ao-dark-pink-rgb: 226, 140, 165;
+  --ao-dark-chrome: #0f090a;
+  --ao-dark-code-surface: #180d0f;
+  --ao-dark-on-accent: #1a1011;
+  --ao-dark-on-info: #1a1011;
+
+  --ao-dark-base-00: #1a1011;
+  --ao-dark-base-05: #1f1415;
+  --ao-dark-base-10: #241719;
+  --ao-dark-base-20: #322124;
+  --ao-dark-base-25: #3e292d;
+  --ao-dark-base-30: #493035;
+  --ao-dark-base-35: #614848;
+  --ao-dark-base-40: #7a605b;
+  --ao-dark-base-50: #987f73;
+  --ao-dark-base-60: #b19787;
+  --ao-dark-base-70: #c3a995;
+  --ao-dark-base-100: #f0dfc9;
+  --ao-dark-mono-rgb-0: 26, 16, 17;
+  --ao-dark-mono-rgb-100: 240, 223, 201;
+  --ao-dark-accent-h: 10;
+  --ao-dark-accent-s: 52%;
+  --ao-dark-accent-l: 55%;
+}
+
+body.ao-dark-midnight-blueprint {
+  --ao-dark-canvas: #0f1521;
+  --ao-dark-surface: #171f2f;
+  --ao-dark-recessed: #202b40;
+  --ao-dark-content: #000000;
+  --ao-dark-paper: #e5e8df;
+  --ao-dark-paper-rgb: 229, 232, 223;
+  --ao-dark-muted: #a9b1c2;
+  --ao-dark-olive: #79a9d4;
+  --ao-dark-olive-rgb: 121, 169, 212;
+  --ao-dark-olive-hover: #91bee4;
+  --ao-dark-red: #e0726c;
+  --ao-dark-red-rgb: 224, 114, 108;
+  --ao-dark-red-hover: #ea8984;
+  --ao-dark-cyan: #54c1c2;
+  --ao-dark-cyan-rgb: 84, 193, 194;
+  --ao-dark-orange: #d6b854;
+  --ao-dark-orange-rgb: 214, 184, 84;
+  --ao-dark-yellow: #e0cb73;
+  --ao-dark-yellow-rgb: 224, 203, 115;
+  --ao-dark-blue: #79a9d4;
+  --ao-dark-blue-rgb: 121, 169, 212;
+  --ao-dark-purple: #b59ad8;
+  --ao-dark-purple-rgb: 181, 154, 216;
+  --ao-dark-pink: #d88bab;
+  --ao-dark-pink-rgb: 216, 139, 171;
+  --ao-dark-chrome: #090d16;
+  --ao-dark-code-surface: #0c111c;
+  --ao-dark-on-accent: #101722;
+  --ao-dark-on-info: #101722;
+
+  --ao-dark-base-00: #0f1521;
+  --ao-dark-base-05: #131a28;
+  --ao-dark-base-10: #171f2f;
+  --ao-dark-base-20: #202b40;
+  --ao-dark-base-25: #27344b;
+  --ao-dark-base-30: #2e3c55;
+  --ao-dark-base-35: #47536b;
+  --ao-dark-base-40: #5f6b81;
+  --ao-dark-base-50: #7e889c;
+  --ao-dark-base-60: #979fb2;
+  --ao-dark-base-70: #a9b1c2;
+  --ao-dark-base-100: #e5e8df;
+  --ao-dark-mono-rgb-0: 15, 21, 33;
+  --ao-dark-mono-rgb-100: 229, 232, 223;
+  --ao-dark-accent-h: 209;
+  --ao-dark-accent-s: 50%;
+  --ao-dark-accent-l: 65%;
+}
+
 /* 02. Obsidian variable mapping
    -------------------------------------------------------------------------- */
 
 .theme-light {
   color-scheme: light;
 
-  --color-base-00: #f1e7cc;
-  --color-base-05: #ede1c4;
-  --color-base-10: #e6d9b7;
-  --color-base-20: #d9cba8;
-  --color-base-25: #d0c198;
-  --color-base-30: #c8b98f;
-  --color-base-35: #b6a77d;
-  --color-base-40: #9f916b;
-  --color-base-50: #81765b;
-  --color-base-60: #6a624e;
-  --color-base-70: #4b493f;
-  --color-base-100: #11110d;
-  --mono-rgb-0: 241, 231, 204;
-  --mono-rgb-100: 17, 17, 13;
+  --color-base-00: var(--ao-light-base-00);
+  --color-base-05: var(--ao-light-base-05);
+  --color-base-10: var(--ao-light-base-10);
+  --color-base-20: var(--ao-light-base-20);
+  --color-base-25: var(--ao-light-base-25);
+  --color-base-30: var(--ao-light-base-30);
+  --color-base-35: var(--ao-light-base-35);
+  --color-base-40: var(--ao-light-base-40);
+  --color-base-50: var(--ao-light-base-50);
+  --color-base-60: var(--ao-light-base-60);
+  --color-base-70: var(--ao-light-base-70);
+  --color-base-100: var(--ao-light-base-100);
+  --mono-rgb-0: var(--ao-light-mono-rgb-0);
+  --mono-rgb-100: var(--ao-light-mono-rgb-100);
 
-  --accent-h: 67;
-  --accent-s: 55%;
-  --accent-l: 25%;
+  --accent-h: var(--ao-light-accent-h);
+  --accent-s: var(--ao-light-accent-s);
+  --accent-l: var(--ao-light-accent-l);
 
   --color-red-rgb: var(--ao-oxblood-rgb);
   --color-red: var(--ao-oxblood);
   --color-orange-rgb: var(--ao-stamp-rgb);
   --color-orange: var(--ao-stamp);
-  --color-yellow-rgb: 214, 175, 45;
-  --color-yellow: #d6af2d;
+  --color-yellow-rgb: var(--ao-yellow-rgb);
+  --color-yellow: var(--ao-yellow);
   --color-green-rgb: var(--ao-olive-rgb);
   --color-green: var(--ao-olive);
   --color-cyan-rgb: var(--ao-cyan-rgb);
   --color-cyan: var(--ao-cyan);
-  --color-blue-rgb: 38, 112, 154;
-  --color-blue: #26709a;
-  --color-purple-rgb: 112, 66, 124;
-  --color-purple: #70427c;
-  --color-pink-rgb: 163, 62, 102;
-  --color-pink: #a33e66;
+  --color-blue-rgb: var(--ao-blue-rgb);
+  --color-blue: var(--ao-blue);
+  --color-purple-rgb: var(--ao-purple-rgb);
+  --color-purple: var(--ao-purple);
+  --color-pink-rgb: var(--ao-pink-rgb);
+  --color-pink: var(--ao-pink);
 
   --background-primary: var(--ao-paper);
-  --background-primary-alt: #e9ddbd;
+  --background-primary-alt: var(--ao-light-base-05);
   --background-secondary: var(--ao-khaki);
   --background-secondary-alt: var(--ao-folder);
   --background-modifier-hover: rgba(var(--ao-ink-rgb), 0.09);
@@ -262,30 +683,31 @@ body {
   --background-modifier-border-hover: var(--ao-olive);
   --background-modifier-border-focus: var(--ao-cyan);
   --background-modifier-form-field: var(--ao-paper);
-  --background-modifier-form-field-hover: #fff6df;
+  --background-modifier-form-field-hover: var(--ao-paper-hover);
   --background-modifier-error: var(--ao-oxblood);
-  --background-modifier-error-hover: #a62727;
+  --background-modifier-error-hover: var(--ao-oxblood-hover);
   --background-modifier-success: var(--ao-olive);
   --background-modifier-message: var(--ao-ink);
 
   --text-normal: var(--ao-ink);
   --text-muted: var(--ao-graphite);
-  --text-faint: #6a624e;
-  --text-on-accent: var(--ao-paper);
+  --text-faint: var(--ao-light-base-60);
+  --text-on-accent: var(--ao-light-on-accent);
   --text-on-accent-inverted: var(--ao-ink);
   --text-error: var(--ao-oxblood);
-  --text-warning: #755006;
+  --text-warning: var(--ao-warning-ink);
   --text-success: var(--ao-olive);
   --text-selection: rgba(var(--ao-olive-rgb), 0.3);
   --text-highlight-bg: rgba(var(--ao-stamp-rgb), 0.42);
-  --text-accent: #006f77;
+  --text-accent: var(--ao-cyan-ink);
   --text-accent-hover: var(--ao-oxblood);
 
   --interactive-normal: var(--ao-paper);
-  --interactive-hover: #fff6df;
+  --interactive-hover: var(--ao-paper-hover);
   --interactive-accent: var(--ao-olive);
   --interactive-accent-hover: var(--ao-olive-hover);
-  --interactive-accent-hsl: 67, 55%, 25%;
+  --interactive-accent-hsl:
+    var(--ao-light-accent-h), var(--ao-light-accent-s), var(--ao-light-accent-l);
 
   --divider-color: var(--ao-ink);
   --divider-color-hover: var(--ao-cyan);
@@ -330,19 +752,19 @@ body {
 
   --blockquote-border-color: var(--ao-oxblood);
   --blockquote-background-color: rgba(var(--ao-khaki-rgb), 0.5);
-  --code-background: #e7dab8;
+  --code-background: var(--ao-code-surface);
   --code-border-color: var(--ao-ink);
   --code-normal: var(--ao-ink);
-  --code-comment: #6a624e;
-  --code-function: #755006;
+  --code-comment: var(--ao-light-base-60);
+  --code-function: var(--ao-warning-ink);
   --code-important: var(--ao-oxblood);
-  --code-keyword: #70427c;
+  --code-keyword: var(--ao-purple);
   --code-operator: var(--ao-oxblood);
-  --code-property: #006f77;
+  --code-property: var(--ao-cyan-ink);
   --code-punctuation: var(--ao-graphite);
   --code-string: var(--ao-olive);
   --code-tag: var(--ao-oxblood);
-  --code-value: #70427c;
+  --code-value: var(--ao-purple);
   --caret-color: var(--ao-oxblood);
 
   --checkbox-marker-color: var(--ao-paper);
@@ -382,11 +804,11 @@ body {
   --suggestion-background: var(--ao-paper);
   --popover-background: var(--ao-paper);
 
-  --input-placeholder-color: #6a624e;
+  --input-placeholder-color: var(--ao-light-base-60);
   --input-shadow: inset 0 0 0 var(--ao-border-default) var(--ao-ink);
   --input-shadow-hover: inset 0 0 0 var(--ao-border-default) var(--ao-cyan);
 
-  --graph-line: #81765b;
+  --graph-line: var(--ao-light-base-50);
   --graph-node: var(--ao-olive);
   --graph-node-unresolved: var(--ao-graphite);
   --graph-node-focused: var(--ao-cyan);
@@ -408,47 +830,47 @@ body {
 .theme-dark {
   color-scheme: dark;
 
-  --color-base-00: #15160f;
-  --color-base-05: #191b11;
-  --color-base-10: #1d2014;
-  --color-base-20: #252919;
-  --color-base-25: #2c311e;
-  --color-base-30: #343a23;
-  --color-base-35: #46502b;
-  --color-base-40: #5a6338;
-  --color-base-50: #747c54;
-  --color-base-60: #919873;
-  --color-base-70: #b4aa8f;
-  --color-base-100: #eee4c8;
-  --mono-rgb-0: 21, 22, 15;
-  --mono-rgb-100: 238, 228, 200;
+  --color-base-00: var(--ao-dark-base-00);
+  --color-base-05: var(--ao-dark-base-05);
+  --color-base-10: var(--ao-dark-base-10);
+  --color-base-20: var(--ao-dark-base-20);
+  --color-base-25: var(--ao-dark-base-25);
+  --color-base-30: var(--ao-dark-base-30);
+  --color-base-35: var(--ao-dark-base-35);
+  --color-base-40: var(--ao-dark-base-40);
+  --color-base-50: var(--ao-dark-base-50);
+  --color-base-60: var(--ao-dark-base-60);
+  --color-base-70: var(--ao-dark-base-70);
+  --color-base-100: var(--ao-dark-base-100);
+  --mono-rgb-0: var(--ao-dark-mono-rgb-0);
+  --mono-rgb-100: var(--ao-dark-mono-rgb-100);
 
-  --accent-h: 67;
-  --accent-s: 49%;
-  --accent-l: 45%;
+  --accent-h: var(--ao-dark-accent-h);
+  --accent-s: var(--ao-dark-accent-s);
+  --accent-l: var(--ao-dark-accent-l);
 
   --color-red-rgb: var(--ao-dark-red-rgb);
   --color-red: var(--ao-dark-red);
-  --color-orange-rgb: 224, 172, 63;
-  --color-orange: #e0ac3f;
-  --color-yellow-rgb: 226, 194, 86;
-  --color-yellow: #e2c256;
+  --color-orange-rgb: var(--ao-dark-orange-rgb);
+  --color-orange: var(--ao-dark-orange);
+  --color-yellow-rgb: var(--ao-dark-yellow-rgb);
+  --color-yellow: var(--ao-dark-yellow);
   --color-green-rgb: var(--ao-dark-olive-rgb);
   --color-green: var(--ao-dark-olive);
   --color-cyan-rgb: var(--ao-dark-cyan-rgb);
   --color-cyan: var(--ao-dark-cyan);
-  --color-blue-rgb: 96, 169, 203;
-  --color-blue: #60a9cb;
-  --color-purple-rgb: 181, 133, 194;
-  --color-purple: #b585c2;
-  --color-pink-rgb: 221, 117, 156;
-  --color-pink: #dd759c;
+  --color-blue-rgb: var(--ao-dark-blue-rgb);
+  --color-blue: var(--ao-dark-blue);
+  --color-purple-rgb: var(--ao-dark-purple-rgb);
+  --color-purple: var(--ao-dark-purple);
+  --color-pink-rgb: var(--ao-dark-pink-rgb);
+  --color-pink: var(--ao-dark-pink);
 
   --background-primary: var(--ao-dark-surface);
-  --background-primary-alt: #191b11;
+  --background-primary-alt: var(--ao-dark-base-05);
   --background-secondary: var(--ao-dark-canvas);
   --background-secondary-alt: var(--ao-dark-recessed);
-  --background-modifier-hover: rgba(var(--ao-paper-rgb), 0.08);
+  --background-modifier-hover: rgba(var(--ao-dark-paper-rgb), 0.08);
   --background-modifier-active-hover: rgba(var(--ao-dark-olive-rgb), 0.2);
   --background-modifier-border: var(--ao-dark-muted);
   --background-modifier-border-hover: var(--ao-dark-olive);
@@ -456,17 +878,17 @@ body {
   --background-modifier-form-field: var(--ao-dark-canvas);
   --background-modifier-form-field-hover: var(--ao-dark-recessed);
   --background-modifier-error: var(--ao-dark-red);
-  --background-modifier-error-hover: #e66a62;
+  --background-modifier-error-hover: var(--ao-dark-red-hover);
   --background-modifier-success: var(--ao-dark-olive);
   --background-modifier-message: var(--ao-dark-paper);
 
   --text-normal: var(--ao-dark-paper);
   --text-muted: var(--ao-dark-muted);
-  --text-faint: #919873;
-  --text-on-accent: var(--ao-ink);
+  --text-faint: var(--ao-dark-base-60);
+  --text-on-accent: var(--ao-dark-on-accent);
   --text-on-accent-inverted: var(--ao-dark-paper);
   --text-error: var(--ao-dark-red);
-  --text-warning: #e0ac3f;
+  --text-warning: var(--ao-dark-orange);
   --text-success: var(--ao-dark-olive);
   --text-selection: rgba(var(--ao-dark-olive-rgb), 0.32);
   --text-highlight-bg: rgba(224, 172, 63, 0.32);
@@ -476,25 +898,26 @@ body {
   --interactive-normal: var(--ao-dark-surface);
   --interactive-hover: var(--ao-dark-recessed);
   --interactive-accent: var(--ao-dark-olive);
-  --interactive-accent-hover: #afbf4b;
-  --interactive-accent-hsl: 67, 49%, 45%;
+  --interactive-accent-hover: var(--ao-dark-olive-hover);
+  --interactive-accent-hsl:
+    var(--ao-dark-accent-h), var(--ao-dark-accent-s), var(--ao-dark-accent-l);
 
   --divider-color: var(--ao-dark-muted);
   --divider-color-hover: var(--ao-dark-cyan);
-  --ribbon-background: #0e0f0a;
-  --ribbon-background-collapsed: #0e0f0a;
-  --titlebar-background: #0e0f0a;
-  --titlebar-background-focused: #0e0f0a;
+  --ribbon-background: var(--ao-dark-chrome);
+  --ribbon-background-collapsed: var(--ao-dark-chrome);
+  --titlebar-background: var(--ao-dark-chrome);
+  --titlebar-background-focused: var(--ao-dark-chrome);
   --titlebar-border-color: var(--ao-dark-muted);
   --titlebar-text-color: var(--ao-dark-paper);
   --titlebar-text-color-focused: var(--ao-dark-paper);
   --tab-container-background: var(--ao-dark-canvas);
   --tab-background-active: var(--ao-dark-cyan);
   --tab-text-color: var(--ao-dark-muted);
-  --tab-text-color-active: var(--ao-ink);
+  --tab-text-color-active: var(--ao-dark-on-info);
   --tab-text-color-focused: var(--ao-dark-muted);
-  --tab-text-color-focused-active: var(--ao-ink);
-  --tab-text-color-focused-active-current: var(--ao-ink);
+  --tab-text-color-focused-active: var(--ao-dark-on-info);
+  --tab-text-color-focused-active-current: var(--ao-dark-on-info);
   --tab-divider-color: var(--ao-dark-muted);
   --tab-outline-color: var(--ao-dark-muted);
   --ao-chrome-foreground: var(--ao-dark-paper);
@@ -502,9 +925,9 @@ body {
   --ao-chrome-control-foreground: var(--ao-dark-paper);
   --ao-chrome-hover-background: var(--ao-dark-recessed);
   --ao-chrome-hover-foreground: var(--ao-dark-paper);
-  --ao-accent-foreground: var(--ao-ink);
-  --ao-selection-foreground: var(--ao-ink);
-  --status-bar-background: #0e0f0a;
+  --ao-accent-foreground: var(--ao-dark-on-info);
+  --ao-selection-foreground: var(--ao-dark-on-accent);
+  --status-bar-background: var(--ao-dark-chrome);
   --status-bar-border-color: var(--ao-dark-muted);
   --status-bar-text-color: var(--ao-dark-paper);
   --file-header-background: var(--ao-dark-surface);
@@ -512,8 +935,8 @@ body {
 
   --nav-item-color: var(--ao-dark-muted);
   --nav-item-color-hover: var(--ao-dark-paper);
-  --nav-item-color-active: var(--ao-ink);
-  --nav-item-color-selected: var(--ao-ink);
+  --nav-item-color-active: var(--ao-dark-on-accent);
+  --nav-item-color-selected: var(--ao-dark-on-accent);
   --nav-item-background-hover: var(--ao-dark-recessed);
   --nav-item-background-active: var(--ao-dark-olive);
   --nav-item-background-selected: var(--ao-dark-olive);
@@ -522,30 +945,30 @@ body {
 
   --blockquote-border-color: var(--ao-dark-red);
   --blockquote-background-color: rgba(37, 41, 25, 0.72);
-  --code-background: #14170d;
+  --code-background: var(--ao-dark-code-surface);
   --code-border-color: var(--ao-dark-muted);
   --code-normal: var(--ao-dark-paper);
-  --code-comment: #919873;
-  --code-function: #e2c256;
+  --code-comment: var(--ao-dark-base-60);
+  --code-function: var(--ao-dark-yellow);
   --code-important: var(--ao-dark-red);
-  --code-keyword: #b585c2;
+  --code-keyword: var(--ao-dark-purple);
   --code-operator: var(--ao-dark-red);
   --code-property: var(--ao-dark-cyan);
   --code-punctuation: var(--ao-dark-muted);
   --code-string: var(--ao-dark-olive);
   --code-tag: var(--ao-dark-red);
-  --code-value: #b585c2;
+  --code-value: var(--ao-dark-purple);
   --caret-color: var(--ao-dark-red);
 
-  --checkbox-marker-color: var(--ao-ink);
+  --checkbox-marker-color: var(--ao-dark-on-accent);
   --checkbox-color: var(--ao-dark-olive);
-  --checkbox-color-hover: #afbf4b;
+  --checkbox-color-hover: var(--ao-dark-olive-hover);
   --checkbox-border-color: var(--ao-dark-paper);
   --checkbox-border-color-hover: var(--ao-dark-cyan);
   --checklist-done-color: var(--ao-dark-muted);
 
   --tag-color: var(--ao-dark-paper);
-  --tag-color-hover: var(--ao-ink);
+  --tag-color-hover: var(--ao-dark-on-accent);
   --tag-background: var(--ao-dark-recessed);
   --tag-background-hover: var(--ao-dark-olive);
   --tag-border-color: var(--ao-dark-muted);
@@ -553,7 +976,7 @@ body {
 
   --table-border-color: var(--ao-dark-muted);
   --table-header-background: var(--ao-dark-paper);
-  --table-header-color: var(--ao-ink);
+  --table-header-color: var(--ao-dark-on-accent);
   --table-row-alt-background: rgba(37, 41, 25, 0.74);
   --table-row-background-hover: rgba(var(--ao-dark-cyan-rgb), 0.12);
   --table-selection: rgba(var(--ao-dark-cyan-rgb), 0.18);
@@ -562,9 +985,9 @@ body {
   --menu-background: var(--ao-dark-canvas);
   --menu-border-color: var(--ao-dark-muted);
   --ao-menu-hover-background: var(--ao-dark-olive);
-  --ao-menu-hover-foreground: var(--ao-ink);
+  --ao-menu-hover-foreground: var(--ao-dark-on-accent);
   --ao-feedback-background: var(--ao-dark-paper);
-  --ao-feedback-foreground: var(--ao-ink);
+  --ao-feedback-foreground: var(--ao-dark-on-accent);
   --ao-feedback-border: var(--ao-dark-canvas);
   --ao-feedback-shadow: var(--ao-dark-olive);
   --modal-background: var(--ao-dark-surface);
@@ -574,7 +997,7 @@ body {
   --suggestion-background: var(--ao-dark-surface);
   --popover-background: var(--ao-dark-surface);
 
-  --input-placeholder-color: #919873;
+  --input-placeholder-color: var(--ao-dark-base-60);
   --input-shadow: inset 0 0 0 var(--ao-border-default) var(--ao-dark-muted);
   --input-shadow-hover: inset 0 0 0 var(--ao-border-default) var(--ao-dark-cyan);
 
@@ -592,14 +1015,14 @@ body {
   --callout-success: var(--ao-dark-olive-rgb);
   --callout-quote: 238, 228, 200;
 
-  --graph-line: #747c54;
+  --graph-line: var(--ao-dark-base-50);
   --graph-node: var(--ao-dark-olive);
   --graph-node-unresolved: var(--ao-dark-muted);
   --graph-node-focused: var(--ao-dark-cyan);
   --graph-node-tag: var(--ao-dark-red);
-  --graph-node-attachment: #e0ac3f;
+  --graph-node-attachment: var(--ao-dark-orange);
   --canvas-background: var(--ao-dark-surface);
-  --canvas-dot-pattern: #46502b;
+  --canvas-dot-pattern: var(--ao-dark-base-35);
 
   --shadow-xs: var(--ao-shadow-offset) var(--ao-dark-olive);
   --shadow-s: var(--ao-shadow-offset) var(--ao-dark-olive);
@@ -710,6 +1133,7 @@ body {
   > .workspace-tabs
   > .workspace-tab-header-container {
   background: var(--ao-dark-cyan);
+  color: var(--ao-dark-on-info);
 }
 
 .workspace-split.mod-sidedock .workspace-tab-header-container-inner {
@@ -747,7 +1171,7 @@ body:not(.is-mobile)
   .workspace-sidedock-vault-profile {
   background: var(--ao-dark-olive);
   border-top-color: var(--ao-dark-paper);
-  color: var(--ao-ink);
+  color: var(--ao-dark-on-accent);
 }
 
 .workspace-leaf-resize-handle {
@@ -787,7 +1211,7 @@ body:not(.is-mobile)
 
 .theme-dark .status-bar-item.mod-clickable:hover {
   background: var(--ao-dark-red);
-  color: var(--ao-ink);
+  color: var(--ao-dark-on-accent);
 }
 
 /* 04. Navigation and tabs
@@ -976,7 +1400,7 @@ body:not(.is-mobile)
   --icon-color-active: var(--ao-accent-foreground);
   --icon-color-hover: var(--ao-accent-foreground);
   background: var(--tab-background-active);
-  box-shadow: inset 0 -4px 0 var(--ao-ink);
+  box-shadow: inset 0 -4px 0 var(--ao-accent-foreground);
   color: var(--ao-accent-foreground);
 }
 
@@ -1028,6 +1452,56 @@ body:not(.is-mobile)
 .workspace-tab-header-new-tab,
 .workspace-tab-header-tab-list {
   border-inline-start: var(--ao-border-thin) solid var(--tab-divider-color);
+}
+
+/* Keep desktop and tablet chrome quiet: surface changes carry hierarchy while
+   resize handles retain their hit area without a persistent visual divider. */
+body:not(.is-phone)
+  :is(.titlebar, .view-header, .workspace-tab-header-container) {
+  border-bottom-width: 0;
+}
+
+body:not(.is-phone) .workspace-ribbon {
+  border-inline-end-width: 0;
+}
+
+body:not(.is-phone) .workspace-split.mod-left-split {
+  border-inline-end-width: 0;
+}
+
+body:not(.is-phone) .workspace-split.mod-right-split {
+  border-inline-start-width: 0;
+}
+
+body:not(.is-phone) .workspace-leaf-resize-handle {
+  background: transparent;
+}
+
+body:not(.is-phone) .workspace-leaf-resize-handle:hover {
+  background: var(--divider-color-hover);
+}
+
+body:not(.is-phone) .workspace-tab-header {
+  border-inline-end-width: 0;
+}
+
+body:not(.is-phone)
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list) {
+  border-inline-start-width: 0;
+}
+
+body:not(.is-phone)
+  .app-container
+  .workspace
+  .workspace-split.mod-left-split
+  .workspace-tabs
+  .workspace-tab-header-container
+  .workspace-tab-header.is-active,
+body:not(.is-phone)
+  .workspace
+  .mod-root
+  .workspace-tab-header:is(.is-active, :hover) {
+  box-shadow: none;
 }
 
 .nav-files-container,
@@ -1198,7 +1672,7 @@ body.theme-dark
 .theme-dark .markdown-rendered a:hover,
 .theme-dark .markdown-rendered a:focus-visible {
   background: var(--ao-dark-cyan);
-  color: var(--ao-ink);
+  color: var(--ao-dark-on-info);
 }
 
 .markdown-rendered .internal-link.is-unresolved,
@@ -1433,7 +1907,7 @@ button.mod-warning {
 }
 
 .theme-dark button.mod-warning {
-  color: var(--ao-ink);
+  color: var(--ao-dark-on-accent);
 }
 
 input,
@@ -1750,7 +2224,7 @@ body.is-mobile {
   --ao-mobile-border: var(--ao-dark-muted);
   --ao-mobile-focus: var(--ao-dark-cyan);
   --ao-mobile-active-background: var(--ao-dark-olive);
-  --ao-mobile-active-foreground: var(--ao-ink);
+  --ao-mobile-active-foreground: var(--ao-dark-on-accent);
   --interactive-normal: var(--ao-mobile-surface-raised);
   --interactive-hover: var(--ao-mobile-surface);
   --background-modifier-form-field: var(--ao-mobile-surface-raised);

@@ -2,7 +2,7 @@
 
 Date: 2026-07-26
 
-Build: `0.1.4`
+Build: `0.1.5`
 
 Runtime: Obsidian Desktop `1.12.7`, macOS
 
@@ -18,7 +18,7 @@ The final implementation has no remote assets, `@import`, routine `!important`, 
 
 | ID     | Status | Evidence                                                                                                                                                        |
 | ------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.4`; final developer error buffer is empty.                                                           |
+| AO-001 | Pass   | `manifest.json` and `theme.css` load as Archive Olive `0.1.5`; final developer error buffer is empty.                                                           |
 | AO-002 | Pass   | Light and dark computed surface, text, active-tab, and active-file colors changed coherently; see workspace screenshots.                                        |
 | AO-003 | Pass   | Ribbon, tab strip, sidebars, editor, status bar, title bar, and pane dividers form a continuous square grid.                                                    |
 | AO-004 | Pass   | Active file uses an olive fill plus a carbon inset rule; active root tab uses cyan plus a heavy bottom rule; inactive root and side-dock tabs remain legible.   |
@@ -63,12 +63,28 @@ node scripts/validate.mjs
 node scripts/validate.mjs --release
 npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
 npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.4-beta.md docs/releases/0.1.4-beta-notes.md scripts/validate.mjs .github/workflows/validate.yml .github/ISSUE_TEMPLATE/bug.yml .github/ISSUE_TEMPLATE/platform-validation.yml .prettierrc.json
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/colorways.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.5-beta.md docs/releases/0.1.5-beta-notes.md scripts/validate.mjs .github/workflows/validate.yml .github/ISSUE_TEMPLATE/bug.yml .github/ISSUE_TEMPLATE/platform-validation.yml .prettierrc.json
 jq empty manifest.json "test-vault/Archive Olive.canvas"
 git diff --check
 ```
 
 `scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, mobile scope isolation, and 30 WCAG contrast pairs. Release mode also verifies the MIT license and README link.
+
+## 0.1.5 optional colorways
+
+- Style Settings parses exactly two independent selectors with four approved
+  light choices and four approved dark choices.
+- Every colorway supplies complete semantic ramps, syntax colors, graph colors,
+  mobile inputs, hover states, and RGB aliases.
+- Seventy-two colorway-specific text and state pairs meet WCAG AA; the lowest
+  passing ratio is Forestry File's active tab at `4.55:1`.
+- Every dark colorway resolves the Markdown editing and reading surface to pure
+  black `#000000`.
+- A Chromium cascade matrix passes all 16 light/dark selector combinations,
+  confirming that the two saved dimensions do not overwrite each other.
+- Obsidian Desktop `1.12.7` in the isolated `test-vault/` parsed both selectors,
+  listed all options, and visibly applied Forestry File and Oxblood Archive.
+  Defaults were restored after acceptance.
 
 ## 0.1.4 iOS visual follow-up
 
