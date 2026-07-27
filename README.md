@@ -6,11 +6,11 @@ Archive Olive is a practical brutalist theme for Obsidian. It combines archival 
 
 ## Status
 
-Version `0.1.5` is an opt-in pre-release beta validated on Obsidian Desktop `1.12.7` for macOS. Its inherited mobile foundation was previously reviewed on a real iPad running iPadOS `27.0`. It is not yet an official Obsidian community theme.
+Version `0.1.6` is an opt-in pre-release beta validated on Obsidian Desktop `1.12.7` for macOS. Its inherited mobile foundation was previously reviewed on a real iPad running iPadOS `27.0`. It is not yet an official Obsidian community theme.
 
-Archive Olive currently uses `main/theme.css` as its only BRAT channel. The `0.1.5` patch adds optional independent light and dark colorways through Style Settings, keeps every dark Markdown content surface pure black, and simplifies persistent desktop and iPad workspace dividers. Broader colorway review on mobile, Windows, Linux, and Android remains pending.
+Archive Olive currently uses `main/theme.css` as its only BRAT channel. The `0.1.6` patch adds a CSS-only editorial file-explorer hierarchy with generated root sequence markers, distinct nested folders and files, trailing disclosure controls, full-width rows, and a simpler active-file state. Real-device file-explorer review on iPhone and iPad, large-vault virtual-scroll testing, and broader colorway review remain pending.
 
-[Download the Archive Olive 0.1.5 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.5).
+[Download the Archive Olive 0.1.6 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.6).
 
 ![Archive Olive light workspace](validation/screenshots/light-workspace.png)
 
@@ -105,7 +105,7 @@ Run the repeatable static checks:
 node scripts/validate.mjs
 npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
 npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/colorways.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.5-beta.md docs/releases/0.1.5-beta-notes.md
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/colorways.md docs/specs/file-explorer-visual-hierarchy.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.6-beta.md docs/releases/0.1.6-beta-notes.md
 ```
 
 Before publishing a beta build, run the stricter release gate:
@@ -120,7 +120,7 @@ The isolated `test-vault` covers Markdown primitives, multilingual text, dense n
 
 Use the [BRAT Beta cross-platform HAT guide](hats/20260725-brat-beta-cross-platform/guide.md) for the private pilot and owner-led Windows, Linux, iOS, and Android acceptance. The guide includes preparation, evidence, privacy, update, removal, and platform-specific checklists.
 
-The [`0.1.5` beta release record](docs/releases/0.1.5-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
+The [`0.1.6` beta release record](docs/releases/0.1.6-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
 
 ## Reporting beta issues
 
@@ -143,7 +143,10 @@ Archive Olive is available under the [MIT License](LICENSE).
 
 ## Known release limitations
 
-- Owner-led verification of the `0.1.5` colorways on mobile and cross-platform desktop testing are pending.
+- Real-device iPhone/iPad review and large-vault virtual-scroll testing of the
+  `0.1.6` file-explorer hierarchy are pending.
+- Owner-led verification of the optional colorways on mobile and cross-platform
+  desktop testing are pending.
 - The GitHub pre-release is an opt-in checkpoint; pilot feedback and final community-theme checks remain required before an official-directory submission.
 - BRAT and GitHub raw-content caching can delay urgent fixes or rollbacks.
 - Alternate colorways still require broader desktop and mobile runtime review before a public release can claim full cross-platform visual acceptance.
@@ -157,9 +160,10 @@ Archive Olive is available under the [MIT License](LICENSE).
 - [DESIGN.md](DESIGN.md)
 - [Theme specification](docs/specs/theme.md)
 - [Colorways specification](docs/specs/colorways.md)
+- [File Explorer Visual Hierarchy specification](docs/specs/file-explorer-visual-hierarchy.md)
 - [BRAT Beta release specification](docs/specs/brat-beta-release.md)
 - [BRAT Beta cross-platform HAT](hats/20260725-brat-beta-cross-platform/guide.md)
-- [`0.1.5` beta release record](docs/releases/0.1.5-beta.md)
+- [`0.1.6` beta release record](docs/releases/0.1.6-beta.md)
 - [CHANGELOG.md](CHANGELOG.md)
 - [BRAT Beta release image](assets/screenshots/archive-olive-512x288.png)
 - [Archive Olive reference concept](design/concepts/01f-archive-olive.png)

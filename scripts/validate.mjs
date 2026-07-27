@@ -71,6 +71,7 @@ for (const requiredPath of [
   'assets/screenshots/archive-olive-512x288.png',
   'docs/specs/brat-beta-release.md',
   'docs/specs/colorways.md',
+  'docs/specs/file-explorer-visual-hierarchy.md',
   currentReleaseRecord,
   currentReleaseNotes,
   'hats/20260725-brat-beta-cross-platform/guide.md',
@@ -169,6 +170,114 @@ assert.match(
   css,
   /\.workspace-split\.mod-left-split[\s\S]*\.workspace-tab-header\.is-active[\s\S]*background:\s*var\(--interactive-accent\)/,
   'theme.css must give active side-dock tabs a focus-independent background',
+);
+assert.match(
+  css,
+  /\.nav-folder-title\[data-path\]:not\(\[data-path\*='\/'\]\)/,
+  'theme.css must identify real top-level folders without relying on the virtualized file-tree wrapper depth',
+);
+assert.match(
+  css,
+  /\.nav-files-container\s*\{[\s\S]*counter-reset:\s*ao-nav-root/,
+  'theme.css must generate root-folder sequence independently from folder names',
+);
+assert.match(
+  css,
+  /:not\(\[data-path\^='_'\]\)[\s\S]*content:\s*counter\(ao-nav-root,\s*decimal-leading-zero\)[\s\S]*counter-increment:\s*ao-nav-root/,
+  'theme.css must render two-digit visual sequence markers while excluding underscore-prefixed utility folders',
+);
+assert.match(
+  css,
+  /\.nav-folder:not\(\.is-collapsed\)[\s\S]*\.nav-folder-title\[data-path\][\s\S]*::after\s*\{[\s\S]*border-top:\s*var\(--ao-border-thin\)\s+solid\s+var\(--ao-nav-root-rule\)/,
+  'theme.css must extend chapter rules only from expanded top-level folders',
+);
+assert.match(
+  css,
+  /\.nav-folder-title\[data-path\*='\/'\]/,
+  'theme.css must give nested folders a distinct visual role',
+);
+assert.match(
+  css,
+  /\.nav-folder-title\[data-path\*='\/'\]::before\s*\{[\s\S]*mask:\s*url\("data:image\/svg\+xml/,
+  'theme.css must keep nested folders visibly distinct with a local folder glyph',
+);
+assert.match(
+  css,
+  /\.nav-folder-children\s*\{[\s\S]*border-inline-start:\s*0/,
+  'theme.css must remove vertical file-tree indentation guides',
+);
+assert.match(
+  css,
+  /\.nav-folder:not\(\.is-collapsed\)\s*>\s*\.nav-folder-title\[data-path\*='\/'\]\s*\{[\s\S]*box-shadow:\s*none/,
+  'theme.css must not replace indentation guides with expanded-folder inset rails',
+);
+assert.match(
+  css,
+  /--ao-nav-file-marker-offset:\s*-10px/,
+  'theme.css must preserve the runtime-measured file-to-folder marker alignment offset',
+);
+assert.match(
+  css,
+  /\.nav-file-title\[data-path\*='\/'\]\s*>\s*\.nav-file-title-content,\s*\.nav-file-title\[data-path\]:not\(\[data-path\*='\/'\]\)\s*>\s*\.nav-file-title-content\s*\{[\s\S]*margin-inline-start:\s*var\(--ao-nav-file-marker-offset\)/,
+  'theme.css must align file text with the first visible marker of sibling folders',
+);
+assert.match(
+  css,
+  /\.nav-folder-title[\s\S]*>\s*:is\(\.collapse-icon,\s*\.nav-folder-collapse-indicator\)\s*\{[\s\S]*margin-inline-start:\s*auto[\s\S]*margin-inline-end:\s*0[\s\S]*order:\s*4[\s\S]*>\s*:is\(\.collapse-icon,\s*\.nav-folder-collapse-indicator\)[\s\S]*>\s*svg\s*\{[\s\S]*display:\s*none[\s\S]*:is\(\.collapse-icon,\s*\.nav-folder-collapse-indicator\)::before,[\s\S]*:is\(\.collapse-icon,\s*\.nav-folder-collapse-indicator\)::after\s*\{[\s\S]*left:\s*50%[\s\S]*width:\s*var\(--ao-nav-disclosure-glyph\)[\s\S]*\.collapse-icon:not\(\.is-collapsed\)::after,[\s\S]*\.nav-folder:not\(\.is-collapsed\)[\s\S]*\.nav-folder-collapse-indicator::after\s*\{[\s\S]*content:\s*none/,
+  'theme.css must place stable plus/minus disclosure controls in a shared trailing slot',
+);
+assert.match(
+  css,
+  /--ao-nav-root-gap:\s*2px[\s\S]*--ao-nav-counter-width:\s*22px[\s\S]*--ao-nav-disclosure-slot:\s*18px/,
+  'theme.css must preserve the reviewed compact desktop file-tree density',
+);
+assert.match(
+  css,
+  /\.nav-files-container\s*\{[\s\S]*counter-reset:\s*ao-nav-root[\s\S]*padding-inline:\s*0/,
+  'theme.css must let file-tree row surfaces span the full container after moving controls to the trailing edge',
+);
+assert.match(
+  css,
+  /\.nav-folder-title\[data-path\]:not\(\[data-path\*='\/'\]\):not\(\[data-path\^='_'\]\)\s*\{[\s\S]*align-items:\s*center[\s\S]*padding-block:\s*4px[\s\S]*\.nav-files-container[\s\S]*:is\(\.collapse-icon,\s*\.nav-folder-collapse-indicator\)\s*\{[\s\S]*align-self:\s*center/,
+  'theme.css must vertically center disclosure symbols within compact chapter rows',
+);
+assert.match(
+  css,
+  /\.nav-files-container\s+\.nav-file-title\.is-active[\s\S]*\.nav-files-container\s+\.nav-file-title\.is-active:hover\s*\{[\s\S]*background:\s*var\(--ao-nav-file-active-background\)[\s\S]*box-shadow:\s*none/,
+  'theme.css must use a marker-free paper treatment for the active file',
+);
+assert.doesNotMatch(
+  css,
+  /\.nav-file-title:hover:not\(\.is-active\)::before|--ao-nav-file-(?:active|hover)-edge|--ao-nav-hover-tick-width/,
+  'file explorer states must not reintroduce cyan edge or tick markers',
+);
+const desktopActiveFileRule =
+  css.match(
+    /body\s+\.nav-files-container\s+\.nav-file-title\.is-active,\s*body\s+\.nav-files-container\s+\.nav-file-title\.is-active:hover\s*\{([^}]*)\}/,
+  )?.[1] ?? '';
+assert.ok(
+  desktopActiveFileRule,
+  'theme.css must expose a desktop active-file rule for geometry checks',
+);
+assert.doesNotMatch(
+  desktopActiveFileRule,
+  /\b(?:height|min-height|margin|padding|transform)\s*:/,
+  'desktop active files must inherit natural file-row geometry',
+);
+assert.doesNotMatch(
+  css,
+  /body\s+\.nav-files-container\s+\.nav-file-title\.is-active::after/,
+  'desktop active files must not add a folded-corner pseudo-element',
+);
+assert.match(
+  css,
+  /\.nav-file-title\.is-selected:not\(\.is-active\)\s*\{[\s\S]*box-shadow:\s*none/,
+  'theme.css must keep multi-selection visually distinct from the active file',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+:is\(\.nav-file-title,\s*\.nav-folder-title\)\s*\{[\s\S]*min-height:\s*44px[\s\S]*body\.is-mobile\s+\.nav-file-title\.is-active\s*\{[\s\S]*transform:\s*none/,
+  'theme.css must keep mobile file-tree rows touchable without desktop-style displacement',
 );
 assert.match(
   css,

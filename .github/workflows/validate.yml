@@ -53,6 +53,7 @@ jobs:
           docs/specs/README.md
           docs/specs/brat-beta-release.md
           docs/specs/colorways.md
+          docs/specs/file-explorer-visual-hierarchy.md
           docs/specs/mobile-ios-visual-hardening.md
           docs/releases/0.1.0-beta.md
           docs/releases/0.1.0-beta-notes.md
@@ -66,6 +67,8 @@ jobs:
           docs/releases/0.1.4-beta-notes.md
           docs/releases/0.1.5-beta.md
           docs/releases/0.1.5-beta-notes.md
+          docs/releases/0.1.6-beta.md
+          docs/releases/0.1.6-beta-notes.md
           hats/20260725-brat-beta-cross-platform/guide.md
           hats/20260725-brat-beta-cross-platform/human-report.md
           scripts/validate.mjs

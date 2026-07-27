@@ -70,6 +70,88 @@ git diff --check
 
 `scripts/validate.mjs` verifies manifest shape, repository deliverables, BRAT channel metadata, Canvas JSON, Bases structure, Archive Olive token integrity, forbidden CSS patterns, remote dependency absence, mobile scope isolation, and 30 WCAG contrast pairs. Release mode also verifies the MIT license and README link.
 
+## Experimental file explorer hierarchy
+
+This section records the isolated desktop evidence promoted into the `0.1.6`
+beta candidate from `codex/experimental-file-explorer-hierarchy`. It does not
+claim real-device iPhone/iPad or large-vault virtual-scroll acceptance.
+
+- Obsidian Desktop `1.12.7` loaded the working-tree theme from the isolated
+  `test-vault/` symlink on macOS.
+- Runtime inspection confirmed that virtualized top-level folders are reliably
+  addressable through
+  `.nav-folder-title[data-path]:not([data-path*='/']):not([data-path^='_'])`,
+  rather than a root wrapper depth.
+- Root-folder names contain no display sequence. `.nav-files-container` resets a
+  CSS counter that generates `01–07` from current visual order; `_quickadd`
+  remains unnumbered.
+- Expanded chapter rows extend a quiet rule only after the title. Nested folders
+  use a local `16px` masked folder glyph and recessed label. Persistent
+  `.nav-folder-children` borders and expanded-folder inset rails are removed in
+  the working-tree stylesheet.
+- Initial runtime geometry showed nested folder-name/file-text edges at
+  `x=113/x=101` and root folder-name/file-text edges at `x=105/x=85`.
+  Aligning those name edges was rejected after the user clarified the intended
+  reference.
+- The accepted same-depth reference is the sibling folder's first visible
+  marker: the nested folder glyph at `x=91` and the root sequence badge at
+  `x=75`. A shared `-10px` content offset places
+  `Archive/未命名.md` at `x=91` and `00 - Theme Showcase.md` at `x=75`
+  without moving row surfaces, disclosure hit targets, or the active surface.
+- The active-paper boundary is not an alignment reference. Each measured row
+  retains `scrollWidth === clientWidth`.
+- After a full Obsidian restart, the working-tree token resolved to `-10px`
+  with no temporary probe present. The nested file/glyph pair remained
+  `x=91/x=91`, the root file/badge pair remained `x=75/x=75`, file rows
+  remained `clientWidth === scrollWidth === 301`, and the file pane remained
+  `clientWidth === scrollWidth === 327`.
+- Obsidian `1.12.7` exposes file-tree disclosure through
+  `.tree-item-icon.collapse-icon`, not `.nav-folder-collapse-indicator`. The
+  native rotating SVG is hidden and replaced in the same `18px` interaction
+  slot with a stable `8px` `+` (collapsed) / `−` (expanded). The slot is ordered
+  after content with `margin-inline-start: auto`, creating one trailing state
+  axis across root, nested, and underscore-prefixed utility folders.
+- After a full application quit and relaunch, no temporary probe remained.
+  `_quickadd`, `Archive`, `Archive/2026`, and
+  `Archive/2026/Research operations` all placed the trailing slot at
+  `x=334–352` inside rows spanning `x=60–363`.
+- Clicking the right-side indicator on `Archive/2026` removed and restored its
+  children without changing the native row hit target. A temporary long-label
+  stress test constrained text to `x=129–334` while preserving the indicator at
+  `x=334–352`; the row stayed `301/301` and the pane stayed `327/327`
+  (`clientWidth/scrollWidth`).
+- Collapsed root chapters now compute to `32px` rows with a `2px` section gap,
+  so consecutive roots advance by `34px` instead of reading as isolated cards.
+- The light active file inherits the natural file-row geometry and adds only
+  paper `rgb(255, 246, 223)` and ink text at `600` weight. It has no cyan
+  marker, active-only height, padding, margin, transform, outline, folded
+  corner, or external shadow.
+- After a full application quit and relaunch, no temporary gutter/marker probe
+  remained. At the current `331px` pane width, the container resolved to
+  `padding-left: 0`, root rows expanded to `x=48–367`, and both root markers
+  and same-depth file text resolved to `x=63`. The trailing disclosure slot
+  remained protected at `x=338–356`, with
+  `clientWidth === scrollWidth === 331`.
+- The active `00 - Theme Showcase.md` row resolved to paper
+  `rgb(255, 246, 223)`, `600` weight, `box-shadow: none`, and no hover-marker
+  selector in the loaded stylesheet.
+- A full-width row probe removed the remaining trailing container padding.
+  Container, active-file, and root-folder rectangles all resolved to
+  `x=48–379`; the disclosure slot remained safely inset at `x=350–368`
+  (`11px` edge gap), and the pane remained
+  `clientWidth === scrollWidth === 331`.
+- After a full application quit and relaunch, the same geometry remained with
+  no probe present: both container paddings resolved to `0`, file and folder
+  rows matched the container at `x=48–379`, and the trailing disclosure kept
+  its `11px` safe inset without overflow.
+- A `327px` file pane measured `clientWidth === scrollWidth`; no horizontal
+  overflow was present in the expanded nested fixture.
+- Static mobile rules continue to enforce the shared `44px` touch row without
+  introducing desktop-only active geometry. Real iPad/iPhone acceptance is
+  still pending.
+- [Dark experimental file explorer](validation/screenshots/experimental-file-explorer-dark.jpg)
+- [Light experimental file explorer](validation/screenshots/experimental-file-explorer-light.jpg)
+
 ## 0.1.5 optional colorways
 
 - Style Settings parses exactly two independent selectors with four approved
