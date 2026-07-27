@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.6` candidate — file-explorer mobile and large-vault review pending             |
+| Status                | `0.1.6` published — file-explorer mobile and large-vault review pending             |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -456,11 +456,20 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - Annotated tag `0.1.5` resolves to that commit, and the
   [0.1.5 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.5)
   exposes four assets whose downloaded SHA-256 values match the tagged files.
-- The `0.1.6` candidate keeps Obsidian's native file tree while adding generated
+- The `0.1.6` release keeps Obsidian's native file tree while adding generated
   root sequence markers, distinct nested-folder and file roles, a shared
   trailing disclosure axis, full-width rows, and a natural-height active file.
   Static release gates and isolated Obsidian Desktop `1.12.7` runtime geometry
-  checks pass; publication and GitHub Actions evidence remain pending.
+  checks pass.
+- [Pull request #1](https://github.com/ivan-94/obsidian-archive-olive/pull/1)
+  was squash-merged as release commit
+  `48f94525638e194dbc771194f1e453884c0244fb`.
+- GitHub Actions run
+  [`30236204847`](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30236204847)
+  passed on the release commit.
+- Annotated tag `0.1.6` resolves to that commit, and the
+  [0.1.6 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.6)
+  exposes four assets whose downloaded SHA-256 values match the tagged files.
 
 ### Open questions and risks
 
