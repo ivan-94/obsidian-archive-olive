@@ -8,6 +8,36 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 No unreleased changes.
 
+## [0.1.6] - 2026-07-27
+
+### Added
+
+- Added the file-explorer visual hierarchy specification, theme-only desktop,
+  iPad, and iPhone design references, and isolated desktop runtime evidence.
+- Added regression checks for generated root numbering, folder/file hierarchy,
+  right-aligned disclosure controls, full-width rows, natural active-file
+  geometry, and marker-free file states.
+
+### Changed
+
+- Reworked the native file explorer into an editorial hierarchy without
+  changing folder names or Obsidian's tree behavior: top-level folders receive
+  generated two-digit sequence markers, nested folders retain a folder glyph,
+  and files remain visually lightweight.
+- Moved folder disclosure state to a shared trailing `+`/`−` slot, reclaimed
+  the former leading gutter, removed persistent guide rails, and allowed row
+  surfaces to span the file-list container.
+- Simplified the active file to its natural row height with only a paper or
+  recessed surface and stronger text weight.
+
+### Fixed
+
+- Aligned same-depth file text with the first visible marker of sibling folders
+  while preserving truncation, disclosure hit areas, and horizontal overflow
+  safety.
+- Removed the cyan active/hover marker and detached-card treatment from file
+  rows.
+
 ## [0.1.5] - 2026-07-26
 
 ### Added
@@ -135,8 +165,12 @@ No unreleased changes.
   plugin-free defaults while exposing independent optional selectors through
   Style Settings, adds six alternate colorways, and standardizes every dark
   Markdown body on pure black.
+- `0.1.6` keeps the native Obsidian file tree and introduces the approved
+  CSS-only editorial hierarchy after isolated desktop validation; real-device
+  iPhone/iPad and large-vault virtual-scroll review remain pending.
 
-[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.5...HEAD
+[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.6...HEAD
+[0.1.6]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.5...0.1.6
 [0.1.5]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.4...0.1.5
 [0.1.4]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.3...0.1.4
 [0.1.3]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.2...0.1.3

@@ -1,5 +1,5 @@
 /*!
- * Archive Olive 0.1.5
+ * Archive Olive 0.1.6
  * A practical brutalist theme for Obsidian.
  * Design source: DESIGN.md
  * BRAT channel: main/theme.css
@@ -161,6 +161,11 @@ body.ao-dark-archive-night {
   --ao-grid: 4px;
   --ao-content-width: 80ch;
   --ao-shadow-offset: 4px 4px 0;
+  --ao-nav-root-gap: 2px;
+  --ao-nav-counter-width: 22px;
+  --ao-nav-disclosure-glyph: 8px;
+  --ao-nav-disclosure-slot: 18px;
+  --ao-nav-file-marker-offset: -10px;
   --ao-font-display:
     'Arial Narrow', 'Roboto Condensed', 'Helvetica Neue', 'PingFang SC',
     'Microsoft YaHei', sans-serif;
@@ -749,6 +754,12 @@ body.ao-dark-midnight-blueprint {
   --nav-item-background-selected: var(--ao-olive);
   --nav-item-color-highlighted: var(--ao-oxblood);
   --nav-heading-color: var(--ao-ink);
+  --ao-nav-root-rule: rgba(var(--ao-ink-rgb), 0.48);
+  --ao-nav-counter-background: var(--ao-olive);
+  --ao-nav-counter-foreground: var(--ao-paper);
+  --ao-nav-folder-expanded-background: rgba(var(--ao-olive-rgb), 0.1);
+  --ao-nav-file-active-background: var(--ao-paper-hover);
+  --ao-nav-file-active-foreground: var(--ao-ink);
 
   --blockquote-border-color: var(--ao-oxblood);
   --blockquote-background-color: rgba(var(--ao-khaki-rgb), 0.5);
@@ -942,6 +953,12 @@ body.ao-dark-midnight-blueprint {
   --nav-item-background-selected: var(--ao-dark-olive);
   --nav-item-color-highlighted: var(--ao-dark-red);
   --nav-heading-color: var(--ao-dark-paper);
+  --ao-nav-root-rule: rgba(var(--ao-dark-paper-rgb), 0.42);
+  --ao-nav-counter-background: var(--ao-dark-olive);
+  --ao-nav-counter-foreground: var(--ao-dark-on-accent);
+  --ao-nav-folder-expanded-background: var(--ao-dark-recessed);
+  --ao-nav-file-active-background: var(--ao-dark-recessed);
+  --ao-nav-file-active-foreground: var(--ao-dark-paper);
 
   --blockquote-border-color: var(--ao-dark-red);
   --blockquote-background-color: rgba(37, 41, 25, 0.72);
@@ -1509,36 +1526,207 @@ body:not(.is-phone)
   font-family: var(--ao-font-mono);
 }
 
+.nav-files-container {
+  counter-reset: ao-nav-root;
+  padding-inline: 0;
+}
+
+.nav-folder-children {
+  border-inline-start: 0;
+}
+
 .nav-file-title,
 .nav-folder-title {
   border: var(--ao-border-thin) solid transparent;
   border-radius: 0;
 }
 
-.nav-file-title:hover,
-.nav-folder-title:hover {
-  border-color: var(--background-modifier-border);
-}
-
-.nav-file-title.is-active,
-.nav-file-title.is-selected,
-.nav-folder-title.is-active,
-.nav-folder-title.is-selected {
-  border-color: var(--background-modifier-border);
-  box-shadow: inset var(--ao-border-heavy) 0 0 var(--background-modifier-border);
-  font-weight: 700;
-}
-
-.nav-folder.mod-root > .nav-folder-title {
-  border-bottom: var(--ao-border-default) solid
-    var(--background-modifier-border);
+.nav-folder-title[data-path]:not([data-path*='/']):not([data-path^='_']) {
+  align-items: center;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--nav-heading-color);
+  display: flex;
   font-weight: 800;
   letter-spacing: 0.06em;
+  margin-block-start: var(--ao-nav-root-gap);
+  padding-block: 4px;
   text-transform: uppercase;
 }
 
-.nav-folder-collapse-indicator {
-  color: currentColor;
+.nav-folder-title[data-path]:not([data-path*='/']):not(
+    [data-path^='_']
+  )::before {
+  align-items: center;
+  align-self: center;
+  background: var(--ao-nav-counter-background);
+  color: var(--ao-nav-counter-foreground);
+  content: counter(ao-nav-root, decimal-leading-zero);
+  counter-increment: ao-nav-root;
+  display: inline-flex;
+  flex: 0 0 var(--ao-nav-counter-width);
+  font-size: 0.78em;
+  height: 22px;
+  justify-content: center;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-inline: 4px 8px;
+  order: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.nav-folder-title[data-path]:not([data-path*='/']):not([data-path^='_'])
+  > .nav-folder-title-content {
+  flex: 0 1 auto;
+  min-width: 0;
+  order: 2;
+}
+
+.nav-folder:not(.is-collapsed)
+  > .nav-folder-title[data-path]:not([data-path*='/']):not(
+    [data-path^='_']
+  )::after {
+  border-top: var(--ao-border-thin) solid var(--ao-nav-root-rule);
+  content: '';
+  flex: 1 1 24px;
+  margin-inline-start: 10px;
+  min-width: 12px;
+  order: 3;
+}
+
+.nav-folder-title[data-path*='/'] {
+  align-items: center;
+  border-color: transparent;
+  display: flex;
+  font-weight: 600;
+}
+
+.nav-folder-title[data-path*='/']::before {
+  background: currentColor;
+  content: '';
+  flex: 0 0 16px;
+  height: 14px;
+  margin-inline: 4px 6px;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 6h7l2 2h9v11H3z' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  order: 1;
+  pointer-events: none;
+}
+
+.nav-folder-title[data-path*='/'] > .nav-folder-title-content {
+  min-width: 0;
+  order: 2;
+}
+
+.nav-folder:not(.is-collapsed) > .nav-folder-title[data-path*='/'] {
+  background: var(--ao-nav-folder-expanded-background);
+  box-shadow: none;
+}
+
+.nav-folder-title:hover {
+  background: var(--ao-nav-folder-expanded-background);
+  color: var(--nav-heading-color);
+}
+
+.nav-file-title {
+  box-shadow: none;
+  font-weight: 400;
+}
+
+.nav-file-title > .nav-file-title-content {
+  min-width: 0;
+}
+
+.nav-file-title[data-path*='/'] > .nav-file-title-content,
+.nav-file-title[data-path]:not([data-path*='/']) > .nav-file-title-content {
+  margin-inline-start: var(--ao-nav-file-marker-offset);
+}
+
+.nav-file-title:hover:not(.is-active) {
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--nav-item-color-hover);
+}
+
+body .nav-files-container .nav-file-title.is-active,
+body .nav-files-container .nav-file-title.is-active:hover {
+  background: var(--ao-nav-file-active-background);
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--ao-nav-file-active-foreground);
+  font-weight: 600;
+}
+
+.nav-file-title.is-selected:not(.is-active) {
+  background: transparent;
+  border-color: var(--background-modifier-border);
+  box-shadow: none;
+  color: var(--nav-item-color);
+  font-weight: 600;
+}
+
+.nav-folder-title:is(.is-active, .is-selected) {
+  background: var(--ao-nav-folder-expanded-background);
+  border-color: var(--background-modifier-border);
+  box-shadow: none;
+  color: var(--nav-heading-color);
+  font-weight: 700;
+}
+
+.nav-files-container
+  .nav-folder-title
+  > :is(.collapse-icon, .nav-folder-collapse-indicator) {
+  align-items: center;
+  color: var(--text-muted);
+  display: inline-flex;
+  flex: 0 0 var(--ao-nav-disclosure-slot);
+  height: var(--ao-nav-disclosure-slot);
+  justify-content: center;
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+  order: 4;
+  pointer-events: none;
+  position: relative;
+  align-self: center;
+}
+
+.nav-files-container
+  .nav-folder-title
+  > :is(.collapse-icon, .nav-folder-collapse-indicator)
+  > svg {
+  display: none;
+}
+
+.nav-files-container
+  .nav-folder-title
+  > :is(.collapse-icon, .nav-folder-collapse-indicator)::before,
+.nav-files-container
+  .nav-folder-title
+  > :is(.collapse-icon, .nav-folder-collapse-indicator)::after {
+  background: currentColor;
+  content: '';
+  height: var(--ao-border-thin);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--ao-nav-disclosure-glyph);
+}
+
+.nav-files-container
+  .nav-folder-title
+  > :is(.collapse-icon, .nav-folder-collapse-indicator)::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.nav-files-container
+  .nav-folder-title
+  > .collapse-icon:not(.is-collapsed)::after,
+.nav-folder:not(.is-collapsed)
+  > .nav-folder-title
+  > .nav-folder-collapse-indicator::after {
+  content: none;
 }
 
 .nav-header {
@@ -2189,6 +2377,31 @@ body.is-mobile {
   --view-header-action-radius: 0;
   --file-margins-x: 16px;
   --file-margins-y: 24px;
+}
+
+body.is-mobile :is(.nav-file-title, .nav-folder-title) {
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
+}
+
+body.is-mobile
+  .nav-folder-title[data-path]:not([data-path*='/']):not([data-path^='_']) {
+  margin-block-start: calc(var(--ao-nav-root-gap) / 2);
+  padding-block: 8px;
+}
+
+body.is-mobile .nav-file-title.is-active {
+  box-shadow: none;
+  margin-block: 0;
+  margin-inline-end: 0;
+  min-height: 44px;
+  padding-block: 8px;
+  transform: none;
+}
+
+body.is-mobile .nav-file-title.is-active::after {
+  content: none;
 }
 
 .theme-light.is-mobile {

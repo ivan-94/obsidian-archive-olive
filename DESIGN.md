@@ -340,11 +340,38 @@ Depth is expressed with borders, offset, and tonal contrast—not blur.
 
 ### File explorer and navigation lists
 
-- Active file: full-width field-olive block with parchment text, not a rounded highlight.
-- Hovered file: worn-folder surface with a `2px` left rule.
+- Top-level folders form editorial chapter breaks: strong monospaced labels,
+  restrained section spacing, a generated two-digit olive sequence marker, and
+  a quiet rule that extends only from expanded chapter labels. The sequence is
+  presentation generated from current visual order; it never becomes part of
+  the folder name or path. Underscore-prefixed utility folders stay unnumbered.
+- Nested folders remain in the native tree but use a medium label weight;
+  expanded folders may receive a recessed tonal wash and short olive rule.
+- Default files remain lightweight and flat, without persistent frames or
+  shadows.
+- At the same tree depth, file text begins on the sibling folder's first visible
+  marker edge: the generated sequence badge at root depth and the folder glyph
+  at nested depths. Folder names sit after those markers by design.
+- Disclosure hit areas and active-row surfaces do not define the text alignment
+  edge.
+- Active file: the natural file row with a paper or recessed surface and
+  stronger text weight. Do not add a cyan marker, height, external margin,
+  outline, folded corner, hard shadow, rounding, or a full-olive highlight.
+- Hovered file: a quiet tonal or text-color change without an added marker or
+  layout displacement.
 - Folder names and utility counts use monospaced labels.
-- Indentation guides are visible but quieter than text.
+- Indentation is expressed through native nesting and folder glyphs; persistent
+  vertical guide rails are removed.
 - Icons never carry state alone; pair color changes with background, weight, or rule changes.
+- Preserve native disclosure, truncation, drag, rename, multi-select, focus, and
+  keyboard behavior. Render disclosure in a shared trailing fixed-width slot
+  using `+` for collapsed and `−` for expanded instead of rotating chevrons.
+  This creates a right-side state axis while the left side remains dedicated to
+  hierarchy markers and text. Reclaim the obsolete leading disclosure gutter
+  for content, and let row surfaces span the full file-list container; each row
+  keeps its own inline padding for safe text and disclosure spacing. Mobile rows
+  remain at least `44px` high and active files use surface emphasis without
+  external shift, marker, or shadow.
 
 ### Editor and reading view
 

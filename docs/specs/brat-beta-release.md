@@ -2,12 +2,12 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.5` published — cross-platform colorway review pending                          |
+| Status                | `0.1.6` candidate — file-explorer mobile and large-vault review pending             |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
 | Owner                 | Ivan                                                                                |
-| Last updated          | 2026-07-26                                                                          |
+| Last updated          | 2026-07-27                                                                          |
 | Related specification | [Theme specification](theme.md)                                                     |
 
 ## 1. Purpose
@@ -335,7 +335,7 @@ The official candidate is ready only when all P2 requirements pass. Successful m
 | ------------------------ | ----------------------------------------------------------------------------------------- | ----- |
 | Public license           | Applied: MIT license selected and added at repository root.                               | Ivan  |
 | Beta compatibility floor | Applied: `minAppVersion` is the currently tested `1.12.7`; lower only after new evidence. | Ivan  |
-| Beta pre-release         | `0.1.5` authorized as a colorway checkpoint with cross-platform review pending.           | Ivan  |
+| Beta pre-release         | `0.1.6` authorized as a file-explorer hierarchy patch with scoped review pending.         | Ivan  |
 
 BRAT-004 now passes locally with the owner-selected MIT license. Revisit the compatibility decision only if the project intends to support versions older than `1.12.7`.
 
@@ -404,6 +404,8 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - `docs/releases/0.1.4-beta-notes.md`
 - `docs/releases/0.1.5-beta.md`
 - `docs/releases/0.1.5-beta-notes.md`
+- `docs/releases/0.1.6-beta.md`
+- `docs/releases/0.1.6-beta-notes.md`
 
 ### Key decisions
 
@@ -454,12 +456,19 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - Annotated tag `0.1.5` resolves to that commit, and the
   [0.1.5 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.5)
   exposes four assets whose downloaded SHA-256 values match the tagged files.
+- The `0.1.6` candidate keeps Obsidian's native file tree while adding generated
+  root sequence markers, distinct nested-folder and file roles, a shared
+  trailing disclosure axis, full-width rows, and a natural-height active file.
+  Static release gates and isolated Obsidian Desktop `1.12.7` runtime geometry
+  checks pass; publication and GitHub Actions evidence remain pending.
 
 ### Open questions and risks
 
 - Compatibility below `minAppVersion: 1.12.7` is not currently claimed.
 - GitHub raw-content caching may delay urgent updates or rollbacks.
 - A private-pilot tester still needs to submit a non-sensitive dry-run report through the rendered Issue Forms.
-- Owner-led BRAT and cross-platform colorway review of `0.1.5` remains pending.
+- Real-device iPhone/iPad file-explorer review and large-vault virtual-scroll
+  testing of `0.1.6` remain pending.
+- Owner-led BRAT and cross-platform colorway review remains pending.
 - Real Windows, Linux, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.
