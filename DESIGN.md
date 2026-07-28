@@ -249,6 +249,7 @@ roles, contrast thresholds, geometry, typography, and state hierarchy.
 | Blueprint News    | Engineering drawing, newsroom    |
 | Terracotta Ledger | Warm publishing, bound ledger    |
 | Forestry File     | Field research, natural tools    |
+| Signal White      | White desk, yellow signal chrome |
 
 | Dark colorway      | Material direction               |
 | ------------------ | -------------------------------- |

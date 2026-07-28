@@ -2,12 +2,12 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.6` published — file-explorer mobile and large-vault review pending             |
+| Status                | `0.1.7` candidate — Signal White cross-platform review pending                      |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
 | Owner                 | Ivan                                                                                |
-| Last updated          | 2026-07-27                                                                          |
+| Last updated          | 2026-07-28                                                                          |
 | Related specification | [Theme specification](theme.md)                                                     |
 
 ## 1. Purpose
@@ -470,6 +470,12 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - Annotated tag `0.1.6` resolves to that commit, and the
   [0.1.6 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.6)
   exposes four assets whose downloaded SHA-256 values match the tagged files.
+- The `0.1.7` candidate adds Signal White as the fifth light colorway while
+  keeping Archive Olive and Archive Night as the plugin-free defaults.
+  Isolated Obsidian Desktop `1.12.7` acceptance confirms its pure-white content,
+  warm-white sidebar, yellow navigation chrome, and pink active-file state.
+  Static validation covers nine palettes, 96 colorway-specific contrast pairs,
+  and all 20 independent light/dark class combinations.
 
 ### Open questions and risks
 
@@ -478,6 +484,6 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - A private-pilot tester still needs to submit a non-sensitive dry-run report through the rendered Issue Forms.
 - Real-device iPhone/iPad file-explorer review and large-vault virtual-scroll
   testing of `0.1.6` remain pending.
-- Owner-led BRAT and cross-platform colorway review remains pending.
+- Owner-led BRAT and cross-platform Signal White review remains pending.
 - Real Windows, Linux, and Android testing remains external to this implementation environment.
 - A future stable/beta channel split would require a deliberate `theme-beta.css` lifecycle policy.

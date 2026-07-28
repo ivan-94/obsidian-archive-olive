@@ -6,11 +6,11 @@ Archive Olive is a practical brutalist theme for Obsidian. It combines archival 
 
 ## Status
 
-Version `0.1.6` is an opt-in pre-release beta validated on Obsidian Desktop `1.12.7` for macOS. Its inherited mobile foundation was previously reviewed on a real iPad running iPadOS `27.0`. It is not yet an official Obsidian community theme.
+Version `0.1.7` is an opt-in pre-release beta validated on Obsidian Desktop `1.12.7` for macOS. Its inherited mobile foundation was previously reviewed on a real iPad running iPadOS `27.0`. It is not yet an official Obsidian community theme.
 
-Archive Olive currently uses `main/theme.css` as its only BRAT channel. The `0.1.6` patch adds a CSS-only editorial file-explorer hierarchy with generated root sequence markers, distinct nested folders and files, trailing disclosure controls, full-width rows, and a simpler active-file state. Real-device file-explorer review on iPhone and iPad, large-vault virtual-scroll testing, and broader colorway review remain pending.
+Archive Olive currently uses `main/theme.css` as its only BRAT channel. The `0.1.7` patch adds Signal White, a high-contrast light colorway with a pure-white content surface, warm-white sidebar, yellow navigation chrome, and pink active-file state. Real-device file-explorer review on iPhone and iPad, large-vault virtual-scroll testing, and broader colorway review remain pending.
 
-[Download the Archive Olive 0.1.6 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.6).
+[Download the Archive Olive 0.1.7 Beta checkpoint](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.7).
 
 ![Archive Olive light workspace](validation/screenshots/light-workspace.png)
 
@@ -62,7 +62,7 @@ Manual installations do not receive BRAT updates. The repository includes an iso
 
 ## Optional colorways
 
-Archive Olive includes four light colorways and four dark colorways. The existing
+Archive Olive includes five light colorways and four dark colorways. The existing
 Archive Olive and Archive Night palettes remain the defaults.
 Every dark colorway keeps the Markdown editing and reading surface pure black;
 its surrounding workspace chrome retains the selected palette.
@@ -73,6 +73,7 @@ its surrounding workspace chrome retains the selected palette.
 | Blueprint News          | Carbon Teal             |
 | Terracotta Ledger       | Oxblood Archive         |
 | Forestry File           | Midnight Blueprint      |
+| Signal White            |                         |
 
 To select them:
 
@@ -105,7 +106,7 @@ Run the repeatable static checks:
 node scripts/validate.mjs
 npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
 npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/colorways.md docs/specs/file-explorer-visual-hierarchy.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.6-beta.md docs/releases/0.1.6-beta-notes.md
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/colorways.md docs/specs/file-explorer-visual-hierarchy.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.7-beta.md docs/releases/0.1.7-beta-notes.md
 ```
 
 Before publishing a beta build, run the stricter release gate:
@@ -120,7 +121,7 @@ The isolated `test-vault` covers Markdown primitives, multilingual text, dense n
 
 Use the [BRAT Beta cross-platform HAT guide](hats/20260725-brat-beta-cross-platform/guide.md) for the private pilot and owner-led Windows, Linux, iOS, and Android acceptance. The guide includes preparation, evidence, privacy, update, removal, and platform-specific checklists.
 
-The [`0.1.6` beta release record](docs/releases/0.1.6-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
+The [`0.1.7` beta release record](docs/releases/0.1.7-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
 
 ## Reporting beta issues
 
@@ -163,7 +164,7 @@ Archive Olive is available under the [MIT License](LICENSE).
 - [File Explorer Visual Hierarchy specification](docs/specs/file-explorer-visual-hierarchy.md)
 - [BRAT Beta release specification](docs/specs/brat-beta-release.md)
 - [BRAT Beta cross-platform HAT](hats/20260725-brat-beta-cross-platform/guide.md)
-- [`0.1.6` beta release record](docs/releases/0.1.6-beta.md)
+- [`0.1.7` beta release record](docs/releases/0.1.7-beta.md)
 - [CHANGELOG.md](CHANGELOG.md)
 - [BRAT Beta release image](assets/screenshots/archive-olive-512x288.png)
 - [Archive Olive reference concept](design/concepts/01f-archive-olive.png)

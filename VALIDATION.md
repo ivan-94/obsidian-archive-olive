@@ -14,6 +14,30 @@ Archive Olive passes the [`docs/specs/theme.md`](docs/specs/theme.md) definition
 
 The final implementation has no remote assets, `@import`, routine `!important`, or `:has()` selectors. Obsidian reported no captured runtime or console errors after the final verification cycle.
 
+## 0.1.7 Signal White colorway
+
+- The light selector now contains five choices and the dark selector retains
+  four choices. Archive Olive and Archive Night remain the defaults.
+- Signal White maps its content and root pane to pure white, its sidebar to warm
+  white, its ribbon and active root tab to signal yellow, and its active file
+  to pink while retaining the theme's black structural rules.
+- All 96 colorway-specific body, muted, semantic, control, active, chrome,
+  mobile, critical, warning, and information pairs meet WCAG AA. Signal White's
+  lowest ratio is information text at `5.90:1`; the full matrix still bottoms
+  out at Forestry File's active tab at `4.55:1`.
+- A Chromium cascade matrix passes all 20 light/dark selector combinations,
+  confirming that a saved Signal White class does not overwrite any dark
+  colorway.
+- Obsidian Desktop `1.12.7` loaded the working-tree stylesheet through the
+  isolated `test-vault/` symlink. Style Settings exposed Signal White as the
+  fifth light option and applied it successfully.
+- DevTools computed styles measured body/root `rgb(255, 255, 255)`, sidebar
+  `rgb(255, 248, 232)`, ribbon/active tab `rgb(255, 212, 59)`, and active file
+  `rgb(243, 111, 159)`. The console contained only Obsidian's built-in developer
+  welcome message before the probes.
+- The light selector was restored to Archive Olive and the temporary Style
+  Settings installation was removed after acceptance.
+
 ## P0 requirement matrix
 
 | ID     | Status | Evidence                                                                                                                                                        |

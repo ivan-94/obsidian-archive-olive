@@ -3,8 +3,9 @@
 | Field                 | Value                                                  |
 | --------------------- | ------------------------------------------------------ |
 | Status                | Implemented; cross-platform review pending             |
-| Specification version | 0.1.0                                                  |
+| Specification version | 0.1.1                                                  |
 | Created               | 2026-07-26                                             |
+| Last updated          | 2026-07-28                                             |
 | Configuration surface | Optional Obsidian Style Settings community plugin      |
 | Default behavior      | Existing Archive Olive light and dark palettes         |
 | Runtime dependency    | None for the default theme; Style Settings is optional |
@@ -38,7 +39,7 @@ The `theme.css` file declares one Style Settings block named `Archive Olive`.
 
 | Setting ID          | Type           | Default class            | Options |
 | ------------------- | -------------- | ------------------------ | ------- |
-| `ao-light-colorway` | `class-select` | `ao-light-archive-olive` | L1–L4   |
+| `ao-light-colorway` | `class-select` | `ao-light-archive-olive` | L1–L5   |
 | `ao-dark-colorway`  | `class-select` | `ao-dark-archive-night`  | D1–D4   |
 
 The two selectors use `allowEmpty: false`. Style Settings persists the selected
@@ -55,6 +56,7 @@ provide L1 and D1.
 | L2  | `ao-light-blueprint-news`    | Blueprint News / 蓝图报刊    | `#F5F1E6` | `#D4DEDC` | `#B9C9C7` | `#14242A` | `#24566B` | `#057681`   | `#9A362B` | `#B47B12` |
 | L3  | `ao-light-terracotta-ledger` | Terracotta Ledger / 赤陶账簿 | `#F4E7D3` | `#DFC2A3` | `#CAA883` | `#24150F` | `#923F24` | `#17686B`   | `#8A2930` | `#B37A16` |
 | L4  | `ao-light-forestry-file`     | Forestry File / 林务档案     | `#EDF0E4` | `#C3CFBB` | `#AEBE9F` | `#142019` | `#285A3D` | `#196B73`   | `#9C3C26` | `#A77A16` |
+| L5  | `ao-light-signal-white`      | Signal White / 信号白        | `#FFFFFF` | `#FFF8E8` | `#ECE7DC` | `#111111` | `#FFD43B` | `#0B6F78`   | `#A52B44` | `#AD6B00` |
 
 ### 4.2 Dark colorways
 
@@ -68,7 +70,11 @@ provide L1 and D1.
 The table records the primary visual roles approved in the conversation
 preview. Supporting tonal ramps, hover colors, syntax colors, graph colors, and
 RGB aliases are implementation details derived from the same roles and must not
-introduce a fifth visual identity.
+introduce an additional visual identity.
+
+Signal White translates the supplied reference screenshot into Archive Olive's
+existing geometry: white content, a warm-white sidebar, black structural rules,
+yellow ribbon and tab chrome, and a restrained pink active-file surface.
 
 ## 5. Dark note-body compatibility
 
@@ -106,9 +112,9 @@ canvas, panels, recessed surfaces, chrome, accents, and semantic colors.
 | CLR-002 | The Style Settings block parses and exposes exactly two independent `class-select` controls.                                                           |
 | CLR-003 | Every declared option class exists in `theme.css`.                                                                                                     |
 | CLR-004 | Selecting a light option does not alter dark palette tokens, and selecting a dark option does not alter light palette tokens.                          |
-| CLR-005 | All eight colorways supply complete semantic surface, text, accent, information, critical, warning, chrome, syntax, graph, and mobile inputs.          |
+| CLR-005 | All nine colorways supply complete semantic surface, text, accent, information, critical, warning, chrome, syntax, graph, and mobile inputs.           |
 | CLR-006 | Required normal-text and state pairs meet or exceed `4.5:1`.                                                                                           |
-| CLR-007 | `node scripts/validate.mjs` validates metadata, option classes, token completeness, and contrast for all eight colorways.                              |
+| CLR-007 | `node scripts/validate.mjs` validates metadata, option classes, token completeness, and contrast for all nine colorways.                               |
 | CLR-008 | `theme.css` compiles with the pinned Lightning CSS check and passes Prettier.                                                                          |
 | CLR-009 | Obsidian loads the working-tree theme through the existing `test-vault/` symlinks.                                                                     |
 | CLR-010 | Runtime review in `test-vault/` confirms switching both selectors updates the intended light and dark surfaces without stale colors or console errors. |
@@ -132,6 +138,10 @@ canvas, panels, recessed surfaces, chrome, accents, and semantic colors.
   specification, then implement them.
 - User direction in the current Codex task: every dark colorway must use a
   pure-black primary content surface.
+- User screenshot and direction on 2026-07-28 requesting a white alternative to
+  the existing green light palette. The temporary screenshot's durable design
+  conclusions are: white content, warm-white navigation, black rules, yellow
+  primary chrome, and pink selection.
 - In-conversation colorway comparison approved by the user: four independent
   light candidates and four independent dark candidates with the primary values
   recorded in section 4.
@@ -154,25 +164,32 @@ canvas, panels, recessed surfaces, chrome, accents, and semantic colors.
 - Light and dark colorways are independently selectable.
 - Style Settings remains optional and the existing palette remains the
   plugin-free default.
+- Signal White adds explicit chrome and selection roles so its yellow navigation
+  and pink active-file state do not overload semantic success or information
+  colors.
 - Every dark colorway preserves the accepted pure-black Markdown body while its
   surrounding workspace surfaces remain colorway-specific.
 - Colorway classes override semantic tokens rather than component selectors.
 
 ### Verification evidence
 
-- `node scripts/validate.mjs` validates all eight colorways, including 72
+- `node scripts/validate.mjs --release` validates all nine colorways, including
+  96
   required contrast pairs. The lowest passing ratio is Forestry File's active
   tab at `4.55:1`.
 - Lightning CSS compiles `theme.css` successfully.
 - Prettier and `git diff --check` pass for the implementation files.
 - The Design Lint report contains no errors or warnings.
-- A Chromium cascade matrix exercises all 16 light/dark class combinations and
+- A Chromium cascade matrix exercises all 20 light/dark class combinations and
   confirms that both dimensions map independently.
 - Obsidian Desktop `1.12.7` in the isolated `test-vault/` parses exactly two
-  Style Settings selectors, lists all four options in each selector, and
-  visibly applies Forestry File in light mode and Oxblood Archive in dark mode.
-  Both selectors and the appearance mode were restored to their defaults after
-  acceptance.
+  Style Settings selectors and visibly applies Signal White as the fifth light
+  option. Runtime computed styles resolve the body and root pane to
+  `rgb(255, 255, 255)`, the left sidebar to `rgb(255, 248, 232)`, ribbon and
+  active tab to `rgb(255, 212, 59)`, and active file to
+  `rgb(243, 111, 159)`. The console contained only Obsidian's built-in welcome
+  message before probes. The selector was restored to Archive Olive and the
+  temporary Style Settings installation was removed after acceptance.
 - The immutable
   [`0.1.5` pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.5)
   publishes the approved implementation with four verified release assets.

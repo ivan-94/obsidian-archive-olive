@@ -1,5 +1,5 @@
 /*!
- * Archive Olive 0.1.6
+ * Archive Olive 0.1.7
  * A practical brutalist theme for Obsidian.
  * Design source: DESIGN.md
  * BRAT channel: main/theme.css
@@ -32,6 +32,9 @@ settings:
       -
         label: Forestry File
         value: ao-light-forestry-file
+      -
+        label: Signal White
+        value: ao-light-signal-white
   -
     id: ao-dark-colorway
     title: Dark colorway
@@ -88,6 +91,19 @@ body.ao-dark-archive-night {
   --ao-warning-ink: #755006;
   --ao-code-surface: #e7dab8;
   --ao-light-on-accent: var(--ao-paper);
+  --ao-light-control-accent: var(--ao-olive);
+  --ao-light-on-control-accent: var(--ao-light-on-accent);
+  --ao-light-tab-active: var(--ao-cyan);
+  --ao-light-on-tab-active: var(--ao-ink);
+  --ao-light-ribbon-background: var(--ao-ink);
+  --ao-light-titlebar-background: var(--ao-ink);
+  --ao-light-status-background: var(--ao-ink);
+  --ao-light-chrome-foreground: var(--ao-paper);
+  --ao-light-chrome-muted: var(--ao-khaki);
+  --ao-light-ribbon-action-background: var(--ao-oxblood);
+  --ao-light-on-ribbon-action: var(--ao-paper);
+  --ao-light-nav-active-background: var(--ao-paper-hover);
+  --ao-light-nav-active-foreground: var(--ao-ink);
 
   --ao-light-base-00: #f1e7cc;
   --ao-light-base-05: #ede1c4;
@@ -486,6 +502,71 @@ body.ao-light-forestry-file {
   --ao-light-accent-l: 25%;
 }
 
+body.ao-light-signal-white {
+  --ao-ink: #111111;
+  --ao-ink-rgb: 17, 17, 17;
+  --ao-paper: #ffffff;
+  --ao-paper-rgb: 255, 255, 255;
+  --ao-khaki: #fff8e8;
+  --ao-khaki-rgb: 255, 248, 232;
+  --ao-folder: #ece7dc;
+  --ao-graphite: #5f5c55;
+  --ao-olive: #745b00;
+  --ao-olive-rgb: 116, 91, 0;
+  --ao-olive-hover: #8a6b00;
+  --ao-oxblood: #a52b44;
+  --ao-oxblood-rgb: 165, 43, 68;
+  --ao-cyan: #0b818c;
+  --ao-cyan-rgb: 11, 129, 140;
+  --ao-cyan-ink: #0b6f78;
+  --ao-stamp: #ad6b00;
+  --ao-stamp-rgb: 173, 107, 0;
+  --ao-yellow: #d3a900;
+  --ao-yellow-rgb: 211, 169, 0;
+  --ao-blue: #225f97;
+  --ao-blue-rgb: 34, 95, 151;
+  --ao-purple: #70498a;
+  --ao-purple-rgb: 112, 73, 138;
+  --ao-pink: #f36f9f;
+  --ao-pink-rgb: 243, 111, 159;
+  --ao-paper-hover: #fffdf7;
+  --ao-oxblood-hover: #bb3652;
+  --ao-warning-ink: #785000;
+  --ao-code-surface: #f6f2e8;
+  --ao-light-on-accent: #ffffff;
+  --ao-light-control-accent: #ffd43b;
+  --ao-light-on-control-accent: #111111;
+  --ao-light-tab-active: #ffd43b;
+  --ao-light-on-tab-active: #111111;
+  --ao-light-ribbon-background: #ffd43b;
+  --ao-light-titlebar-background: #ffffff;
+  --ao-light-status-background: #ffffff;
+  --ao-light-chrome-foreground: #111111;
+  --ao-light-chrome-muted: #5f5c55;
+  --ao-light-ribbon-action-background: #ffffff;
+  --ao-light-on-ribbon-action: #111111;
+  --ao-light-nav-active-background: #f36f9f;
+  --ao-light-nav-active-foreground: #111111;
+
+  --ao-light-base-00: #ffffff;
+  --ao-light-base-05: #fbfaf7;
+  --ao-light-base-10: #f7f4ee;
+  --ao-light-base-20: #f1ece3;
+  --ao-light-base-25: #ece7dc;
+  --ao-light-base-30: #e4ded3;
+  --ao-light-base-35: #d2ccc3;
+  --ao-light-base-40: #bdb8b0;
+  --ao-light-base-50: #9a958e;
+  --ao-light-base-60: #77736d;
+  --ao-light-base-70: #5f5c55;
+  --ao-light-base-100: #111111;
+  --ao-light-mono-rgb-0: 255, 255, 255;
+  --ao-light-mono-rgb-100: 17, 17, 17;
+  --ao-light-accent-h: 46;
+  --ao-light-accent-s: 100%;
+  --ao-light-accent-l: 62%;
+}
+
 body.ao-dark-carbon-teal {
   --ao-dark-canvas: #101718;
   --ao-dark-surface: #172224;
@@ -709,57 +790,57 @@ body.ao-dark-midnight-blueprint {
 
   --interactive-normal: var(--ao-paper);
   --interactive-hover: var(--ao-paper-hover);
-  --interactive-accent: var(--ao-olive);
+  --interactive-accent: var(--ao-light-control-accent);
   --interactive-accent-hover: var(--ao-olive-hover);
   --interactive-accent-hsl:
     var(--ao-light-accent-h), var(--ao-light-accent-s), var(--ao-light-accent-l);
 
   --divider-color: var(--ao-ink);
   --divider-color-hover: var(--ao-cyan);
-  --ribbon-background: var(--ao-ink);
-  --ribbon-background-collapsed: var(--ao-ink);
-  --titlebar-background: var(--ao-ink);
-  --titlebar-background-focused: var(--ao-ink);
+  --ribbon-background: var(--ao-light-ribbon-background);
+  --ribbon-background-collapsed: var(--ao-light-ribbon-background);
+  --titlebar-background: var(--ao-light-titlebar-background);
+  --titlebar-background-focused: var(--ao-light-titlebar-background);
   --titlebar-border-color: var(--ao-ink);
-  --titlebar-text-color: var(--ao-paper);
-  --titlebar-text-color-focused: var(--ao-paper);
+  --titlebar-text-color: var(--ao-light-chrome-foreground);
+  --titlebar-text-color-focused: var(--ao-light-chrome-foreground);
   --tab-container-background: var(--ao-khaki);
-  --tab-background-active: var(--ao-cyan);
+  --tab-background-active: var(--ao-light-tab-active);
   --tab-text-color: var(--ao-graphite);
-  --tab-text-color-active: var(--ao-ink);
+  --tab-text-color-active: var(--ao-light-on-tab-active);
   --tab-text-color-focused: var(--ao-graphite);
-  --tab-text-color-focused-active: var(--ao-ink);
-  --tab-text-color-focused-active-current: var(--ao-ink);
+  --tab-text-color-focused-active: var(--ao-light-on-tab-active);
+  --tab-text-color-focused-active-current: var(--ao-light-on-tab-active);
   --tab-divider-color: var(--ao-ink);
   --tab-outline-color: var(--ao-ink);
-  --ao-chrome-foreground: var(--ao-paper);
-  --ao-chrome-muted: var(--ao-khaki);
-  --ao-chrome-control-foreground: var(--ao-paper);
+  --ao-chrome-foreground: var(--ao-light-chrome-foreground);
+  --ao-chrome-muted: var(--ao-light-chrome-muted);
+  --ao-chrome-control-foreground: var(--ao-light-chrome-foreground);
   --ao-chrome-hover-background: var(--ao-folder);
   --ao-chrome-hover-foreground: var(--ao-ink);
-  --ao-accent-foreground: var(--ao-ink);
-  --ao-selection-foreground: var(--ao-paper);
-  --status-bar-background: var(--ao-ink);
+  --ao-accent-foreground: var(--ao-light-on-tab-active);
+  --ao-selection-foreground: var(--ao-light-on-control-accent);
+  --status-bar-background: var(--ao-light-status-background);
   --status-bar-border-color: var(--ao-ink);
-  --status-bar-text-color: var(--ao-paper);
+  --status-bar-text-color: var(--ao-light-chrome-foreground);
   --file-header-background: var(--ao-paper);
   --file-header-background-focused: var(--ao-paper);
 
   --nav-item-color: var(--ao-graphite);
   --nav-item-color-hover: var(--ao-ink);
-  --nav-item-color-active: var(--ao-paper);
-  --nav-item-color-selected: var(--ao-paper);
+  --nav-item-color-active: var(--ao-light-on-control-accent);
+  --nav-item-color-selected: var(--ao-light-on-control-accent);
   --nav-item-background-hover: var(--ao-folder);
-  --nav-item-background-active: var(--ao-olive);
-  --nav-item-background-selected: var(--ao-olive);
+  --nav-item-background-active: var(--ao-light-control-accent);
+  --nav-item-background-selected: var(--ao-light-control-accent);
   --nav-item-color-highlighted: var(--ao-oxblood);
   --nav-heading-color: var(--ao-ink);
   --ao-nav-root-rule: rgba(var(--ao-ink-rgb), 0.48);
-  --ao-nav-counter-background: var(--ao-olive);
-  --ao-nav-counter-foreground: var(--ao-paper);
+  --ao-nav-counter-background: var(--ao-light-control-accent);
+  --ao-nav-counter-foreground: var(--ao-light-on-control-accent);
   --ao-nav-folder-expanded-background: rgba(var(--ao-olive-rgb), 0.1);
-  --ao-nav-file-active-background: var(--ao-paper-hover);
-  --ao-nav-file-active-foreground: var(--ao-ink);
+  --ao-nav-file-active-background: var(--ao-light-nav-active-background);
+  --ao-nav-file-active-foreground: var(--ao-light-nav-active-foreground);
 
   --blockquote-border-color: var(--ao-oxblood);
   --blockquote-background-color: rgba(var(--ao-khaki-rgb), 0.5);
@@ -778,17 +859,17 @@ body.ao-dark-midnight-blueprint {
   --code-value: var(--ao-purple);
   --caret-color: var(--ao-oxblood);
 
-  --checkbox-marker-color: var(--ao-paper);
-  --checkbox-color: var(--ao-olive);
+  --checkbox-marker-color: var(--ao-light-on-control-accent);
+  --checkbox-color: var(--ao-light-control-accent);
   --checkbox-color-hover: var(--ao-olive-hover);
   --checkbox-border-color: var(--ao-ink);
   --checkbox-border-color-hover: var(--ao-cyan);
   --checklist-done-color: var(--ao-graphite);
 
   --tag-color: var(--ao-ink);
-  --tag-color-hover: var(--ao-paper);
+  --tag-color-hover: var(--ao-light-on-control-accent);
   --tag-background: var(--ao-folder);
-  --tag-background-hover: var(--ao-olive);
+  --tag-background-hover: var(--ao-light-control-accent);
   --tag-border-color: var(--ao-ink);
   --tag-border-color-hover: var(--ao-ink);
 
@@ -802,8 +883,8 @@ body.ao-dark-midnight-blueprint {
 
   --menu-background: var(--ao-khaki);
   --menu-border-color: var(--ao-ink);
-  --ao-menu-hover-background: var(--ao-olive);
-  --ao-menu-hover-foreground: var(--ao-paper);
+  --ao-menu-hover-background: var(--ao-light-control-accent);
+  --ao-menu-hover-foreground: var(--ao-light-on-control-accent);
   --ao-feedback-background: var(--ao-ink);
   --ao-feedback-foreground: var(--ao-paper);
   --ao-feedback-border: var(--ao-paper);
@@ -1100,19 +1181,26 @@ body {
     var(--background-modifier-border);
 }
 
-.workspace-ribbon .clickable-icon {
+.theme-light .workspace-ribbon .clickable-icon {
   border: var(--ao-border-default) solid transparent;
-  color: var(--ao-paper);
+  color: var(--ao-light-chrome-foreground);
 }
 
-.workspace-ribbon .clickable-icon:hover,
-.workspace-ribbon .clickable-icon:focus-visible {
-  background: var(--ao-oxblood);
-  border-color: var(--ao-paper);
-  color: var(--ao-paper);
+.theme-light .workspace-ribbon .clickable-icon:hover,
+.theme-light .workspace-ribbon .clickable-icon:focus-visible {
+  background: var(--ao-light-ribbon-action-background);
+  border-color: var(--ao-light-chrome-foreground);
+  color: var(--ao-light-on-ribbon-action);
 }
 
 .theme-dark .workspace-ribbon .clickable-icon {
+  color: var(--ao-dark-paper);
+}
+
+.theme-dark .workspace-ribbon .clickable-icon:hover,
+.theme-dark .workspace-ribbon .clickable-icon:focus-visible {
+  background: var(--ao-dark-red);
+  border-color: var(--ao-dark-paper);
   color: var(--ao-dark-paper);
 }
 
@@ -1131,11 +1219,12 @@ body {
     var(--background-modifier-border);
 }
 
-.workspace-split.mod-right-split
+.theme-light
+  .workspace-split.mod-right-split
   > .workspace-tabs
   > .workspace-tab-header-container {
-  background: var(--ao-cyan);
-  color: var(--ao-ink);
+  background: var(--ao-light-tab-active);
+  color: var(--ao-light-on-tab-active);
 }
 
 .workspace-split.mod-right-split
@@ -1164,12 +1253,12 @@ body {
   height: 0;
 }
 
-body:not(.is-mobile)
+body.theme-light:not(.is-mobile)
   .workspace-split.mod-left-split
   .workspace-sidedock-vault-profile {
-  background: var(--ao-olive);
+  background: var(--ao-light-control-accent);
   border-top: var(--ao-border-default) solid var(--ao-ink);
-  color: var(--ao-paper);
+  color: var(--ao-light-on-control-accent);
 }
 
 body:not(.is-mobile)
