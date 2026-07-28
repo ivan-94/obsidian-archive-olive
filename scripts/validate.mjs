@@ -532,6 +532,7 @@ const expectedColorwayClasses = [
   'ao-light-blueprint-news',
   'ao-light-terracotta-ledger',
   'ao-light-forestry-file',
+  'ao-light-signal-white',
   'ao-dark-archive-night',
   'ao-dark-carbon-teal',
   'ao-dark-oxblood-archive',
@@ -543,7 +544,7 @@ const configuredColorwayClasses = [
 assert.deepEqual(
   configuredColorwayClasses,
   expectedColorwayClasses,
-  'Style Settings must list exactly the eight approved colorways',
+  'Style Settings must list exactly the nine approved colorways',
 );
 
 const parseDeclarations = block =>
@@ -609,6 +610,19 @@ const lightColorwayTokens = [
   '--ao-warning-ink',
   '--ao-code-surface',
   '--ao-light-on-accent',
+  '--ao-light-control-accent',
+  '--ao-light-on-control-accent',
+  '--ao-light-tab-active',
+  '--ao-light-on-tab-active',
+  '--ao-light-ribbon-background',
+  '--ao-light-titlebar-background',
+  '--ao-light-status-background',
+  '--ao-light-chrome-foreground',
+  '--ao-light-chrome-muted',
+  '--ao-light-ribbon-action-background',
+  '--ao-light-on-ribbon-action',
+  '--ao-light-nav-active-background',
+  '--ao-light-nav-active-foreground',
   ...[
     '00',
     '05',
@@ -771,9 +785,28 @@ for (const [className, tokens] of colorwayPalettes) {
     ? [
         ['body', '--ao-ink', '--ao-paper'],
         ['muted', '--ao-graphite', '--ao-paper'],
-        ['active', '--ao-light-on-accent', '--ao-olive'],
-        ['active tab', '--ao-ink', '--ao-cyan'],
-        ['chrome', '--ao-paper', '--ao-ink'],
+        ['semantic accent', '--ao-light-on-accent', '--ao-olive'],
+        [
+          'control accent',
+          '--ao-light-on-control-accent',
+          '--ao-light-control-accent',
+        ],
+        ['active tab', '--ao-light-on-tab-active', '--ao-light-tab-active'],
+        [
+          'active file',
+          '--ao-light-nav-active-foreground',
+          '--ao-light-nav-active-background',
+        ],
+        [
+          'chrome',
+          '--ao-light-chrome-foreground',
+          '--ao-light-ribbon-background',
+        ],
+        [
+          'ribbon action',
+          '--ao-light-on-ribbon-action',
+          '--ao-light-ribbon-action-background',
+        ],
         ['raised mobile', '--ao-ink', '--ao-khaki'],
         ['critical', '--ao-paper', '--ao-oxblood'],
         ['warning text', '--ao-warning-ink', '--ao-paper'],

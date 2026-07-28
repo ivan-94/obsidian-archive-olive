@@ -8,6 +8,16 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 No unreleased changes.
 
+## [0.1.7] - 2026-07-28
+
+### Added
+
+- Added Signal White, a reference-driven light colorway with a white content
+  surface, warm-white sidebars, black structural rules, yellow navigation
+  chrome, and a restrained pink active-file state.
+- Added independent light chrome and selection tokens so bright palettes do not
+  overload semantic success or information colors.
+
 ## [0.1.6] - 2026-07-27
 
 ### Added
@@ -168,8 +178,11 @@ No unreleased changes.
 - `0.1.6` keeps the native Obsidian file tree and introduces the approved
   CSS-only editorial hierarchy after isolated desktop validation; real-device
   iPhone/iPad and large-vault virtual-scroll review remain pending.
+- `0.1.7` adds Signal White as the fifth light colorway while preserving the
+  existing Archive Olive and Archive Night defaults.
 
-[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.6...HEAD
+[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.7...HEAD
+[0.1.7]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.6...0.1.7
 [0.1.6]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.5...0.1.6
 [0.1.5]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.4...0.1.5
 [0.1.4]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.3...0.1.4
