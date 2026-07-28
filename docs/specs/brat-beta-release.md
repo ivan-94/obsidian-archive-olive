@@ -2,7 +2,7 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.7` candidate — Signal White cross-platform review pending                      |
+| Status                | `0.1.7` published — Signal White cross-platform review pending                      |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
@@ -470,12 +470,21 @@ The owner authorized the opt-in GitHub pre-release before completing the human p
 - Annotated tag `0.1.6` resolves to that commit, and the
   [0.1.6 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.6)
   exposes four assets whose downloaded SHA-256 values match the tagged files.
-- The `0.1.7` candidate adds Signal White as the fifth light colorway while
+- The `0.1.7` release adds Signal White as the fifth light colorway while
   keeping Archive Olive and Archive Night as the plugin-free defaults.
   Isolated Obsidian Desktop `1.12.7` acceptance confirms its pure-white content,
   warm-white sidebar, yellow navigation chrome, and pink active-file state.
   Static validation covers nine palettes, 96 colorway-specific contrast pairs,
   and all 20 independent light/dark class combinations.
+- [Pull request #3](https://github.com/ivan-94/obsidian-archive-olive/pull/3)
+  was squash-merged as release commit
+  `5298cb7a3b66fca2ad3aa079232b51bdffc7b67a`.
+- GitHub Actions run
+  [`30325505542`](https://github.com/ivan-94/obsidian-archive-olive/actions/runs/30325505542)
+  passed on the release commit.
+- Annotated tag `0.1.7` resolves to that commit, and the
+  [0.1.7 pre-release](https://github.com/ivan-94/obsidian-archive-olive/releases/tag/0.1.7)
+  exposes four assets whose downloaded SHA-256 values match the tagged files.
 
 ### Open questions and risks
 
