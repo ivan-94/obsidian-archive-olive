@@ -6,7 +6,12 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 ## [Unreleased]
 
-No unreleased changes.
+### Changed
+
+- Restored one continuous `2px` desktop and tablet tab-strip baseline across
+  the left dock, root workspace, and right dock, including beneath active and
+  hovered tabs, while keeping other persistent shell and tab-item dividers
+  removed.
 
 ## [0.1.7] - 2026-07-28
 
@@ -155,6 +160,9 @@ No unreleased changes.
 - User direction and iPhone audit evidence in [`docs/specs/mobile-ios-visual-hardening.md`](docs/specs/mobile-ios-visual-hardening.md).
 - User direction in this Codex task to retain all approved light and dark
   colorways, write their specification, and implement them.
+- User screenshots and direction in the current Codex task requesting a
+  continuous divider below the desktop tab strip so it reads as one system with
+  the sidebars, then identifying the gap beneath the active tab.
 - [`docs/specs/brat-beta-release.md`](docs/specs/brat-beta-release.md).
 - Existing Git history and [`VALIDATION.md`](VALIDATION.md).
 
@@ -180,6 +188,8 @@ No unreleased changes.
   iPhone/iPad and large-vault virtual-scroll review remain pending.
 - `0.1.7` adds Signal White as the fifth light colorway while preserving the
   existing Archive Olive and Archive Night defaults.
+- The desktop and tablet tab strip keeps one continuous horizontal baseline;
+  titlebar, view-header, pane, and individual tab dividers remain quiet.
 
 [Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.7...HEAD
 [0.1.7]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.6...0.1.7

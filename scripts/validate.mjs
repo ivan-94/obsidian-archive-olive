@@ -153,8 +153,8 @@ assert.match(
 );
 assert.match(
   css,
-  /body:not\(\.is-phone\)[\s\S]*:is\(\.titlebar,\s*\.view-header,\s*\.workspace-tab-header-container\)\s*\{[\s\S]*border-bottom-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-ribbon\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-split\.mod-left-split\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-split\.mod-right-split\s*\{[\s\S]*border-inline-start-width:\s*0/,
-  'theme.css must hide persistent desktop and tablet shell dividers without changing phone chrome',
+  /body:not\(\.is-phone\)\s+:is\(\.titlebar,\s*\.view-header\)\s*\{[\s\S]*border-bottom-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-tab-header-container\s*\{[\s\S]*border-bottom-width:\s*var\(--ao-border-default\)[\s\S]*body:not\(\.is-phone\)\s+\.workspace-ribbon\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-split\.mod-left-split\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)\s+\.workspace-split\.mod-right-split\s*\{[\s\S]*border-inline-start-width:\s*0/,
+  'theme.css must keep one continuous desktop and tablet tab-strip baseline while leaving other shell dividers quiet',
 );
 assert.match(
   css,
@@ -163,8 +163,8 @@ assert.match(
 );
 assert.match(
   css,
-  /body:not\(\.is-phone\)\s+\.workspace-tab-header\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)[\s\S]*:is\(\.workspace-tab-header-new-tab,\s*\.workspace-tab-header-tab-list\)\s*\{[\s\S]*border-inline-start-width:\s*0[\s\S]*body:not\(\.is-phone\)[\s\S]*\.workspace-tab-header:is\(\.is-active,\s*:hover\)\s*\{[\s\S]*box-shadow:\s*none/,
-  'theme.css must remove desktop and tablet tab separators and inset state lines',
+  /body:not\(\.is-phone\)\s+\.workspace-tab-header\s*\{[\s\S]*border-inline-end-width:\s*0[\s\S]*body:not\(\.is-phone\)[\s\S]*:is\(\.workspace-tab-header-new-tab,\s*\.workspace-tab-header-tab-list\)\s*\{[\s\S]*border-inline-start-width:\s*0[\s\S]*\.workspace-split\.mod-right-split[\s\S]*\.workspace-tab-header\.is-active,[\s\S]*body:not\(\.is-phone\)[\s\S]*\.workspace-tab-header:is\(\.is-active,\s*:hover\)\s*\{[\s\S]*box-shadow:\s*inset 0 calc\(0px - var\(--ao-border-default\)\) 0[\s\S]*var\(--background-modifier-border\)/,
+  'theme.css must keep the desktop and tablet baseline visible through active and hovered tabs',
 );
 assert.match(
   css,

@@ -1,8 +1,8 @@
 # Archive Olive Validation Report
 
-Date: 2026-07-26
+Date: 2026-07-28
 
-Build: `0.1.5`
+Build: `0.1.7` + unreleased tab-strip baseline
 
 Runtime: Obsidian Desktop `1.12.7`, macOS
 
@@ -13,6 +13,26 @@ Vault: isolated repository fixture at `test-vault/`
 Archive Olive passes the [`docs/specs/theme.md`](docs/specs/theme.md) definition of done for a first usable build. All P0 requirements pass locally. P1 core surfaces also pass on the local desktop runtime and Obsidian mobile emulation, but public `1.0.0` remains gated by real-device, cross-platform, minimum-version, release-tag, and community-directory checks.
 
 The final implementation has no remote assets, `@import`, routine `!important`, or `:has()` selectors. Obsidian reported no captured runtime or console errors after the final verification cycle.
+
+## Unreleased desktop tab-strip baseline
+
+- The desktop and tablet tab strip now keeps one continuous `2px` semantic
+  baseline across the left dock, root workspace, and right dock, including
+  beneath active and hovered tabs.
+- The rule does not apply to `.is-phone`. Desktop and tablet titlebars, view
+  headers, pane edges, and individual tab separators remain visually quiet.
+- A deterministic Chromium fixture loaded Obsidian Desktop `1.12.7`'s extracted
+  `app.css` followed by the working-tree `theme.css`. It reproduced the active
+  tab covering its parent container border, then confirmed that all three
+  active tabs receive the same `2px` inset semantic baseline as their
+  containers.
+- The existing Obsidian Desktop `1.12.7` Signal White screenshot from the
+  isolated repository `test-vault/` records the pre-change missing baseline.
+  A fresh post-change Obsidian screenshot and DevTools capture could not be
+  collected because macOS ScreenCaptureKit repeatedly returned
+  `SCStreamErrorDomain Code=-3811`; the Chromium result is therefore a
+  stylesheet-level visual regression check, not a substitute claim of fresh
+  application-runtime acceptance.
 
 ## 0.1.7 Signal White colorway
 
@@ -256,6 +276,9 @@ claim real-device iPhone/iPad or large-vault virtual-scroll acceptance.
 ### Original sources
 
 - User direction in this Codex thread: implement the selected fourth palette and validate it in a local vault.
+- User screenshots and direction in this Codex task requesting a continuous
+  divider below the desktop tab strip so it reads as one system with the
+  sidebars, then identifying the gap beneath the active tab.
 - [`DESIGN.md`](DESIGN.md)
 - [Theme specification](docs/specs/theme.md)
 - [`design/concepts/01f-archive-olive.png`](design/concepts/01f-archive-olive.png)

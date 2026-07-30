@@ -1560,11 +1560,14 @@ body:not(.is-mobile)
   border-inline-start: var(--ao-border-thin) solid var(--tab-divider-color);
 }
 
-/* Keep desktop and tablet chrome quiet: surface changes carry hierarchy while
-   resize handles retain their hit area without a persistent visual divider. */
-body:not(.is-phone)
-  :is(.titlebar, .view-header, .workspace-tab-header-container) {
+/* Keep desktop and tablet chrome quiet while retaining one continuous tab-strip
+   baseline that joins the side docks and root workspace. */
+body:not(.is-phone) :is(.titlebar, .view-header) {
   border-bottom-width: 0;
+}
+
+body:not(.is-phone) .workspace-tab-header-container {
+  border-bottom-width: var(--ao-border-default);
 }
 
 body:not(.is-phone) .workspace-ribbon {
@@ -1604,10 +1607,18 @@ body:not(.is-phone)
   .workspace-tab-header-container
   .workspace-tab-header.is-active,
 body:not(.is-phone)
+  .app-container
+  .workspace
+  .workspace-split.mod-right-split
+  .workspace-tabs
+  .workspace-tab-header-container
+  .workspace-tab-header.is-active,
+body:not(.is-phone)
   .workspace
   .mod-root
   .workspace-tab-header:is(.is-active, :hover) {
-  box-shadow: none;
+  box-shadow: inset 0 calc(0px - var(--ao-border-default)) 0
+    var(--background-modifier-border);
 }
 
 .nav-files-container,
