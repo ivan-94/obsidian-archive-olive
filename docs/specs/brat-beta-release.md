@@ -2,12 +2,12 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.7` published — Signal White cross-platform review pending                      |
+| Status                | `0.1.8` candidate — settings acceptance and broader review pending                  |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
 | Owner                 | Ivan                                                                                |
-| Last updated          | 2026-07-28                                                                          |
+| Last updated          | 2026-08-04                                                                          |
 | Related specification | [Theme specification](theme.md)                                                     |
 
 ## 1. Purpose

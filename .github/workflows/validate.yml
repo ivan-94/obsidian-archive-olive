@@ -71,6 +71,8 @@ jobs:
           docs/releases/0.1.6-beta-notes.md
           docs/releases/0.1.7-beta.md
           docs/releases/0.1.7-beta-notes.md
+          docs/releases/0.1.8-beta.md
+          docs/releases/0.1.8-beta-notes.md
           hats/20260725-brat-beta-cross-platform/guide.md
           scripts/validate.mjs
           .github/workflows/validate.yml

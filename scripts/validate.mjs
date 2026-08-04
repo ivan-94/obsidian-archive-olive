@@ -336,8 +336,8 @@ assert.match(
 );
 assert.match(
   css,
-  /\.theme-light\.is-mobile\s*\{[\s\S]*--ao-mobile-surface:\s*var\(--ao-paper\)[\s\S]*--ao-mobile-surface-raised:\s*var\(--ao-khaki\)[\s\S]*--ao-mobile-foreground:\s*var\(--ao-ink\)[\s\S]*--ao-mobile-active-background:\s*var\(--ao-olive\)[\s\S]*--ao-mobile-active-foreground:\s*var\(--ao-paper\)/,
-  'theme.css must define isolated high-contrast light mobile semantic surfaces',
+  /\.theme-light\.is-mobile\s*\{[\s\S]*--ao-mobile-surface:\s*var\(--ao-paper\)[\s\S]*--ao-mobile-surface-raised:\s*var\(--ao-khaki\)[\s\S]*--ao-mobile-foreground:\s*var\(--ao-ink\)[\s\S]*--ao-mobile-active-background:\s*var\(--ao-light-control-accent\)[\s\S]*--ao-mobile-active-foreground:\s*var\(--ao-light-on-control-accent\)/,
+  'theme.css must map light mobile active states to the selected colorway',
 );
 assert.match(
   css,
@@ -393,6 +393,36 @@ assert.match(
   css,
   /body\.is-mobile[\s\S]*\.vertical-tab-nav-item:is\(\.is-active,\s*\.mobile-tap\)[\s\S]*background:\s*var\(--ao-mobile-active-background\)[\s\S]*border-radius:\s*0[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
   'theme.css must distinguish selected mobile settings navigation without pills',
+);
+assert.match(
+  css,
+  /body\.is-mobile[\s\S]*\.vertical-tab-nav-item:is\(\.is-active,\s*\.mobile-tap\)[\s\S]*\.vertical-tab-nav-item-icon[\s\S]*color:\s*var\(--ao-mobile-active-foreground\)/,
+  'theme.css must make selected mobile settings icons inherit the active foreground',
+);
+assert.match(
+  css,
+  /body:not\(\.is-mobile\)\s+\.modal\.mod-settings\s+\.search-input-container,\s*[\s\S]*body:not\(\.is-mobile\)\s+\.modal\.mod-settings\s+\.search-input-container\s+input\s*\{[\s\S]*--search-input-radius:\s*0[\s\S]*border-radius:\s*0[\s\S]*box-shadow:\s*none/,
+  'theme.css must remove macOS pill search controls from desktop settings',
+);
+assert.match(
+  css,
+  /body:not\(\.is-mobile\)\s+\.modal\.mod-settings\s+button:not\(\.clickable-icon\)\s*\{[\s\S]*border-radius:\s*0[\s\S]*box-shadow:\s*none[\s\S]*body:not\(\.is-mobile\)\s+\.modal\.mod-settings\s+\.setting-item-heading\s*\{[\s\S]*border-top-width:\s*0/,
+  'theme.css must keep desktop settings controls square and section headings rule-free',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+\.modal\.mod-settings\s+\.search-input-container\s*\{[\s\S]*border-radius:\s*0[\s\S]*box-shadow:\s*none/,
+  'theme.css must remove the native pill and raised ring around mobile search fields',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+\.modal\.mod-settings\s+\.modal-header-button\s*\{[\s\S]*background:\s*var\(--ao-mobile-surface-raised\)[\s\S]*border:\s*0[\s\S]*box-shadow:\s*none[\s\S]*inset-block-start:\s*var\(--ao-border-default\)[\s\S]*inset-inline-end:\s*var\(--ao-border-default\)/,
+  'theme.css must keep the mobile settings close control quiet and aligned to the modal edge',
+);
+assert.match(
+  css,
+  /body\.is-mobile\s+\.modal\.mod-settings\s+button:not\(\.clickable-icon\)\s*\{[\s\S]*box-shadow:\s*none[\s\S]*body\.is-mobile\s+\.modal\.mod-settings\s+\.setting-item-heading\s*\{[\s\S]*border-top-width:\s*0/,
+  'theme.css must keep mobile settings buttons quiet without a heavyweight section rule',
 );
 assert.match(
   css,
@@ -456,8 +486,18 @@ assert.match(
 );
 assert.match(
   css,
-  /body\.is-mobile\.is-ios\.is-tablet\s+\.workspace-drawer\s*\{[\s\S]*border-radius:\s*0[\s\S]*max-width:\s*calc\(50vw\s*-\s*16px\)/,
-  'theme.css must keep paired iPad drawers square and non-overlapping',
+  /body\.is-mobile\.is-ios\.is-tablet\s+\.workspace-drawer\s*\{[\s\S]*background:\s*var\(--ao-mobile-surface\)[\s\S]*border:\s*var\(--ao-border-default\)\s+solid\s+var\(--ao-mobile-border\)[\s\S]*border-radius:\s*0[\s\S]*max-width:\s*calc\(50vw\s*-\s*16px\)[\s\S]*overflow:\s*hidden/,
+  'theme.css must keep iPad drawers fully framed without disturbing modal layering',
+);
+assert.doesNotMatch(
+  css,
+  /body\.is-mobile\.is-ios\.is-tablet\s+\.workspace-drawer\s*\{[^}]*z-index\s*:/,
+  'iPad drawers must not overtake settings modals',
+);
+assert.match(
+  css,
+  /body\.is-mobile\.is-ios\.is-tablet\s+\.workspace-drawer\s+\.workspace-leaf-content::after\s*\{[\s\S]*display:\s*none/,
+  'theme.css must remove the native bottom fade from iPad drawer file trees',
 );
 assert.match(
   css,

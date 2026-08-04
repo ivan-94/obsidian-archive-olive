@@ -6,12 +6,26 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 ## [Unreleased]
 
+## [0.1.8] - 2026-08-04
+
 ### Changed
 
 - Restored one continuous `2px` desktop and tablet tab-strip baseline across
   the left dock, root workspace, and right dock, including beneath active and
   hovered tabs, while keeping other persistent shell and tab-item dividers
   removed.
+
+### Fixed
+
+- Mapped Signal White mobile selections to the selected colorway's control
+  accent, with a matching foreground for active sidebar icons and labels.
+- Framed the complete iPad drawer and removed its native bottom fade without
+  changing the settings-modal stacking order.
+- Removed the rounded, raised settings search field and heavyweight section
+  rules on iPad.
+- Restored square desktop settings controls by overriding macOS's late pill
+  tokens, removed their offset button shadows, and removed section-heading
+  rules.
 
 ## [0.1.7] - 2026-07-28
 
@@ -191,7 +205,8 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 - The desktop and tablet tab strip keeps one continuous horizontal baseline;
   titlebar, view-header, pane, and individual tab dividers remain quiet.
 
-[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.7...HEAD
+[Unreleased]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.8...HEAD
+[0.1.8]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.7...0.1.8
 [0.1.7]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.6...0.1.7
 [0.1.6]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.5...0.1.6
 [0.1.5]: https://github.com/ivan-94/obsidian-archive-olive/compare/0.1.4...0.1.5

@@ -1,5 +1,5 @@
 /*!
- * Archive Olive 0.1.7
+ * Archive Olive 0.1.8
  * A practical brutalist theme for Obsidian.
  * Design source: DESIGN.md
  * BRAT channel: main/theme.css
@@ -2294,6 +2294,24 @@ input.prompt-input:focus-visible {
   border-top-width: var(--ao-border-heavy);
 }
 
+/* macOS reapplies rounded control tokens after the theme's root tokens. */
+body:not(.is-mobile) .modal.mod-settings .search-input-container,
+body:not(.is-mobile) .modal.mod-settings .search-input-container input {
+  --input-radius: 0;
+  --search-input-radius: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body:not(.is-mobile) .modal.mod-settings button:not(.clickable-icon) {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body:not(.is-mobile) .modal.mod-settings .setting-item-heading {
+  border-top-width: 0;
+}
+
 .setting-item-name {
   font-weight: 700;
 }
@@ -2511,8 +2529,8 @@ body.is-mobile .nav-file-title.is-active::after {
   --ao-mobile-muted-foreground: var(--ao-graphite);
   --ao-mobile-border: var(--ao-ink);
   --ao-mobile-focus: var(--ao-cyan);
-  --ao-mobile-active-background: var(--ao-olive);
-  --ao-mobile-active-foreground: var(--ao-paper);
+  --ao-mobile-active-background: var(--ao-light-control-accent);
+  --ao-mobile-active-foreground: var(--ao-light-on-control-accent);
   --interactive-normal: var(--ao-mobile-surface-raised);
   --interactive-hover: var(--ao-mobile-surface);
   --background-modifier-form-field: var(--ao-mobile-surface-raised);
@@ -2565,8 +2583,17 @@ body.theme-light.is-mobile.is-ios.is-tablet
 }
 
 body.is-mobile.is-ios.is-tablet .workspace-drawer {
+  background: var(--ao-mobile-surface);
+  border: var(--ao-border-default) solid var(--ao-mobile-border);
   border-radius: 0;
   max-width: calc(50vw - 16px);
+  overflow: hidden;
+}
+
+body.is-mobile.is-ios.is-tablet
+  .workspace-drawer
+  .workspace-leaf-content::after {
+  display: none;
 }
 
 body.is-mobile.is-ios.is-tablet:not(.show-ribbon)
@@ -2741,6 +2768,11 @@ body.is-mobile :is(input[type='search'], input.search-input):focus {
   box-shadow: 3px 3px 0 var(--ao-mobile-border);
 }
 
+body.is-mobile .modal.mod-settings .search-input-container {
+  border-radius: 0;
+  box-shadow: none;
+}
+
 body.is-mobile .prompt {
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
@@ -2863,6 +2895,38 @@ body.is-mobile .horizontal-tab-nav-item:is(.is-active, .mobile-tap) {
   border-color: var(--ao-mobile-border);
   border-radius: 0;
   color: var(--ao-mobile-active-foreground);
+}
+
+body.is-mobile
+  .vertical-tab-nav-item:is(.is-active, .mobile-tap)
+  .vertical-tab-nav-item-icon,
+body.is-mobile
+  .vertical-tab-nav-item:is(.is-active, .mobile-tap)
+  .vertical-tab-nav-item-icon
+  svg {
+  color: var(--ao-mobile-active-foreground);
+}
+
+body.is-mobile .modal.mod-settings .modal-header-button {
+  background: var(--ao-mobile-surface-raised);
+  border: 0;
+  box-shadow: none;
+  color: var(--ao-mobile-foreground);
+  inset-block-start: var(--ao-border-default);
+  inset-inline-end: var(--ao-border-default);
+}
+
+body.is-mobile .modal.mod-settings .modal-header-button svg {
+  color: inherit;
+  stroke: currentColor;
+}
+
+body.is-mobile .modal.mod-settings button:not(.clickable-icon) {
+  box-shadow: none;
+}
+
+body.is-mobile .modal.mod-settings .setting-item-heading {
+  border-top-width: 0;
 }
 
 body.is-mobile .clickable-icon,
