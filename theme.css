@@ -1,5 +1,5 @@
 /*!
- * Archive Olive 0.1.8
+ * Archive Olive 0.1.9
  * A practical brutalist theme for Obsidian.
  * Design source: DESIGN.md
  * BRAT channel: main/theme.css
@@ -2168,20 +2168,20 @@ select,
 }
 
 button {
-  border: var(--ao-border-default) solid var(--background-modifier-border);
-  box-shadow: 3px 3px 0 var(--background-modifier-border);
+  border: var(--ao-border-thin) solid var(--background-modifier-border);
+  box-shadow: none;
   font-family: var(--ao-font-mono);
   font-weight: 700;
 }
 
 button:hover {
-  border-color: var(--background-modifier-border);
-  box-shadow: 3px 3px 0 var(--background-modifier-border);
+  border-color: var(--background-modifier-border-hover);
+  box-shadow: none;
 }
 
 button:active {
   box-shadow: none;
-  transform: translate(2px, 2px);
+  transform: none;
 }
 
 button.mod-cta {

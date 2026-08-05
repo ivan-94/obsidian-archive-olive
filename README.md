@@ -106,7 +106,7 @@ Run the repeatable static checks:
 node scripts/validate.mjs
 npx -y @google/design.md@0.3.0 lint DESIGN.md --format json
 npx -y lightningcss-cli@1.33.0 theme.css --output-file /tmp/archive-olive-theme.css
-npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/colorways.md docs/specs/file-explorer-visual-hierarchy.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.8-beta.md docs/releases/0.1.8-beta-notes.md
+npx -y prettier@3.9.6 --check theme.css manifest.json README.md CHANGELOG.md AGENTS.md docs/specs/README.md docs/specs/brat-beta-release.md docs/specs/colorways.md docs/specs/file-explorer-visual-hierarchy.md docs/specs/mobile-ios-visual-hardening.md docs/releases/0.1.9-beta.md docs/releases/0.1.9-beta-notes.md
 ```
 
 Before publishing a beta build, run the stricter release gate:
@@ -121,7 +121,7 @@ The isolated `test-vault` covers Markdown primitives, multilingual text, dense n
 
 Use the [BRAT Beta cross-platform HAT guide](hats/20260725-brat-beta-cross-platform/guide.md) for the private pilot and owner-led Windows, Linux, iOS, and Android acceptance. The guide includes preparation, evidence, privacy, update, removal, and platform-specific checklists.
 
-The [`0.1.8` beta release record](docs/releases/0.1.8-beta.md) documents the current pre-release checkpoint and the post-release acceptance that remains. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
+The [`0.1.9` beta candidate record](docs/releases/0.1.9-beta.md) documents the current local patch checkpoint and the remaining acceptance. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
 
 ## Reporting beta issues
 

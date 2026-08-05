@@ -2,12 +2,12 @@
 
 | Field                 | Value                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------- |
-| Status                | `0.1.8` published — settings acceptance and broader review pending                  |
+| Status                | `0.1.8` published; `0.1.9` local patch candidate — broader review pending           |
 | Specification version | 0.1.0                                                                               |
 | Target release        | `0.1.0` BRAT Beta                                                                   |
 | Repository            | [ivan-94/obsidian-archive-olive](https://github.com/ivan-94/obsidian-archive-olive) |
 | Owner                 | Ivan                                                                                |
-| Last updated          | 2026-08-04                                                                          |
+| Last updated          | 2026-08-05                                                                          |
 | Related specification | [Theme specification](theme.md)                                                     |
 
 ## 1. Purpose

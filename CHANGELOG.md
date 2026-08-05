@@ -6,6 +6,14 @@ The project follows [Semantic Versioning](https://semver.org/). During beta, min
 
 ## [Unreleased]
 
+## [0.1.9] - 2026-08-05
+
+### Fixed
+
+- Simplified every standard button to a single 1px border with no offset
+  shadow or press displacement, so buttons use the same quiet control language
+  as select fields across Obsidian and community-plugin surfaces.
+
 ## [0.1.8] - 2026-08-04
 
 ### Changed

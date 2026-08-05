@@ -411,6 +411,11 @@ assert.match(
 );
 assert.match(
   css,
+  /button\s*\{[\s\S]*border:\s*var\(--ao-border-thin\)\s+solid\s+var\(--background-modifier-border\)[\s\S]*box-shadow:\s*none[\s\S]*button:hover\s*\{[\s\S]*border-color:\s*var\(--background-modifier-border-hover\)[\s\S]*box-shadow:\s*none[\s\S]*button:active\s*\{[\s\S]*box-shadow:\s*none[\s\S]*transform:\s*none/,
+  'theme.css must keep every button as quiet as select controls',
+);
+assert.match(
+  css,
   /body\.is-mobile\s+\.modal\.mod-settings\s+\.search-input-container\s*\{[\s\S]*border-radius:\s*0[\s\S]*box-shadow:\s*none/,
   'theme.css must remove the native pill and raised ring around mobile search fields',
 );
