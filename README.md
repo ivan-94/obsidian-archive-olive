@@ -121,7 +121,7 @@ The isolated `test-vault` covers Markdown primitives, multilingual text, dense n
 
 Use the [BRAT Beta cross-platform HAT guide](hats/20260725-brat-beta-cross-platform/guide.md) for the private pilot and owner-led Windows, Linux, iOS, and Android acceptance. The guide includes preparation, evidence, privacy, update, removal, and platform-specific checklists.
 
-The [`0.1.9` beta candidate record](docs/releases/0.1.9-beta.md) documents the current local patch checkpoint and the remaining acceptance. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
+The [`0.1.9` beta tag record](docs/releases/0.1.9-beta.md) documents the current tagged patch checkpoint and the remaining acceptance. Broader announcement and official-directory submission stay blocked until pilot feedback is reviewed.
 
 ## Reporting beta issues
 
